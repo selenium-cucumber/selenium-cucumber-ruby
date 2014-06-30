@@ -1,7 +1,11 @@
 require 'rubygems'
 require "selenium-webdriver"
 
-def wait_for_element(access_type,access_id)
-	wait = Selenium::WebDriver::Wait.new(:timeout => 10) # seconds
-	element = wait.until { $driver.find_element(:"#{access_type}" => "#{access_id}") }
+def wait(time)
+	sleep time.to_i
+end
+
+def wait_for_element(access_type,access_name,duration)
+	wait = Selenium::WebDriver::Wait.new(:timeout => duration.to_i) # seconds
+	element = wait.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }
 end
