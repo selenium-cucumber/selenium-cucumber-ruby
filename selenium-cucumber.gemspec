@@ -8,7 +8,7 @@ Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.summary     = "SELENIUM WEBDRIVER WITH RUBY & CUCUMBER"
   s.authors     = "Sameer Sawant"
-  s.homepage    = "http://sameersawant1992.wordpress.com/"
+  s.homepage    = "http://seleniumcucumber.wordpress.com/"
   s.email       = "sameersawant1992@gmail.com"
   s.files       = Dir['lib/*.rb'] + Dir['lib/support/*.rb']+ Dir['lib/selenium-cucumber/*.rb'] + Dir['lib/selenium-cucumber/methods/*.rb'] + Dir['bin/*.*'] + Dir['features-skeleton/*.*'] + Dir['features-skeleton/step_definitions/*.*'] + Dir['features-skeleton/support/*.*'] + Dir['doc/*.*']
   s.executables   = "selenium-cucumber"
