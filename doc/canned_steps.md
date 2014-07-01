@@ -144,6 +144,13 @@ To assert that radio button group not selected by value use any of the following
     Then I should see "(.*?)" option by value from radio button group having xpath "(.*?)" not selected
     Then I should see "(.*?)" option by value from radio button group having css "(.*?)" not selected
 
+To assert that link is present use following steps
+
+    Then I should see link present having text "(.*?)"
+    Then I should see link present having partial text "(.*?)"
+    
+    Then I should see link not present having text "(.*?)"
+    Then I should see link not present having partial text "(.*?)"
 
 Input Steps
 -----------
@@ -255,6 +262,10 @@ To click on web element use following steps
     Then I click on element having xpath "(.*?)"
     Then I click on element having css "(.*?)"
 
+To click on links use following steps
+
+    Then I click on link having text "(.*?)"
+    Then I click on link having partial text "(.*?)"
 
 Progress Steps
 --------------
@@ -286,6 +297,13 @@ To handle javascript pop-up use following steps
 
 Screenshot Steps
 ----------------
-To take screenshot use following steps
+To take screenshot use following step
 
     Then I take screenshot
+
+
+Configuration Steps
+-------------------
+To print testing configuration use following step
+
+    Then I print configuration

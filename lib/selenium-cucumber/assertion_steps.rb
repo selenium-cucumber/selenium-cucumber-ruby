@@ -417,3 +417,21 @@ end
 Then(/^I should see "(.*?)" option by value from radio button group having css "(.*?)" not selected$/) do |option, access_name|
   is_option_from_radio_button_group_not_selected("css","value",option,access_name)
 end
+
+#steps to check link presence
+
+Then(/^I should see link present having text "(.*?)"$/) do |access_name|
+    check_element_presence("link", access_name, true)
+end
+
+Then(/^I should see link not present having text "(.*?)"$/) do |access_name|
+    check_element_presence("link", access_name, false)
+end
+
+Then(/^I should see link present having partial text "(.*?)"$/) do |access_name|
+    check_element_presence("partial_link_text", access_name, true)
+end
+
+Then(/^I should see link not present having partial text "(.*?)"$/) do |access_name|
+    check_element_presence("partial_link_text", access_name, false)
+end

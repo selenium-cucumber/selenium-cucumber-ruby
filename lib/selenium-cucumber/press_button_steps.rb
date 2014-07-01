@@ -25,3 +25,13 @@ end
 When(/^I click on element having css "(.*?)"$/) do |access_name|
   click("css",access_name)
 end
+
+#steps to click on link
+
+Then(/^I click on link having text "(.*?)"$/) do |access_name|
+    click("link",access_name)
+end
+
+Then(/^I click on link having partial text  "(.*?)"$/) do |access_name|
+    click("partial_link_text",access_name)
+end
