@@ -10,7 +10,35 @@ To open/close URL and to navigate between pages use following steps
     Then I navigate to "([^\"]*)"
     Then I navigate forward
     Then I navigate back
+    Then I refresh page
+
+To interact with browser use following steps    
+
+    Then I resize browser with width (\d+) and heigth (\d+)
     Then I close browser
+
+To zoom in/out webpage use following steps
+
+    Then I zoom in page
+    Then I zoom out page
+
+To zoom in/out webpage till necessary element displays use following steps
+
+    Then I zoom in page till I see element having id "(.*?)"
+    Then I zoom in page till I see element having name "(.*?)"
+    Then I zoom in page till I see element having class "(.*?)"
+    Then I zoom in page till I see element having xpath "(.*?)"
+    Then I zoom in page till I see element having css "(.*?)"
+
+    Then I zoom out page till I see element having id "(.*?)"
+    Then I zoom out page till I see element having name "(.*?)"
+    Then I zoom out page till I see element having class "(.*?)"
+    Then I zoom out page till I see element having xpath "(.*?)"
+    Then I zoom out page till I see element having css "(.*?)"
+
+To reset webpage view use following step
+
+    Then I reset page view
 
 
 Assertion Steps
@@ -156,19 +184,19 @@ Input Steps
 -----------
 To enter text into input field use following steps
 
-    Then I enter "([^\"]*)" into input field having id "([^\"]*)e
-    Then I enter "([^\"]*)" into input field having name "([^\"]*)e
-    Then I enter "([^\"]*)" into input field having class "([^\"]*)e
-    Then I enter "([^\"]*)" into input field having xpath "([^\"]*)e
-    Then I enter "([^\"]*)" into input field having css "([^\"]*)e
+    Then I enter "([^\"]*)" into input field having id "([^\"]*)
+    Then I enter "([^\"]*)" into input field having name "([^\"]*)
+    Then I enter "([^\"]*)" into input field having class "([^\"]*)
+    Then I enter "([^\"]*)" into input field having xpath "([^\"]*)
+    Then I enter "([^\"]*)" into input field having css "([^\"]*)
     
 To clear input field use following steps
 
-    Then I clear input field having id "([^\"]*)e 
-    Then I clear input field having name "([^\"]*)e
-    Then I clear input field having class "([^\"]*)e 
-    Then I clear input field having xpath "([^\"]*)e 
-    Then I clear input field having css "([^\"]*)e
+    Then I clear input field having id "([^\"]*)
+    Then I clear input field having name "([^\"]*)
+    Then I clear input field having class "([^\"]*) 
+    Then I clear input field having xpath "([^\"]*) 
+    Then I clear input field having css "([^\"]*)
 
 To select option by text from dropdown/multiselect use following steps
 

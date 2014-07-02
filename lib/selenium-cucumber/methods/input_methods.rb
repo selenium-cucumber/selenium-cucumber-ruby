@@ -3,12 +3,12 @@ require "selenium-webdriver"
 
 # method to enter text into textfield
 def enter_text(access_type,text,access_name)
-	element = $driver.find_element(:"#{access_type}" => "#{access_name}").send_keys text
+	$driver.find_element(:"#{access_type}" => "#{access_name}").send_keys text
 end
 
 # method to clear text from textfield
 def clear_text(access_type,access_name)
-	element = $driver.find_element(:"#{access_type}" => "#{access_name}").clear
+	$driver.find_element(:"#{access_type}" => "#{access_name}").clear
 end
 
 # method to select option from dropdwon list

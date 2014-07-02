@@ -38,7 +38,7 @@ In this skeleton you find all the predefined steps that comes with selenium-cucu
 Predefined steps
 -----------------
 
-The predefined steps are located in the `lib/selenium-cucumber` folder. A compiled list of predefined steps with comments is available [here](doc/canned_steps.md) 
+The predefined steps are located in the `lib/selenium-cucumber` folder. A compiled list of predefined steps with comments are available [here](doc/canned_steps.md) 
 
 
 License
