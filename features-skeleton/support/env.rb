@@ -27,6 +27,7 @@ case ENV['BROWSER']
     browser_type = :ff
 end
 
+
 begin
     $driver = Selenium::WebDriver.for(browser_type)
     $driver.manage().window().maximize()

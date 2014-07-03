@@ -10,14 +10,17 @@ require 'selenium-cucumber/version'
 
 if (ARGV.length == 0)
   print_usage
+else
+	cmd = ARGV.shift
+
+	if cmd == "help"
+  		print_help
+	elsif cmd == "gen"
+  		selenium_cucumber_scaffold
+	elsif cmd == "version"
+		puts Selenium::Cucumber::VERSION
+  	else
+  		print_usage
+	end
 end
 
-cmd = ARGV.shift
-
-if cmd == 'help'
-  print_help
-elsif cmd == 'gen'
-  selenium_cucumber_scaffold
-elsif cmd == 'version'
-  puts Selenium::Cucumber::VERSION
-end

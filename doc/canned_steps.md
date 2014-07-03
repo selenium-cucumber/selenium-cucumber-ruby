@@ -40,6 +40,13 @@ To reset webpage view use following step
 
     Then I reset page view
 
+To scroll webpage use following step
+    
+    Then I scroll to the element having id "(.*?)"
+    Then I scroll to the element having name "(.*?)"
+    Then I scroll to the element having class "(.*?)"
+    Then I scroll to the element having xpath "(.*?)"
+    Then I scroll to the element having css "(.*?)"
 
 Assertion Steps
 ---------------

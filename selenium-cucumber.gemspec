@@ -4,7 +4,7 @@ require "selenium-cucumber/version"
 Gem::Specification.new do |s|
   s.name        = 'selenium-cucumber'
   s.version     = Selenium::Cucumber::VERSION
-  s.date        = '2014-06-25'
+  s.date        = Time.now
   s.platform    = Gem::Platform::RUBY
   s.licenses    = ['MIT']
   s.summary     = "SELENIUM WEBDRIVER WITH RUBY & CUCUMBER"
@@ -19,6 +19,7 @@ Gem::Specification.new do |s|
   s.post_install_message = "Thanks for installing selenium-cucumber gem."
                    
                    
+  
   s.add_dependency('cucumber')
   s.add_dependency('selenium-webdriver')
   
