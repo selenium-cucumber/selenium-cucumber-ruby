@@ -57,26 +57,6 @@ Then(/^I zoom out page$/) do
   zoom_in_out("subtract")
 end
 
-#steps to zoom in till element displays
-Then(/^I zoom in page till I see element having id "(.*?)"$/) do |access_name|
-  zoom_in_out_till_element_display("id", "add", access_name)
-end
-
-Then(/^I zoom in page till I see element having name "(.*?)"$/) do |access_name|
-  zoom_in_out_till_element_display("name", "add", access_name)
-end
-
-Then(/^I zoom in page till I see element having class "(.*?)"$/) do |access_name|
-  zoom_in_out_till_element_display("class", "add", access_name)
-end
-
-Then(/^I zoom in page till I see element having xpath "(.*?)"$/) do |access_name|
-  zoom_in_out_till_element_display("xpath", "add", access_name)
-end
-
-Then(/^I zoom in page till I see element having css "(.*?)"$/) do |access_name|
-  zoom_in_out_till_element_display("css", "add", access_name)
-end
 
 #steps to zoom out till element displays
 Then(/^I zoom out page till I see element having id "(.*?)"$/) do |access_name|

@@ -22,13 +22,7 @@ To zoom in/out webpage use following steps
     Then I zoom in page
     Then I zoom out page
 
-To zoom in/out webpage till necessary element displays use following steps
-
-    Then I zoom in page till I see element having id "(.*?)"
-    Then I zoom in page till I see element having name "(.*?)"
-    Then I zoom in page till I see element having class "(.*?)"
-    Then I zoom in page till I see element having xpath "(.*?)"
-    Then I zoom in page till I see element having css "(.*?)"
+To zoom out webpage till necessary element displays use following steps
 
     Then I zoom out page till I see element having id "(.*?)"
     Then I zoom out page till I see element having name "(.*?)"

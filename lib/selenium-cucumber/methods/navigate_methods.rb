@@ -1,5 +1,4 @@
-require 'rubygems'
-require "selenium-webdriver"
+require_relative 'required_files'
 
 
 def navigate_to(link)
@@ -15,8 +14,8 @@ def close_driver
 end
 
 def scroll_to_element(access_type,access_name)
-	ele_scroll = $driver.find_element(:"#{access_type}" => "#{access_name}")
-  	ele_scroll.location_once_scrolled_into_view
+	ele_scroll = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+  ele_scroll.location_once_scrolled_into_view
 end
 
 def zoom_in_out(in_out)
@@ -40,7 +39,7 @@ def zoom_in_out_till_element_display(access_type, in_out, access_name)
 
   while true
     
-      if $driver.find_element(:"#{access_type}" => "#{access_name}").displayed?
+      if WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}.displayed?
         break
       else
         $driver.action.key_down(:"#{key}").send_keys(:"#{in_out}").key_up(:"#{key}").perform

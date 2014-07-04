@@ -1,5 +1,4 @@
-require 'rubygems'
-require "selenium-webdriver"
+require_relative 'required_files'
 
 #method to print configuration
 
