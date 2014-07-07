@@ -2,17 +2,24 @@ require_relative 'required_files'
 
 
 #Page title checking
+def get_page_title
+	return $driver.title
+end
+
 def check_title(title)
-	if($driver.title!=title)
+	if(get_page_title!=title)
 		raise "Page Title Not Matched"
 	end
 end
 
+#method to get element text
+def get_element_text(access_type,access_name)	
+	return WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}.text
+end
+
 #Method to check element text
 def check_element_text(access_type, actual_value, access_name, test_case)
-	 # seconds
-	element_text = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}.text
-	
+	element_text = get_element_text(access_type,access_name)
 
 	if test_case
 		if(element_text!=actual_value)		
@@ -25,10 +32,15 @@ def check_element_text(access_type, actual_value, access_name, test_case)
 	end
 end
 
+#method to return element status - enabled?
+def is_element_enabled(access_type,access_name)
+	return WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}.enabled?
+end
+
 #Element enabled checking 
 def check_element_enable(access_type, access_name, test_case)
 	
-	result=WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}.enabled?
+	result=is_element_enabled(access_type,access_name)
 
 	if test_case
 		if(!result)		
@@ -41,10 +53,15 @@ def check_element_enable(access_type, access_name, test_case)
 	end
 end
 
-# method to check attribute value
+#method to get attribute value
+def get_element_attribute(access_type,access_name,attribute_value)
+	return WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}.attribute("#{attribute_name}")
+end
+
+#method to check attribute value
 def check_element_attribute(access_type, attribute_name , attribute_value, access_name, test_case)
 	
-	attr_val=WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}.attribute("#{attribute_name}")
+	attr_val=get_element_attribute(access_type,access_name,attribute_value)
 	
 	if test_case
 		if(attr_val!=attribute_value)	
@@ -57,9 +74,14 @@ def check_element_attribute(access_type, attribute_name , attribute_value, acces
 	end
 end
 
+#method to get element status - displayed?
+def is_element_displayed(access_type,access_name)
+	WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}.displayed?
+end
+
 # method to check element presence
 def check_element_presence(access_type, access_name, test_case)
-	result = WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}.displayed?
+	result = is_element_displayed(access_type,access_name)
 
 	if test_case
 		if !result

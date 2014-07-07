@@ -48,6 +48,9 @@ def zoom_in_out_till_element_display(access_type, in_out, access_name)
 
 end
 
+def resize_browser(width,heigth)
+  $driver.manage.window.resize_to(width,heigth)
+end
 
 def get_os
   case CONFIG['host_os']
@@ -69,6 +72,4 @@ def get_os
   end
 end
 
-def resize_browser(width,heigth)
-  $driver.manage.window.resize_to(width,heigth)
-end
+
