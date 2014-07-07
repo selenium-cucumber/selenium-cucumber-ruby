@@ -12,6 +12,7 @@ Documentation
 -------------
 * [Installation](doc/installation.md)
 * [Predefined steps](doc/canned_steps.md)
+* [selenium-cucumber API's](doc/selenium-cucumber-API.md)
 
 Writing a test
 --------------
@@ -26,19 +27,26 @@ Generate a Cucumber skeleton
 To get started with selenium-cucumber it might be a good idea to run `selenium-cucumber gen`. It will create a Cucumber skeleton in the current folder like this:
 
     features
-    |_support
-    | |_env.rb
-    |_step_definitions
-    | |_calabash_steps.rb
-    |_my_first.feature
+        |__support
+        |     |__env.rb
+        |     |__hooks.rb
+        |__step_definitions
+        |     |__custom_steps.rb
+        |_my_first.feature
 
 In this skeleton you find all the predefined steps that comes with selenium-cucumber. Try to take a look `my_first.feature` and change it to fit your web app.
 
 
 Predefined steps
 -----------------
+By using predefined steps you can automate you test cases more fastly, more efficiently, without much coding.
 
 The predefined steps are located in the `lib/selenium-cucumber` folder. A compiled list of predefined steps with comments are available [here](doc/canned_steps.md) 
+
+
+selenium-cucumber API's
+-----------------------
+By using [selenium-cucumber API's](doc/selenium-cucumber-API.md) you can write code for your custom steps more efficiently.
 
 
 License
