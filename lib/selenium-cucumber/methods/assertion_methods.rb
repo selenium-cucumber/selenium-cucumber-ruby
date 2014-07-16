@@ -54,14 +54,14 @@ def check_element_enable(access_type, access_name, test_case)
 end
 
 #method to get attribute value
-def get_element_attribute(access_type,access_name,attribute_value)
+def get_element_attribute(access_type,access_name,attribute_name)
 	return WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}.attribute("#{attribute_name}")
 end
 
 #method to check attribute value
-def check_element_attribute(access_type, attribute_name , attribute_value, access_name, test_case)
+def check_element_attribute(access_type, attribute_name, attribute_value, access_name, test_case)
 	
-	attr_val=get_element_attribute(access_type,access_name,attribute_value)
+	attr_val=get_element_attribute(access_type, access_name, attribute_name)
 	
 	if test_case
 		if(attr_val!=attribute_value)	
@@ -81,32 +81,31 @@ end
 
 # method to check element presence
 def check_element_presence(access_type, access_name, test_case)
-	result = is_element_displayed(access_type,access_name)
-
 	if test_case
-		if !result
-			raise "Excpetion : Element Not Present"
-		else
-			puts $driver.find_element(:"#{access_type}" => "#{access_name}").text
+		if !is_element_displayed(access_type,access_name)
+			raise "Exception : Element Not Present"
 		end
 	else
 		begin
-			puts $driver.find_element(:"#{access_type}" => "#{access_name}").text
-			raise "present"
+			if is_element_displayed(access_type,access_name)
+				raise "Present"	
+			end
 		rescue Exception => e
 			if e.message=="present"
-				raise "Exception : Element Present"	
+				raise "Exception : Element Present"
 			end
 		end
 	end
 end
 
 #method to assert checkbox check
-def is_checkbox_checked(access_type, access_name)
+def is_checkbox_checked(access_type, access_name, should_be_checked=true)
 	checkbox = WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}
 	
-	if !checkbox.selected?
+	if !checkbox.selected? && should_be_checked
 		raise "Checkbox not checked"
+  elsif checkbox.selected? && !should_be_checked
+    raise "Checkbox is checked"
 	end
 end
 
@@ -120,78 +119,29 @@ def is_checkbox_unchecked(access_type, access_name)
 end
 
 #method to assert checkbox check
-def is_radio_button_selected(access_type, access_name)
+def is_radio_button_selected(access_type, access_name, should_be_selected=true)
 	radio_button = WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}
-	
-	if !radio_button.selected?
-		raise "Radio button is not selected"
-	end
-end
-
-#method to assert checkbox uncheck
-def is_radio_button_unselected(access_type, access_name)
-	radio_button = WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}
-	
-	if radio_button.selected?
-		raise "Radio button is not selected"
+  
+  	if !radio_button.selected? && should_be_selected
+		raise "Radio Button not selected"
+  	elsif radio_button.selected? && !should_be_selected
+    	raise "Radio Button is selected"
 	end
 end
 
 
 #method to assert option from radio button group is selected
-def is_option_from_radio_button_group_selected(access_type, by, option, access_name)
-	radio_button_group = WAIT.until{$driver.find_elements(:"#{access_type}" => "#{access_name}")}
-	
-  	i=0
-  	
-  	if by=="value"
-  		while i<radio_button_group.length
-  			if radio_button_group[i].attribute("value")==option
-  				if !radio_button_group[i].selected?
-  					raise "Radio button is not selected"
-  				end
-  				break
-  			end
-  			i=i+1
-  		end
-  	else
-  		while i<radio_button_group.length
-  			if radio_button_group[i].text==option
-  				if !radio_button_group[i].selected?
-  					raise "Radio button is not selected"
-  				end
-  				break
-  			end
-  			i=i+1
-  		end  		  	
-  	end
+def is_option_from_radio_button_group_selected(access_type, by, option, access_name, should_be_selected=true)
+  radio_button_group = WAIT.until{$driver.find_elements(:"#{access_type}" => "#{access_name}")}
+  
+  getter = ->(rb, by) { by == 'value' ? rb.attribute('value') : rb.text }	
+  
+  ele = radio_button_group.find { |rb| getter.call(rb, by) == option }
+  
+  if !ele.selected && should_be_selected
+    raise 'Radio button is not selected'
+  elsif ele.selected && !should_be_selected
+    raise 'Radio button is selected'
+  end
 end
 
-#method to assert option from radio button group is not selected
-def is_option_from_radio_button_group_not_selected(access_type, by, option, access_name)
-	radio_button_group = WAIT.until{$driver.find_elements(:"#{access_type}" => "#{access_name}")}
-	
-  	i=0
-  	
-  	if by=="value"
-  		while i<radio_button_group.length
-  			if radio_button_group[i].attribute("value")==option
-  				if radio_button_group[i].selected?
-  					raise "Radio button is selected"
-  				end
-  				break
-  			end
-  			i=i+1
-  		end
-  	else
-  		while i<radio_button_group.length
-  			if radio_button_group[i].text==option
-  				if radio_button_group[i].selected?
-  					raise "Radio button is selected"
-  				end
-  				break
-  			end
-  			i=i+1
-  		end  		  	
-  	end
-end

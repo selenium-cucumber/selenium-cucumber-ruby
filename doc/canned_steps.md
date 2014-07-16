@@ -78,19 +78,19 @@ To assert element attribute use any of the following steps.
     
 To assert that element is enabled use any of the following steps. 
 
-    Then element having id "([^\"]*)" should enable
-    Then element having name "([^\"]*)" should enable
-    Then element having class "([^\"]*)" should enable
-    Then element having xpath "([^\"]*)" should enable
-    Then element having css "([^\"]*)" should enable
+    Then element having id "([^\"]*)" should be enabled
+    Then element having name "([^\"]*)" should be enabled
+    Then element having class "([^\"]*)" should be enabled
+    Then element having xpath "([^\"]*)" should be enabled
+    Then element having css "([^\"]*)" should be enabled
 
 To assert that element is disabled use any of the following steps.
 
-    Then element having id "([^\"]*)" should disable 
-    Then element having name "([^\"]*)" should disable
-    Then element having class "([^\"]*)" should disable
-    Then element having xpath "([^\"]*)" should disable
-    Then element having css "([^\"]*)" should disable
+    Then element having id "([^\"]*)" should be disabled
+    Then element having name "([^\"]*)" should be disabled
+    Then element having class "([^\"]*)" should be disabled
+    Then element having xpath "([^\"]*)" should be disabled
+    Then element having css "([^\"]*)" should be disabled
 
 To assert that element is present use any of the following steps.
 
@@ -135,11 +135,11 @@ To assert that radio button selected use any of the following steps.
 
 To assert that radio button not selected use any of the following steps.
 
-    Then I should see radio button having id "(.*?)" not selected
-    Then I should see radio button having name "(.*?)" not selected
-    Then I should see radio button having class "(.*?)" not selected
-    Then I should see radio button having xpath "(.*?)" not selected
-    Then I should see radio button having css "(.*?)" not selected
+    Then I should see radio button having id "(.*?)" unselected
+    Then I should see radio button having name "(.*?)" unselected
+    Then I should see radio button having class "(.*?)" unselected
+    Then I should see radio button having xpath "(.*?)" unselected
+    Then I should see radio button having css "(.*?)" unselected
 
 To assert that radio button group selected by text use any of the following steps.
 
@@ -159,19 +159,19 @@ To assert that radio button group selected by value use any of the following ste
 
 To assert that radio button group not selected by text use any of the following steps.
 
-    Then I should see "(.*?)" option by text from radio button group having id "(.*?)" not selected
-    Then I should see "(.*?)" option by text from radio button group having name "(.*?)" not selected
-    Then I should see "(.*?)" option by text from radio button group having class "(.*?)" not selected
-    Then I should see "(.*?)" option by text from radio button group having xpath "(.*?)" not selected
-    Then I should see "(.*?)" option by text from radio button group having css "(.*?)" not selected
+    Then I should see "(.*?)" option by text from radio button group having id "(.*?)" unselected
+    Then I should see "(.*?)" option by text from radio button group having name "(.*?)" unselected
+    Then I should see "(.*?)" option by text from radio button group having class "(.*?)" unselected
+    Then I should see "(.*?)" option by text from radio button group having xpath "(.*?)" unselected
+    Then I should see "(.*?)" option by text from radio button group having css "(.*?)" unselected
 
 To assert that radio button group not selected by value use any of the following steps.
 
-    Then I should see "(.*?)" option by value from radio button group having id "(.*?)" not selected
-    Then I should see "(.*?)" option by value from radio button group having name "(.*?)" not selected
-    Then I should see "(.*?)" option by value from radio button group having class "(.*?)" not selected
-    Then I should see "(.*?)" option by value from radio button group having xpath "(.*?)" not selected
-    Then I should see "(.*?)" option by value from radio button group having css "(.*?)" not selected
+    Then I should see "(.*?)" option by value from radio button group having id "(.*?)" unselected
+    Then I should see "(.*?)" option by value from radio button group having name "(.*?)" unselected
+    Then I should see "(.*?)" option by value from radio button group having class "(.*?)" unselected
+    Then I should see "(.*?)" option by value from radio button group having xpath "(.*?)" unselected
+    Then I should see "(.*?)" option by value from radio button group having css "(.*?)" unselected
 
 To assert that link is present use following steps
 

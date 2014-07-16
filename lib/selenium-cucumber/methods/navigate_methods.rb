@@ -6,7 +6,11 @@ def navigate_to(link)
 end
 
 def navigate(direction)
-	$driver.navigate.direction
+  if direction=="back"
+	   $driver.navigate.back
+  else
+    $driver.navigate.forword
+  end
 end
 
 def close_driver
