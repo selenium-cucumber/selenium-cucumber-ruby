@@ -6,7 +6,7 @@ selenium-cucumber : Automation Tesing Using Ruby
 Selenium-cucumber is a behavior driven development (BDD) approach to write automation test script to test web applications.
 It enables you to write and execute automated acceptance tests of web apps.
 It is cross-platform, open source and free.
-Automate your test cases with without/less coding.
+Automate your test cases without/minimal coding.
 
 Documentation
 -------------
@@ -39,7 +39,7 @@ In this skeleton you find all the predefined steps that comes with selenium-cucu
 
 Predefined steps
 -----------------
-By using predefined steps you can automate you test cases more fastly, more efficiently, without much coding.
+By using predefined steps you can automate your test cases more fastly, more efficiently, without much coding.
 
 The predefined steps are located in the `lib/selenium-cucumber` folder. A compiled list of predefined steps with comments are available [here](doc/canned_steps.md) 
 
