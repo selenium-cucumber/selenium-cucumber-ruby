@@ -58,29 +58,16 @@ end
 
 #method to select option from radio button group
 def select_option_from_radio_button_group(access_type, by, option, access_name)
-	radio_button_group = WAIT.until {$driver.find_elements(:"#{access_type}" => "#{access_name}")}
-	
-  	i=0
-  	
-  	if by=="value"
-  		while i<radio_button_group.length
-  			if radio_button_group[i].attribute("value")==option
-  				if !radio_button_group[i].selected?
-  					radio_button_group[i].click
-  				end
-  				break
-  			end
-  			i=i+1
-  		end
-  	else
-  		while i<radio_button_group.length
-  			if radio_button_group[i].text==option
-  				if !radio_button_group[i].selected?
-  					radio_button_group[i].click
-  				end
-  				break
-  			end
-  			i=i+1
-  		end  		  	
-  	end
+
+  radio_button_group = WAIT.until{$driver.find_elements(:"#{access_type}" => "#{access_name}")}
+  
+  getter = ->(rb, by) { by == 'value' ? rb.attribute('value') : rb.text } 
+  
+  ele = radio_button_group.find { |rb| puts getter.call(rb, by) }
+  
+  if !ele.selected?
+      ele.click
+  end
 end
+
+  

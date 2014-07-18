@@ -2,7 +2,7 @@ require_relative 'required_files'
 
 
 def navigate_to(link)
-	$driver.get link
+	  $driver.get link
 end
 
 def navigate(direction)
@@ -14,7 +14,7 @@ def navigate(direction)
 end
 
 def close_driver
-	$driver.quit
+	$driver.close
 end
 
 def scroll_to_element(access_type,access_name)
@@ -54,6 +54,12 @@ end
 
 def resize_browser(width,heigth)
   $driver.manage.window.resize_to(width,heigth)
+end
+
+#Method to hover on element
+def hover_over_element(access_type,access_name)
+  element = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+  $driver.action.move_to(element).perform
 end
 
 def get_os

@@ -17,8 +17,8 @@ Then(/^I close browser$/) do
 end
 
 #step to resize browser
-Then(/^I resize browser with width (\d+) and heigth (\d+)$/) do |width, heigth|
-  resize_browser(width,heigth)
+Then(/^I resize browser window size to width (\d+) and heigth (\d+)$/) do |width, heigth|
+  resize_browser(width, heigth)
 end
 
 #steps to refresh page
@@ -26,11 +26,16 @@ Then(/^I refresh page$/) do
   $driver.navigate.refresh
 end
 
-
 #steps to scroll to element
-Then(/^I scroll to the element having (.+) "(.*?)"$/) do |type, access_name|
+Then(/^I scroll to element having (.+) "(.*?)"$/) do |type, access_name|
    validate_locator type
-   scroll_to_element(type,access_name)
+   scroll_to_element(type, access_name)
+end
+
+#Step to hover over a element       # Not work on windows firefox
+When(/^I hover over element having (.+) "(.*?)"$/) do |type, access_name|
+  validate_locator type
+  hover_over_element(type, access_name)
 end
 
 #steps to zoom in page

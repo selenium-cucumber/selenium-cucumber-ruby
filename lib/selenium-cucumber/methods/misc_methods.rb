@@ -1,4 +1,8 @@
 
+#custome exception class
+class TestCaseFailed < Exception
+end
+
 # WAIT instance for explicit wait
 WAIT = Selenium::WebDriver::Wait.new(:timeout => 30)
 
@@ -17,5 +21,5 @@ def valid_option_by? option_by
 end
 
 def validate_option_by option_by
-	raise "Invalid option by - #{option_by}" unless valid_locator_type? option_by
+	raise "Invalid option by - #{option_by}" unless valid_option_by? option_by
 end

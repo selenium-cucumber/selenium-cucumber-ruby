@@ -61,6 +61,8 @@ Javascript Handling API
 
 	handle_alert(decesion) # accept or dismiss
 
+	get_alert_text
+
 	
 Progress API's
 --------------

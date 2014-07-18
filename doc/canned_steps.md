@@ -14,7 +14,7 @@ To open/close URL and to navigate between pages use following steps
 
 To interact with browser use following steps    
 
-    Then I resize browser with width (\d+) and heigth (\d+)
+    Then I resize browser window size to width (\d+) and heigth (\d+)
     Then I close browser
 
 To zoom in/out webpage use following steps
@@ -36,31 +36,41 @@ To reset webpage view use following step
 
 To scroll webpage use following step
     
-    Then I scroll to the element having id "(.*?)"
-    Then I scroll to the element having name "(.*?)"
-    Then I scroll to the element having class "(.*?)"
-    Then I scroll to the element having xpath "(.*?)"
-    Then I scroll to the element having css "(.*?)"
+    Then I scroll to element having id "(.*?)"
+    Then I scroll to element having name "(.*?)"
+    Then I scroll to element having class "(.*?)"
+    Then I scroll to element having xpath "(.*?)"
+    Then I scroll to element having css "(.*?)"
+
+To hover over a element use following step
+
+    Then I hover over element having id "(.*?)"
+    Then I hover over element having name "(.*?)"
+    Then I hover over element having class "(.*?)"
+    Then I hover over element having xpath "(.*?)"
+    Then I hover over element having css "(.*?)"
+
 
 Assertion Steps
 ---------------
 To assert that page title can be found use following step.
 
-    Then I see page title as "(.*?)"
+    Then I should see page title as "(.*?)"
 
 To assert element text use any of the following steps. 
 
-    Then I should see text as "(.*?)" for element having id "(.*?)"
-    Then I should see text as "(.*?)" for element having class "(.*?)"
-    Then I should see text as "(.*?)" for element having name "(.*?)"
-    Then I should see text as "(.*?)" for element having xpath "(.*?)"
-    Then I should see text as "(.*?)" for element having css "(.*?)"
-
-    Then I should not see text as "(.*?)" for element having id "(.*?)"
-    Then I should not see text as "(.*?)" for element having class "(.*?)"
-    Then I should not see text as "(.*?)" for element having name "(.*?)"
-    Then I should not see text as "(.*?)" for element having xpath "(.*?)"
-    Then I should not see text as "(.*?)" for element having css "(.*?)"
+    Then element having id "([^\"]*)" should have text as "(.*?)"
+    Then element having name "([^\"]*)" should have text as "(.*?)"
+    Then element having class "([^\"]*)" should have text as "(.*?)"
+    Then element having xpath "([^\"]*)" should have text as "(.*?)"
+    Then element having css "([^\"]*)" should have text as "(.*?)"
+    
+    Then element having id "([^\"]*)" should not have text as "(.*?)"
+    Then element having name "([^\"]*)" should not have text as "(.*?)"
+    Then element having class "([^\"]*)" should not have text as "(.*?)"
+    Then element having xpath "([^\"]*)" should not have text as "(.*?)"
+    Then element having css "([^\"]*)" should not have text as "(.*?)"
+    
 
 To assert element attribute use any of the following steps. 
 
@@ -94,92 +104,97 @@ To assert that element is disabled use any of the following steps.
 
 To assert that element is present use any of the following steps.
 
-    Then I should see element present having id "(.*?)"
-    Then I should see element present having name "(.*?)"
-    Then I should see element present having class "(.*?)"
-    Then I should see element present having xpath "(.*?)"
-    Then I should see element present having css "(.*?)"
+    Then element having id "([^\"]*)" should be present
+    Then element having name "([^\"]*)" should be present
+    Then element having class "([^\"]*)" should be present
+    Then element having xpath "([^\"]*)" should be present
+    Then element having css "([^\"]*)" should be present
     
 To assert that element is not present use any of the following steps.
 
-    Then I should not see element present having id "(.*?)"
-    Then I should not see element present having name "(.*?)"
-    Then I should not see element present having class "(.*?)"
-    Then I should not see element present having xpath "(.*?)"
-    Then I should not see element present having css "(.*?)"
+    Then element having id "([^\"]*)" should not be present
+    Then element having name "([^\"]*)" should not be present
+    Then element having class "([^\"]*)" should not be present
+    Then element having xpath "([^\"]*)" should not be present
+    Then element having css "([^\"]*)" should not be present
     
 
 To assert that checkbox is checked use any of the following steps.
 
-    Then I should see checkbox having id "(.*?)" checked
-    Then I should see checkbox having name "(.*?)" checked
-    Then I should see checkbox having class "(.*?)" checked
-    Then I should see checkbox having xpath "(.*?)" checked
-    Then I should see checkbox having css "(.*?)" checked
+    Then checkbox having id "(.*?)" should be checked
+    Then checkbox having name "(.*?)" should be checked
+    Then checkbox having class "(.*?)" should be checked
+    Then checkbox having xpath "(.*?)" should be checked
+    Then checkbox having css "(.*?)" should be checked
 
 To assert that checkbox is unchecked use any of the following steps.
 
-    Then I should see checkbox having id "(.*?)" unchecked
-    Then I should see checkbox having name "(.*?)" unchecked
-    Then I should see checkbox having class "(.*?)" unchecked
-    Then I should see checkbox having xpath "(.*?)" unchecked
-    Then I should see checkbox having css "(.*?)" unchecked
+    Then checkbox having id "(.*?)" should be unchecked
+    Then checkbox having name "(.*?)" should be unchecked
+    Then checkbox having class "(.*?)" should be unchecked
+    Then checkbox having xpath "(.*?)" should be unchecked
+    Then checkbox having css "(.*?)" should be unchecked
 
 To assert that radio button selected use any of the following steps.
 
-    Then I should see radio button having id "(.*?)" selected
-    Then I should see radio button having name "(.*?)" selected
-    Then I should see radio button having class "(.*?)" selected
-    Then I should see radio button having xpath "(.*?)" selected
-    Then I should see radio button having css "(.*?)" selected
+    Then radio button having id "(.*?)" should be selected
+    Then radio button having name "(.*?)" should be selected
+    Then radio button having class "(.*?)" should be selected
+    Then radio button having xpath "(.*?)" should be selected
+    Then radio button having css "(.*?)" should be selected
 
 To assert that radio button not selected use any of the following steps.
 
-    Then I should see radio button having id "(.*?)" unselected
-    Then I should see radio button having name "(.*?)" unselected
-    Then I should see radio button having class "(.*?)" unselected
-    Then I should see radio button having xpath "(.*?)" unselected
-    Then I should see radio button having css "(.*?)" unselected
+    Then radio button having id "(.*?)" should be unselected
+    Then radio button having name "(.*?)" should be unselected
+    Then radio button having class "(.*?)" should be unselected
+    Then radio button having xpath "(.*?)" should be unselected
+    Then radio button having css "(.*?)" should be unselected
 
 To assert that radio button group selected by text use any of the following steps.
 
-    Then I should see "(.*?)" option by text from radio button group having id "(.*?)" selected
-    Then I should see "(.*?)" option by text from radio button group having name "(.*?)" selected
-    Then I should see "(.*?)" option by text from radio button group having class "(.*?)" selected
-    Then I should see "(.*?)" option by text from radio button group having xpath "(.*?)" selected
-    Then I should see "(.*?)" option by text from radio button group having css "(.*?)" selected
-
+    Then option "(.*?)" by text from radio button group having id "(.*?)" should be selected
+    Then option "(.*?)" by text from radio button group having name "(.*?)" should be selected
+    Then option "(.*?)" by text from radio button group having class "(.*?)" should be selected
+    Then option "(.*?)" by text from radio button group having xpath "(.*?)" should be selected
+    Then option "(.*?)" by text from radio button group having css "(.*?)" should be selected
+    
 To assert that radio button group selected by value use any of the following steps.
 
-    Then I should see "(.*?)" option by value from radio button group having id "(.*?)" selected
-    Then I should see "(.*?)" option by value from radio button group having name "(.*?)" selected
-    Then I should see "(.*?)" option by value from radio button group having class "(.*?)" selected
-    Then I should see "(.*?)" option by value from radio button group having xpath "(.*?)" selected
-    Then I should see "(.*?)" option by value from radio button group having css "(.*?)" selected
+    Then option "(.*?)" by value from radio button group having id "(.*?)" should be selected
+    Then option "(.*?)" by value from radio button group having name "(.*?)" should be selected
+    Then option "(.*?)" by value from radio button group having class "(.*?)" should be selected
+    Then option "(.*?)" by value from radio button group having xpath "(.*?)" should be selected
+    Then option "(.*?)" by value from radio button group having css "(.*?)" should be selected
 
 To assert that radio button group not selected by text use any of the following steps.
 
-    Then I should see "(.*?)" option by text from radio button group having id "(.*?)" unselected
-    Then I should see "(.*?)" option by text from radio button group having name "(.*?)" unselected
-    Then I should see "(.*?)" option by text from radio button group having class "(.*?)" unselected
-    Then I should see "(.*?)" option by text from radio button group having xpath "(.*?)" unselected
-    Then I should see "(.*?)" option by text from radio button group having css "(.*?)" unselected
+    Then option "(.*?)" by text from radio button group having id "(.*?)" should be unselected
+    Then option "(.*?)" by text from radio button group having name "(.*?)" should be unselected
+    Then option "(.*?)" by text from radio button group having class "(.*?)" should be unselected
+    Then option "(.*?)" by text from radio button group having xpath "(.*?)" should be unselected
+    Then option "(.*?)" by text from radio button group having css "(.*?)" should be unselected
 
 To assert that radio button group not selected by value use any of the following steps.
 
-    Then I should see "(.*?)" option by value from radio button group having id "(.*?)" unselected
-    Then I should see "(.*?)" option by value from radio button group having name "(.*?)" unselected
-    Then I should see "(.*?)" option by value from radio button group having class "(.*?)" unselected
-    Then I should see "(.*?)" option by value from radio button group having xpath "(.*?)" unselected
-    Then I should see "(.*?)" option by value from radio button group having css "(.*?)" unselected
+    Then option "(.*?)" by value from radio button group having id "(.*?)" should be unselected
+    Then option "(.*?)" by value from radio button group having name "(.*?)" should be unselected
+    Then option "(.*?)" by value from radio button group having class "(.*?)" should be unselected
+    Then option "(.*?)" by value from radio button group having xpath "(.*?)" should be unselected
+    Then option "(.*?)" by value from radio button group having css "(.*?)" should be unselected
 
 To assert that link is present use following steps
 
-    Then I should see link present having text "(.*?)"
-    Then I should see link present having partial text "(.*?)"
-    
-    Then I should see link not present having text "(.*?)"
-    Then I should see link not present having partial text "(.*?)"
+    Then link having text "(.*?)" should be present
+    Then link having partial text "(.*?)" should be present
+        
+    Then link having text "(.*?)" should not be present
+    Then link having partial text "(.*?)" should not be present
+
+To assert text on javascipt pop-up alert
+
+    Then I should see alert text as "(.*?)"
+
 
 Input Steps
 -----------
@@ -249,11 +264,11 @@ To uncheck checkbox use following steps
 
 To toggle checkbox use following steps
 
-    Then toggle checkbox having id "(.*?)"
-    Then toggle checkbox having name "(.*?)"
-    Then toggle checkbox having class "(.*?)"
-    Then toggle checkbox having xpath "(.*?)"
-    Then toggle checkbox having css "(.*?)"
+    Then I toggle checkbox having id "(.*?)"
+    Then I toggle checkbox having name "(.*?)"
+    Then I toggle checkbox having class "(.*?)"
+    Then I toggle checkbox having xpath "(.*?)"
+    Then I toggle checkbox having css "(.*?)"
 
 To select radio button use following steps
 
@@ -290,6 +305,14 @@ To click on web element use following steps
     Then I click on element having class "(.*?)"
     Then I click on element having xpath "(.*?)"
     Then I click on element having css "(.*?)"
+
+To forcefully click on web element use following steps (if above steps not worked)
+
+    Then I forcefully click on element having id "(.*?)"
+    Then I forcefully click on element having name "(.*?)"
+    Then I forcefully click on element having class "(.*?)"
+    Then I forcefully click on element having xpath "(.*?)"
+    Then I forcefully click on element having css "(.*?)"
 
 To click on links use following steps
 

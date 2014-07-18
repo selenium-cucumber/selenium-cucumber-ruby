@@ -50,7 +50,7 @@ end
 
 #Steps to toggle checkbox
 
-Then(/^toggle checkbox having (.+) "(.*?)"$/) do |type, access_name|
+Then(/^I toggle checkbox having (.+) "(.*?)"$/) do |type, access_name|
   validate_locator type
   toggle_checkbox(type,access_name)
 end

@@ -8,7 +8,7 @@ end
 
 def check_title(title)
 	if(get_page_title!=title)
-		raise "Page Title Not Matched"
+		raise TestCaseFailed ,"Page Title Not Matched"
 	end
 end
 
@@ -23,11 +23,11 @@ def check_element_text(access_type, actual_value, access_name, test_case)
 
 	if test_case
 		if(element_text!=actual_value)		
-			raise "Text Not Matched"
+			raise TestCaseFailed ,"Text Not Matched"
 		end
 	else
 		if(element_text==actual_value)		
-			raise "Text Matched"
+			raise TestCaseFailed ,"Text Matched"
 		end
 	end
 end
@@ -44,11 +44,11 @@ def check_element_enable(access_type, access_name, test_case)
 
 	if test_case
 		if(!result)		
-			raise "Element not enabled"
+			raise TestCaseFailed ,"Element Not Enabled"
 		end
 	else
 		if(result)		
-			raise "Element enabled"
+			raise TestCaseFailed ,"Element Enabled"
 		end
 	end
 end
@@ -65,11 +65,11 @@ def check_element_attribute(access_type, attribute_name, attribute_value, access
 	
 	if test_case
 		if(attr_val!=attribute_value)	
-			raise "Attribute Not Matched"
+			raise TestCaseFailed ,"Attribute Value Not Matched"
 		end
 	else
 		if(attr_val==attribute_value)	
-			raise "Attribute Matched"
+			raise TestCaseFailed ,"Attribute Value Matched"
 		end
 	end
 end
@@ -83,7 +83,7 @@ end
 def check_element_presence(access_type, access_name, test_case)
 	if test_case
 		if !is_element_displayed(access_type,access_name)
-			raise "Exception : Element Not Present"
+			raise TestCaseFailed ,"Element Not Present"
 		end
 	else
 		begin
@@ -92,45 +92,36 @@ def check_element_presence(access_type, access_name, test_case)
 			end
 		rescue Exception => e
 			if e.message=="present"
-				raise "Exception : Element Present"
+				raise TestCaseFailed ,"Element Present"
 			end
 		end
 	end
 end
 
-#method to assert checkbox check
+#method to assert checkbox check/uncheck
 def is_checkbox_checked(access_type, access_name, should_be_checked=true)
 	checkbox = WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}
 	
 	if !checkbox.selected? && should_be_checked
-		raise "Checkbox not checked"
+		raise TestCaseFailed ,"Checkbox is not checked"
   elsif checkbox.selected? && !should_be_checked
-    raise "Checkbox is checked"
+    raise TestCaseFailed ,"Checkbox is checked"
 	end
 end
 
-#method to assert checkbox uncheck
-def is_checkbox_unchecked(access_type, access_name)
-	checkbox = WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}
-	
-	if checkbox.selected?
-		raise "Checkbox checked"
-	end
-end
-
-#method to assert checkbox check
+#method to assert radio button selected/unselected
 def is_radio_button_selected(access_type, access_name, should_be_selected=true)
 	radio_button = WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}
   
   	if !radio_button.selected? && should_be_selected
-		raise "Radio Button not selected"
+		raise TestCaseFailed ,"Radio Button not selected"
   	elsif radio_button.selected? && !should_be_selected
-    	raise "Radio Button is selected"
+    	raise TestCaseFailed ,"Radio Button is selected"
 	end
 end
 
 
-#method to assert option from radio button group is selected
+#method to assert option from radio button group is selected/unselected
 def is_option_from_radio_button_group_selected(access_type, by, option, access_name, should_be_selected=true)
   radio_button_group = WAIT.until{$driver.find_elements(:"#{access_type}" => "#{access_name}")}
   
@@ -138,10 +129,21 @@ def is_option_from_radio_button_group_selected(access_type, by, option, access_n
   
   ele = radio_button_group.find { |rb| getter.call(rb, by) == option }
   
-  if !ele.selected && should_be_selected
-    raise 'Radio button is not selected'
-  elsif ele.selected && !should_be_selected
-    raise 'Radio button is selected'
+  if !ele.selected? && should_be_selected
+    raise TestCaseFailed ,'Radio button is not selected'
+  elsif ele.selected? && !should_be_selected
+    raise TestCaseFailed ,'Radio button is selected'
   end
 end
 
+#method to get javascript pop-up alert text
+def get_alert_text
+	$driver.switch_to.alert.text
+end
+
+#method to check javascript pop-up alert text
+def check_alert_text text
+	if get_alert_text!=text
+  		raise TestCaseFailed , "Text on alert pop up not matched"
+  	end
+end

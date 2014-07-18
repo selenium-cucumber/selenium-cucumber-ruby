@@ -4,7 +4,12 @@ require_relative 'methods/click_elements_methods'
 
 When(/^I click on element having (.+) "(.*?)"$/) do |type, access_name|
   validate_locator type
-  click("id",access_name)
+  click(type,access_name)
+end
+
+Then(/^I forcefully click on element having (.+) "(.*?)"$/) do |type, access_name|
+	validate_locator type
+	click_forcefully(type, access_name)
 end
 
 #steps to click on link
