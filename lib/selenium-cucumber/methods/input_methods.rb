@@ -12,14 +12,21 @@ end
 
 # method to select option from dropdwon list
 def select_option_from_dropdown(access_type, by, option, access_name)
-	  dropdown = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+	dropdown = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
   	select_list = Selenium::WebDriver::Support::Select.new(dropdown)
   	select_list.select_by(:"#{by}", "#{option}")
 end
 
+# method to select all option from dropdwon list
+def select_all_option_from_multiselect_dropdown(access_type, access_name)
+	dropdown = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+  	select_list = Selenium::WebDriver::Support::Select.new(dropdown)
+  	select_list.select_all()
+end
+
 # method to unselect all option from dropdwon list
-def unselect_option_from_dropdown(access_type, access_name)
-	  dropdown = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+def unselect_all_option_from_multiselect_dropdown(access_type, access_name)
+	dropdown = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
   	select_list = Selenium::WebDriver::Support::Select.new(dropdown)
   	select_list.deselect_all()
 end
@@ -63,7 +70,7 @@ def select_option_from_radio_button_group(access_type, by, option, access_name)
   
   getter = ->(rb, by) { by == 'value' ? rb.attribute('value') : rb.text } 
   
-  ele = radio_button_group.find { |rb| puts getter.call(rb, by) }
+  ele = radio_button_group.find { |rb| getter.call(rb, by)==option }
   
   if !ele.selected?
       ele.click

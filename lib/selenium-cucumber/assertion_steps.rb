@@ -13,9 +13,9 @@ Then(/^element having (.+) "([^\"]*)" should\s*((?:not)?)\s+have text as "(.*?)"
 end
 
 #Step to check attribute value
-Then(/^I should\s*((?:not)?)\s+see attribute "(.*?)" having value "(.*?)" for element having (.+) "(.*?)"$/) do |present, name , value , type, access_name|
+Then(/^element having (.+) "([^\"]*)" should\s*((?:not)?)\s+have attribute "(.*?)" with value "(.*?)"$/) do |type, access_name, present, attrb, value|
   validate_locator type
-  check_element_attribute(type, name, value, access_name, present.empty?)
+  check_element_attribute(type, attrb, value, access_name, present.empty?)
 end
 
 #Step to check element enabled or not
@@ -27,7 +27,7 @@ Then(/^element having (.+) "([^\"]*)" should\s*((?:not)?)\s+be (enabled|disabled
 end
 
 #Step to check element present or not
-Then(/^element having (.+) "([^\"]*)" should\s*((?:not)?)\s+be present"$/) do |type, access_name, present|
+Then(/^element having (.+) "(.*?)" should\s*((?:not)?)\s+be present$/) do |type, access_name, present|
   validate_locator type
   check_element_presence(type, access_name, present.empty?)
 end
@@ -42,7 +42,7 @@ end
 #steps to assert radio button checked or unchecked
 Then(/^radio button having (.+) "(.*?)" should be (selected|unselected)$/) do |type, access_name, state|
   validate_locator type
-  flag = state == "checked"
+  flag = state == "selected"
   is_radio_button_selected(type, access_name, flag)
 end
 
@@ -66,4 +66,11 @@ end
 
 Then(/^I should see alert text as "(.*?)"$/) do |actual_value|
      check_alert_text(actual_value)
+end
+
+#Step tp assert dropdown list
+Then(/^option "(.*?)" by (.+) from dropdown having (.+) "(.*?)" should be (selected|unselected)$/) do |option, by, type, access_name, state|
+  validate_locator type
+  flag = state == "selected"
+  is_option_from_dropdown_selected(type,by,option,access_name,state)
 end

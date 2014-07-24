@@ -1,15 +1,16 @@
 selenium-cucumber API
 =====================
 
-If you are writing code for your custom steps you can use following methods
+If you are writing code for your custom steps you can use the following methods :
 
+Note : For some of the API paramtere values are fixed. Such values for paramaters are mentioned below. 
 
 Navigation API's
 ----------------
 
 	navigate_to(link)
 
-	navigate(direction)  # direction=back or direction=forword
+	navigate(direction)  # direction => "back"/"forward"
 
 	close_driver()
 
@@ -17,13 +18,15 @@ Navigation API's
 Browser Interaction API's
 -------------------------
 
-	resize_browser(width,heigth)
+	resize_browser(width,height)
+
+	scroll_page(to)	     # to => "top"/"end"
 
 	scroll_to_element(by,access_value)
 
-	zoom_in_out(in_out) 
+	zoom_in_out(in_out)  # in_out => "add"/"subtract"
 
-	zoom_in_out_till_element_display(by, in_out, access_value)
+	zoom_in_out_till_element_display(by, in_out, access_value) # in_out => "add"/"subtract"
 
 
 Input API's
@@ -59,7 +62,7 @@ Input API's
 Javascript Handling API
 -----------------------
 
-	handle_alert(decesion) # accept or dismiss
+	handle_alert(decision) # decision => "accept"/"dismiss"
 
 	get_alert_text
 

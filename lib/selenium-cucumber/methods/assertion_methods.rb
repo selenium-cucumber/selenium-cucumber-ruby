@@ -147,3 +147,22 @@ def check_alert_text text
   		raise TestCaseFailed , "Text on alert pop up not matched"
   	end
 end
+
+def is_option_from_dropdown_selected(access_type, by, option, access_name, should_be_selected=true)
+	dropdown = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+  	select_list = Selenium::WebDriver::Support::Select.new(dropdown)
+  	
+  	puts select_list.first_selected_option.attribute("value")
+
+  	if by=="text"
+  		actual_value = select_list.first_selected_option.text
+  	else
+  		actual_value = select_list.first_selected_option.attribute("value")
+  	end
+  	
+  	if !actual_value==option && should_be_selected
+  		raise "Option Not Selected From Dropwdown"
+  	elsif actual_value==option && !should_be_selected
+  		raise "Option Selected From Dropwdown"
+  	end
+end

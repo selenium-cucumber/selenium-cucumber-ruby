@@ -17,8 +17,13 @@ Then(/^I close browser$/) do
 end
 
 #step to resize browser
-Then(/^I resize browser window size to width (\d+) and heigth (\d+)$/) do |width, heigth|
+Then(/^I resize browser window size to width (\d+) and height (\d+)$/) do |width, heigth|
   resize_browser(width, heigth)
+end
+
+#step to maximize browser
+Then(/^I maximize browser window$/) do
+  maximize_browser
 end
 
 #steps to refresh page
@@ -30,6 +35,11 @@ end
 Then(/^I scroll to element having (.+) "(.*?)"$/) do |type, access_name|
    validate_locator type
    scroll_to_element(type, access_name)
+end
+
+#steps to scroll web page to top or end
+Then(/^I scroll to (top|end) of page$/) do |to|
+  scroll_page(to)
 end
 
 #Step to hover over a element       # Not work on windows firefox
