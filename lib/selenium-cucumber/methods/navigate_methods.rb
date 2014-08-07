@@ -83,6 +83,17 @@ def scroll_page(to)
   end
 end
 
+$old_win=nil
+
+def switch_to_new_window
+  $old_win = $driver.window_handle
+  $driver.switch_to.window($driver.window_handles[1])
+end
+
+def switch_to_old_window
+  $driver.switch_to.window($old_win)
+end
+
 def get_os
   case CONFIG['host_os']
   when /mingw32|windows/i

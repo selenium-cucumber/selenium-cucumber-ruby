@@ -11,7 +11,9 @@ To open/close URL and to navigate between pages use following steps :
     Then I navigate forward
     Then I navigate back
     Then I refresh page
-
+    Then I switch to new window
+    Then I switch to previous window
+    
 To interact with browser use following steps :    
 
     Then I resize browser window size to width (\d+) and height (\d+)
@@ -413,6 +415,14 @@ To forcefully click on web element use following steps (if above steps do not wo
     Then I forcefully click on element having class "(.*?)"
     Then I forcefully click on element having xpath "(.*?)"
     Then I forcefully click on element having css "(.*?)"
+
+To double click on web element use following steps :
+
+    Then I double click on element having id "(.*?)"
+    Then I double click on element having name "(.*?)"
+    Then I double click on element having class "(.*?)"
+    Then I double click on element having xpath "(.*?)"
+    Then I double click on element having css "(.*?)"
 
 To click on links use following steps :
 

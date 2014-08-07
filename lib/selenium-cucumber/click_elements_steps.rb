@@ -12,6 +12,13 @@ Then(/^I forcefully click on element having (.+) "(.*?)"$/) do |type, access_nam
 	click_forcefully(type, access_name)
 end
 
+# double click on web element
+
+Then(/^I double click on element having (.+) "(.*?)"$/) do |access_type, access_value|
+  	validate_locator type
+  	double_click(access_type,access_value)
+end
+
 #steps to click on link
 
 Then(/^I click on link having text "(.*?)"$/) do |access_name|

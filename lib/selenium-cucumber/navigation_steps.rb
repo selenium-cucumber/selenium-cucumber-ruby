@@ -31,6 +31,14 @@ Then(/^I refresh page$/) do
   $driver.navigate.refresh
 end
 
+Then(/^I switch to new window$/) do
+  switch_to_new_window
+end
+
+Then(/^I switch to previous window$/) do
+  switch_to_old_window
+end
+
 #steps to scroll to element
 Then(/^I scroll to element having (.+) "(.*?)"$/) do |type, access_name|
    validate_locator type
