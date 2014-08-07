@@ -68,9 +68,14 @@ Then(/^I should see alert text as "(.*?)"$/) do |actual_value|
      check_alert_text(actual_value)
 end
 
-#Step tp assert dropdown list
+#Step to assert dropdown list
 Then(/^option "(.*?)" by (.+) from dropdown having (.+) "(.*?)" should be (selected|unselected)$/) do |option, by, type, access_name, state|
   validate_locator type
   flag = state == "selected"
   is_option_from_dropdown_selected(type,by,option,access_name,state)
+end
+
+#Step to assert difference in images
+Then(/^actual image "(.*?)" and expected image "(.*?)" should be similar$/) do |actual_img_url, expected_img_url|
+	compare_image(actual_img_url,expected_img_url)
 end
