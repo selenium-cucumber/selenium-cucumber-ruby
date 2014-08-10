@@ -8,7 +8,7 @@ Feature: Progress Steps
  	Scenario: wait for elements to display
  		
  		Then element having id "hiddenElement" should not be present
-		Then I wait 10 seconds for element having id "hiddenElement" to display
+		Then I wait 15 seconds for element having id "hiddenElement" to display
  		Then element having id "hiddenElement" should be present
 
 	Scenario: wait for elements to enabled
