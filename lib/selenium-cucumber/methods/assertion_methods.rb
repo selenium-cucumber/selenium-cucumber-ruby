@@ -152,8 +152,6 @@ def is_option_from_dropdown_selected(access_type, by, option, access_name, shoul
 	dropdown = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
   	select_list = Selenium::WebDriver::Support::Select.new(dropdown)
 
-  	puts select_list.first_selected_option.attribute("value")
-
   	if by=="text"
   		actual_value = select_list.first_selected_option.text
   	else
@@ -168,7 +166,27 @@ def is_option_from_dropdown_selected(access_type, by, option, access_name, shoul
 end
 
 #Method to find difference between images
-def compare_image(actual_img_url,expected_img_url)
+def does_images_similar?(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
+	if !compare_image(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
+		raise TestCaseFailed , "Actual image is different from expected image" 
+	end
+end
+
+#Method to compare two images
+def compare_image(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
+
+	if actual_img_access_type!="path"
+		actual_img_url = get_element_attribute(actual_img_access_type, actual_img_access_name, "src")
+	else
+		actual_img_url = actual_img_access_name
+	end
+
+	if excp_img_access_type!="path"
+		expected_img_url = get_element_attribute(excp_img_access_type, excp_img_access_name, "src")
+	else
+		expected_img_url = excp_img_access_name
+	end
+
 	images = [
 	  ChunkyPNG::Image.from_file(open(actual_img_url)),
 	  ChunkyPNG::Image.from_file(open(expected_img_url))
@@ -182,15 +200,19 @@ def compare_image(actual_img_url,expected_img_url)
 	  end
 	 end
 
-	 puts "pixels (total):     #{images.first.pixels.length}"
-	 puts "pixels changed:     #{diff.length}"
-	 puts "pixels changed (%): #{(diff.length.to_f / images.first.pixels.length) * 100}%"
+	if diff.length != 0
+		puts "\npixels (total):     #{images.first.pixels.length}"
+		puts "pixels changed:     #{diff.length}"
+		puts "pixels changed (%): #{(diff.length.to_f / images.first.pixels.length) * 100}%"
 
-	 if diff.length != 0
 		x, y = diff.map{ |xy| xy[0] }, diff.map{ |xy| xy[1] }
 	    images.last.rect(x.min, y.min, x.max, y.max, ChunkyPNG::Color.rgb(0,255,0))
 	    curTime = Time.now.strftime('%Y%m%d%H%M%S%L')
 	    images.last.save("difference_#{curTime}.png")
-	   raise TestCaseFailed , "Actual image is different from expected image"
-	 end
+	    
+	    puts "\nDifference between images saved as : difference_#{curTime}.png\n"
+		return false
+	else
+		return true
+	end
 end

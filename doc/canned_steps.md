@@ -443,19 +443,19 @@ To wait for specific time use following step :
 	
 To wait for specific element to display use following steps :
 
-	Then I wait (\d+) seconds for element to display having id "(.*?)"
-	Then I wait (\d+) seconds for element to display having name "(.*?)"
-	Then I wait (\d+) seconds for element to display having class "(.*?)"
-	Then I wait (\d+) seconds for element to display having xpath "(.*?)"
-	Then I wait (\d+) seconds for element to display having css "(.*?)"
+	Then I wait (\d+) seconds for element having id "(.*?)" to display
+	Then I wait (\d+) seconds for element having name "(.*?)" to display
+	Then I wait (\d+) seconds for element having class "(.*?)" to display
+	Then I wait (\d+) seconds for element having xpath "(.*?)" to display
+	Then I wait (\d+) seconds for element having css "(.*?)" to display
 
 To wait for specific element to enable use following steps :
 
-	Then I wait (\d+) seconds for element to enable having id "(.*?)"
-	Then I wait (\d+) seconds for element to enable having name "(.*?)"
-	Then I wait (\d+) seconds for element to enable having class "(.*?)"
-	Then I wait (\d+) seconds for element to enable having xpath "(.*?)"
-	Then I wait (\d+) seconds for element to enable having css "(.*?)"
+	Then I wait (\d+) seconds for element having id "(.*?)" to enable
+	Then I wait (\d+) seconds for element having name "(.*?)" to enable
+	Then I wait (\d+) seconds for element having class "(.*?)" to enable
+	Then I wait (\d+) seconds for element having xpath "(.*?)" to enable
+	Then I wait (\d+) seconds for element having css "(.*?)" to enable
 
 Javascript Handling Steps    
 -------------------------

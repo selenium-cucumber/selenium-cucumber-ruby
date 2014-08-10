@@ -76,6 +76,6 @@ Then(/^option "(.*?)" by (.+) from dropdown having (.+) "(.*?)" should be (selec
 end
 
 #Step to assert difference in images
-Then(/^actual image "(.*?)" and expected image "(.*?)" should be similar$/) do |actual_img_url, expected_img_url|
-	compare_image(actual_img_url,expected_img_url)
+Then(/^actual image having (.+) "(.*?)" and expected image having (.+) "(.*?)" should be similar$/) do |actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name|
+  does_images_similar?(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
 end

@@ -14,9 +14,9 @@ end
 
 # double click on web element
 
-Then(/^I double click on element having (.+) "(.*?)"$/) do |access_type, access_value|
+Then(/^I double click on element having (.+) "(.*?)"$/) do |type, access_value|
   	validate_locator type
-  	double_click(access_type,access_value)
+  	double_click(type, access_value)
 end
 
 #steps to click on link
