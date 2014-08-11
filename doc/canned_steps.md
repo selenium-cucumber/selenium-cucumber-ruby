@@ -256,9 +256,22 @@ To assert text on javascipt pop-up alert use following step :
 
 #### Steps For Asserting Difference in images
 
-To assert difference in actual image and expected image use following step :
+To assert difference in actual image and expected image use following steps :
 
-	Then actual image "(.*?)" and expected image "(.*?)" should be similar
+	Then actual image having id "(.*?)" and expected image having path "(.*?)" should be similar
+	Then actual image having name "(.*?)" and expected image having path "(.*?)" should be similar
+	Then actual image having class "(.*?)" and expected image having path "(.*?)" should be similar
+	Then actual image having xpath "(.*?)" and expected image having path "(.*?)" should be similar
+	Then actual image having css "(.*?)" and expected image having path "(.*?)" should be similar
+
+	Then actual image having id "(.*?)" and expected image having id "(.*?)" should be similar
+	Then actual image having name "(.*?)" and expected image having id "(.*?)" should be similar
+	Then actual image having class "(.*?)" and expected image having id "(.*?)" should be similar
+	Then actual image having xpath "(.*?)" and expected image having id "(.*?)" should be similar
+	Then actual image having css "(.*?)" and expected image having id "(.*?)" should be similar
+
+	Then actual image having path "(.*?)" and expected image having path "(.*?)" should be similar
+	Then actual image having path "(.*?)" and expected image having id "(.*?)" should be similar
 
 
 Input Steps
