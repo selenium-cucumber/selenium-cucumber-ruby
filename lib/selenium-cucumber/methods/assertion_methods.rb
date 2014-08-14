@@ -168,23 +168,22 @@ end
 #Method to find difference between images
 def does_images_similar?(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
 	if !compare_image(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
-		raise TestCaseFailed , "Actual image is different from expected image" 
+		raise TestCaseFailed , "Actual image is different from expected image"
 	end
 end
 
 #Method to compare two images
 def compare_image(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
 
-	if actual_img_access_type!="path"
-		actual_img_url = get_element_attribute(actual_img_access_type, actual_img_access_name, "src")
-	else
-		actual_img_url = actual_img_access_name
-	end
+	actual_img_url = get_element_attribute(actual_img_access_type, actual_img_access_name, "src")
 
-	if excp_img_access_type!="path"
-		expected_img_url = get_element_attribute(excp_img_access_type, excp_img_access_name, "src")
-	else
+
+	if excp_img_access_type == "url"
 		expected_img_url = excp_img_access_name
+	elsif excp_img_access_type == "image_name"
+        expected_img_url = File.absolute_path("expected_images/"+excp_img_access_name)
+    else
+		expected_img_url = get_element_attribute(excp_img_access_type, excp_img_access_name, "src")
 	end
 
 	images = [
@@ -209,7 +208,7 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
 	    images.last.rect(x.min, y.min, x.max, y.max, ChunkyPNG::Color.rgb(0,255,0))
 	    curTime = Time.now.strftime('%Y%m%d%H%M%S%L')
 	    images.last.save("difference_#{curTime}.png")
-	    
+
 	    puts "\nDifference between images saved as : difference_#{curTime}.png\n"
 		return false
 	else
