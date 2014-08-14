@@ -13,7 +13,6 @@ Gem::Specification.new do |s|
   s.authors     = "Sameer Sawant"
   s.homepage    = "http://seleniumcucumber.wordpress.com/"
   s.email       = "sameersawant1992@gmail.com"
-  #s.files       = Dir['lib/*.rb'] + Dir['lib/support/*.rb']+ Dir['lib/selenium-cucumber/*.rb'] + Dir['lib/selenium-cucumber/methods/*.rb'] + Dir['bin/*.*'] + Dir['features-skeleton/*.*'] + Dir['features-skeleton/step_definitions/*.*'] + Dir['features-skeleton/support/*.*'] + Dir['doc/*.*']
   s.files       = Dir['lib/**/*']
   s.files      += Dir['bin/*']
   s.files      += Dir['doc/*']
@@ -23,7 +22,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.post_install_message = "Thanks for installing selenium-cucumber gem."
                    
-  s.add_dependency('cucumber')
-  s.add_dependency('selenium-webdriver')
-  s.add_dependency('chunky_png')
+  #s.add_dependency('cucumber')
+  #s.add_dependency('selenium-webdriver')
+  #s.add_dependency('chunky_png')
 end
