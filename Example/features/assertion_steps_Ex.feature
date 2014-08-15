@@ -11,10 +11,13 @@ Feature: Assertion Steps
 
 	Scenario: verify element text
 
+		Then I scroll to end of page
 		Then element having id "dbClick" should have text as "Double-click this paragraph to trigger a function."
  		Then element having name "javascript_alert_msg" should have text as "Click the button to display a confirm box."
  		Then element having class "form_name" should have text as "Simple sample form with input elements"
  		Then element having xpath ".//*[@id='frm']/fieldset/p[1]/label" should have text as "Text input (first name)"
+
+	Scenario: verify element should not text
 
  		Then element having id "dbClick" should not have text as "Double-click this"
 		Then element having name "javascript_alert_msg" should not have text as "Click the button"
@@ -115,8 +118,12 @@ Feature: Assertion Steps
 	Scenario: verify image by id and image_name
 		Then actual image having id "img1" and expected image having image_name "flower.png" should be similar
 
+	Scenario: verify image by url and image_name
+		Then actual image having url "http://shared.ooyala.com.s3.amazonaws.com/dropshadow-flower-pink.png" and expected image having image_name "flower.png" should be similar
+
 	Scenario: verify image by id and image_name - negative test 1
 		Then actual image having id "img1" and expected image having image_name "flower1.png" should be similar
+
 
 
 

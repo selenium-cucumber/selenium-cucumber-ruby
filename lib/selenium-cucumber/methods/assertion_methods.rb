@@ -175,7 +175,11 @@ end
 #Method to compare two images
 def compare_image(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
 
-	actual_img_url = get_element_attribute(actual_img_access_type, actual_img_access_name, "src")
+	if actual_img_access_type == "url"
+		actual_img_url = actual_img_access_name
+	else
+		actual_img_url = get_element_attribute(actual_img_access_type, actual_img_access_name, "src")
+	end
 
 	if excp_img_access_type == "url"
 		expected_img_url = excp_img_access_name

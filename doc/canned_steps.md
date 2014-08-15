@@ -256,22 +256,32 @@ To assert text on javascipt pop-up alert use following step :
 
 #### Steps For Asserting Difference in images
 
-To assert difference in actual image and expected image use following steps :
-
-	Then actual image having id "(.*?)" and expected image having path "(.*?)" should be similar
-	Then actual image having name "(.*?)" and expected image having path "(.*?)" should be similar
-	Then actual image having class "(.*?)" and expected image having path "(.*?)" should be similar
-	Then actual image having xpath "(.*?)" and expected image having path "(.*?)" should be similar
-	Then actual image having css "(.*?)" and expected image having path "(.*?)" should be similar
+To assert difference in actual image and expected image (hosted on another webpage) use following steps :
 
 	Then actual image having id "(.*?)" and expected image having id "(.*?)" should be similar
 	Then actual image having name "(.*?)" and expected image having id "(.*?)" should be similar
 	Then actual image having class "(.*?)" and expected image having id "(.*?)" should be similar
 	Then actual image having xpath "(.*?)" and expected image having id "(.*?)" should be similar
 	Then actual image having css "(.*?)" and expected image having id "(.*?)" should be similar
+	Then actual image having url "(.*?)" and expected image having id "(.*?)" should be similar
 
-	Then actual image having path "(.*?)" and expected image having path "(.*?)" should be similar
-	Then actual image having path "(.*?)" and expected image having id "(.*?)" should be similar
+To assert difference in actual image and expected image (remotely hosted) use following steps :
+
+	Then actual image having id "(.*?)" and expected image having url "(.*?)" should be similar
+	Then actual image having name "(.*?)" and expected image having url "(.*?)" should be similar
+	Then actual image having class "(.*?)" and expected image having url "(.*?)" should be similar
+	Then actual image having xpath "(.*?)" and expected image having url "(.*?)" should be similar
+	Then actual image having css "(.*?)" and expected image having url "(.*?)" should be similar
+	Then actual image having url "(.*?)" and expected image having url "(.*?)" should be similar
+
+To assert difference in actual image and expected image (from local machine) use following steps :
+
+	Then actual image having id "(.*?)" and expected image having image_name "(.*?)" should be similar
+	Then actual image having name "(.*?)" and expected image having image_name "(.*?)" should be similar
+	Then actual image having class "(.*?)" and expected image having image_name "(.*?)" should be similar
+	Then actual image having xpath "(.*?)" and expected image having image_name "(.*?)" should be similar
+	Then actual image having css "(.*?)" and expected image having image_name "(.*?)" should be similar
+	Then actual image having url "(.*?)" and expected image having image_name "(.*?)" should be similar
 
 
 Input Steps

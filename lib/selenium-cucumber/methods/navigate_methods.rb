@@ -24,8 +24,10 @@ def get_key
   os=Selenium::WebDriver::Platform.os
   if os.to_s=="windows"
     return "control"
-  elsif os.to_s=="mac"
+  elsif os.to_s=="macosx"
     return "command"
+  else
+    raise "Invalid OS"
   end
 end
 
