@@ -27,12 +27,19 @@ Generate a Cucumber skeleton
 To get started with selenium-cucumber you need to run `selenium-cucumber gen` command. This will create a cucumber skeleton in the current folder like this:
 
     features
+        |
         |__support
         |     |__env.rb
         |     |__hooks.rb
         |
         |__step_definitions
         |     |__custom_steps.rb
+        |
+        |__expected_images
+        |
+        |__image_difference
+        |
+        |__screenshots
         |
         |__my_first.feature
 
