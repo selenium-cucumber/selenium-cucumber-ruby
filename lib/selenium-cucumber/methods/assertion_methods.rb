@@ -189,6 +189,8 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
 		expected_img_url = get_element_attribute(excp_img_access_type, excp_img_access_name, "src")
 	end
 
+	puts "\nActual image url : #{actual_img_url}"
+
 	images = [
 	  ChunkyPNG::Image.from_file(open(actual_img_url)),
 	  ChunkyPNG::Image.from_file(open(expected_img_url))
