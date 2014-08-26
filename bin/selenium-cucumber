@@ -7,6 +7,7 @@ require 'selenium-cucumber/version'
 @features_dir = File.join(FileUtils.pwd, "features")
 @support_dir = File.join(@features_dir, "support")
 @support_dir = File.join(@features_dir, "expected_images")
+@support_dir = File.join(@features_dir, "actual_images")
 @support_dir = File.join(@features_dir, "image_difference")
 @support_dir = File.join(@features_dir, "screenshots")
 @source_dir = File.join(File.dirname(__FILE__), '..', 'features-skeleton')
