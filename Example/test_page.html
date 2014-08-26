@@ -1,206 +1,198 @@
-
+<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
     <title>Test Page for selenium-cucumber</title>
 
-<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.11.1/jquery.min.js"></script>
+    <script type="text/javascript">
+      $(function() {
+        $("#hiddenElement").hide();
 
-<script type="text/javascript">
-$(function() {
-$("#hiddenElement").hide();
-setTimeout(function() { $("#hiddenElement").fadeIn(1500); }, 10000)
-setTimeout(function() { $("#disabledBt").removeAttr("disabled");}, 20000)
-})
+        setTimeout(function() {
+          $("#hiddenElement").fadeIn(1500);
+        }, 10000);
 
-</script>
+        setTimeout(function() {
+          $("#disabledBt").removeAttr("disabled");
+        }, 20000);
+      });
+    </script>
 
-<style>
-a:hover
-{
-background-color:yellow;
-}
-</style
->
-</head>
-<body>
+    <style>
+      a:hover{
+        background-color: yellow;
+      }
+    </style>
+  </head>
+  <body>
+    <script>
+      function showText() {
+        document.getElementById("msg").innerHTML = "Now button is enabled";
+      }
 
-<form id="frm" action="" method="post">
+      function callAlert() {
+        var x;
+        if (confirm("Press a button!") == true) {
+          x = "You pressed OK!";
+        } else {
+          x = "You pressed Cancel!";
+        }
+        document.getElementById("demo").innerHTML = x;
+      }
 
+      function doubleClick() {
+        document.getElementById("demo2").innerHTML = "Hello World";
+      }
+    </script>
+    <form id="frm" action="" method="post">
+      <fieldset>
+        <legend class="form_name">Simple sample form with input elements</legend>
+        <p>
+          <label for="dummy0">Text input (first name)</label><br>
+          <input type="text" class="fname_class" name="fname_name" id="f_name" value="">
+        </p>
 
-<fieldset>
-<legend class="form_name">Simple sample form with input elements</legend>
+        <p>
+          <label for="dummy1">Text input (last name)</label><br>
+          <input type="text" class="lname_class" id="l_name" name="lname_name" value="">
+        </p>
 
-<p>
-<label for="dummy0">Text input (first name)</label><br>
-<input type="text" class="fname_class" name="fname_name" id="f_name" value="">
-</p>
+        <p>
+          <label for="dummy1">Disabled field</label><br>
+          <input type="text" class="df_class" id="df_id" name="df_name" value="" disabled>
+        </p>
 
-<p>
-<label for="dummy1">Text input (last name)</label><br>
-<input type="text" class="lname_class" id="l_name" name="lname_name" value="">
-</p>
+        <p>
+          <label for="dummy2">Textarea (address)</label><br>
+          <textarea name="dummy2" id="address" class="address_class" rows="3" cols="20" value=""></textarea>
+        </p>
 
-<p>
-<label for="dummy1">Disabled field</label><br>
-<input type="text" class="df_class" id="df_id" name="df_name" value="" disabled>
-</p>
+        <p>
+          <label for="dummy3">A password field (password)</label><br>
+          <input type="password" class="cls_pwd" id="pwd" name="nm_pwd" value="">
+        </p>
 
-<p>
-<label for="dummy2">Textarea (address)</label><br>
-<textarea name="dummy2" id="address" class="address_class" rows="3" cols="20" value=""></textarea>
-</p>
+        <p>
+          <label for="dummy4">radio button group (Gender)</label><br>
+          <input type="radio" name="radio_gender" value="M">Male</input>
+          <input type="radio" name="radio_gender" value="F">Female</input>
+        </p>
 
-<p>
-<label for="dummy3">A password field (password)</label><br>
-<input type="password" class="cls_pwd" id="pwd" name="nm_pwd" value="">
-</p>
+        <p>
+          <input type="submit" value="Submit" id="submit" name="btn_submit" >
+          <input type="reset" value="Reset" id="reset" name="btn_reset">
+          <input type="button" value="disabledBt" id="disabledBt_id" name="disabledBt_name" disabled>
+        </p>
+      </fieldset>
+    </form>
 
-<p>
-<label for="dummy4">radio button group (Gender)</label><br>
-<input type="radio" name="radio_gender" value="M">Male</input>
-<input type="radio" name="radio_gender" value="F">Female</input>
-</p>
+    <br>
 
-<p>
-<input type="submit" value="Submit" id="submit" name="btn_submit" >
-<input type="reset" value="Reset" id="reset" name="btn_reset">
-<input type="button" value="disabledBt" id="disabledBt_id" name="disabledBt_name" disabled>      
-</p>           
+    <fieldset>
+      <legend>Multiselect dropdown</legend>
+      <p>
+        <select name="cars" multiple>
+          <option value="volvo">Volvo</option>
+          <option value="saab">Saab</option>
+          <option value="opel">Opel</option>
+          <option value="audi">Audi</option>
+        </select>
+      </p>
+    </fieldset>
 
-</fieldset>
-</form>
+    <br>
 
-</br>
+    <fieldset>
+      <legend>Dropdown lists</legend>
+      <p>
+        <label for="dummy3">Select field</label><br>
+        <select id="dropdownList1" name="name_select1" value="Please select your choice select">
+          <option value="s1">Select_1</option>
+          <option value="s2">Select_2</option>
+          <option value="s3" selected>Select_3</option>
+          <option value="s4">Select_4</option>
+          <option value="s5">Select_5</option>
+        </select>
+      </p>
+    </fieldset>
 
-<fieldset>
-<legend>Multiselect dropdown</legend>
-<p>
-<select name="cars" multiple>
-  <option value="volvo">Volvo</option>
-  <option value="saab">Saab</option>
-  <option value="opel">Opel</option>
-  <option value="audi">Audi</option>
-</select>
-</p>
-</fieldset></br>
-      
-<fieldset>
-<legend>Dropdown lists</legend>
-<p>
-<label for="dummy3">Select field</label><br>
-<select id="dropdownList1" name="name_select1" value="Please select your choice select">
-<option value="s1">Select_1</option>
-<option value="s2">Select_2</option>
-<option value="s3" selected>Select_3</option>
-<option value="s4">Select_4</option>
-<option value="s5">Select_5</option>
-</select>
-</p>
-</fieldset>
+    <br>
 
-</br>
+    <fieldset>
+      <legend>Radio Buttons </legend>
+      <p>
+        <input type="radio" id="rdb1" name="rdb1_name" class="rdb1_class" checked> Radio one<br>
+        <input type="radio" id="rdb2" name="rdb2_name" class="rdb2_class"> Radio two<br>
+        <input type="radio" id="rdb3" name="rdb3_name" class="rdb3_class"> Radio three<br>
+        <input type="radio" id="rdb4" name="rdb4_name" class="rdb4_class"> Radio four<br>
+        <input type="radio" id="rdb5" name="rdb5_name" class="rdb5_class" checked> Radio five<br>
+      </p>
+    </fieldset>
 
-<fieldset>
-<legend>Radio Buttons </legend>
-<p>
-<input type="radio" id="rdb1" name="rdb1_name" class="rdb1_class" checked> Radio one<br>
-<input type="radio" id="rdb2" name="rdb2_name" class="rdb2_class"> Radio two<br>
-<input type="radio" id="rdb3" name="rdb3_name" class="rdb3_class"> Radio three<br>
-<input type="radio" id="rdb4" name="rdb4_name" class="rdb4_class"> Radio four<br>
-<input type="radio" id="rdb5" name="rdb5_name" class="rdb5_class" checked> Radio five<br>
-</p>
-</fieldset>
+    <br>
 
-</br>
+    <fieldset>
+      <legend>Checkbox </legend>
+      <p>
+        <input type="checkbox" id="chk1" name="chk1_name" class="chk1_class" checked> Check one<br>
+        <input type="checkbox" id="chk2" name="chk2_name" class="chk2_class"> Check two<br>
+        <input type="checkbox" id="chk3" name="chk3_name" class="chk3_class"> Check three<br>
+        <input type="checkbox" id="chk4" name="chk4_name" class="chk4_class"> Check four<br>
+        <input type="checkbox" id="chk5" name="chk5_name" class="chk5_class" checked> Check five<br>
+      </p>
+    </fieldset>
 
-<fieldset>
-<legend>Checkbox </legend>
-<p>
-<input type="checkbox" id="chk1" name="chk1_name" class="chk1_class" checked> Check one<br>
-<input type="checkbox" id="chk2" name="chk2_name" class="chk2_class"> Check two<br>
-<input type="checkbox" id="chk3" name="chk3_name" class="chk3_class"> Check three<br>
-<input type="checkbox" id="chk4" name="chk4_name" class="chk4_class"> Check four<br>
-<input type="checkbox" id="chk5" name="chk5_name" class="chk5_class" checked> Check five<br>
-</p>
-</fieldset>
+    <br>
 
-</br>
+    <fieldset>
+      <legend>Display element after 10 sec</legend>
+      <div id="hiddenElement" name="he_name" class="he_class">This showed after 10 sec</div>
+    </fieldset>
 
+    <br>
 
-<fieldset>
-<legend>Display element after 10 sec</legend>
-<div id="hiddenElement" name="he_name" class="he_class">This showed after 10 sec</div>
-</fieldset>
+    <fieldset>
+      <legend>Enable Button after 10 sec</legend>
+      <input type="button" value="Button" id="disabledBt" onclick="showText()" disabled>
+      <p id="msg"></p>
+    </fieldset>
 
-</br>
-<fieldset>
-<legend>Enable Button after 10 sec</legend>
-<input type="button" value="Button" id="disabledBt" onclick="showText()" disabled>
-<p id="msg"></p>
+    <br>
 
-<script>
-function showText()
-{
-  document.getElementById("msg").innerHTML = "Now button is enabled";
-}
-</script>      
-</fieldset>
+    <fieldset>
+      <legend>Images</legend>
+      <img id="img1" src="http://shared.ooyala.com.s3.amazonaws.com/dropshadow-flower-pink.png" alt="Image one" style="display:inline-block;">
+    </fieldset>
 
-</br>
+    <br>
 
-<fieldset>
-<legend>Images</legend>
-<img id="img1" src="http://shared.ooyala.com.s3.amazonaws.com/dropshadow-flower-pink.png" alt="Image one" style="display:inline-block;">
-</fieldset>
+    <fieldset>
+      <legend>Links</legend>
+      <p>
+        <a href="https://rubygems.org/gems/selenium-cucumber">selenium-cucumber gem</a> <br>
+        <a href="http://seleniumcucumber.wordpress.com/" onclick="window.open('http://seleniumcucumber.wordpress.com/', 'newwindow', 'width=500, height=500'); return false;">selenium-cucumber website</a> <br>
+        <a href="https://github.com/sameer49/selenium-cucumber/blob/master/doc/canned_steps.md">Predefined-steps</a>
+      </p>
+    </fieldset>
 
-</br>
+    <br>
 
-<fieldset>
-<legend>Links</legend>
-<p>
-<a href="https://rubygems.org/gems/selenium-cucumber">selenium-cucumber gem</a> <br>
-<a href="http://seleniumcucumber.wordpress.com/" onclick="window.open('http://seleniumcucumber.wordpress.com/', 'newwindow', 'width=500, height=500'); return false;">selenium-cucumber website</a> <br>
-<a href="https://github.com/sameer49/selenium-cucumber/blob/master/doc/canned_steps.md">Predefined-steps</a>
-</p>
-</fieldset>
+    <fieldset>
+      <legend>Javascript alert</legend>
+      <p name="javascript_alert_msg">Click the button to display a confirm box.</p>
+        <button id="try_it" onclick="callAlert()">Try it</button>
+        <p id="demo">this is demo line</p>
+      </p>
+    </fieldset>
 
-</br>
+    <br>
 
-<fieldset>
-<legend>Javascript alert</legend>
-<p name="javascript_alert_msg">Click the button to display a confirm box.</p>
-<button id="try_it" onclick="callAlert()">Try it</button>
-<p id="demo">this is demo line</p>
-
-<script>
-function callAlert() 
-{
-    var x;
-    if (confirm("Press a button!") == true) 
-        x = "You pressed OK!";
-    else 
-        x = "You pressed Cancel!";
-    document.getElementById("demo").innerHTML = x;
-}
-</script>
-</p>
-</fieldset>
-
-<fieldset>
-<legend>Double click here</legend>
-<p id="dbClick" ondblclick="doubleClick()">Double-click this paragraph to trigger a function.</p>
-
-<p id="demo2" name="demo2_name"></p>
-
-<script>
-function doubleClick() {
-    document.getElementById("demo2").innerHTML = "Hello World";
-}
-</script>
-</p>
-</fieldset>
-
-</body>
+    <fieldset>
+      <legend>Double click here</legend>
+      <p id="dbClick" ondblclick="doubleClick()">Double-click this paragraph to trigger a function.</p>
+        <p id="demo2" name="demo2_name"></p>
+      </p>
+    </fieldset>
+  </body>
 </html>
-
