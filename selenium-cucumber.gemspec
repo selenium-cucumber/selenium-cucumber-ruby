@@ -21,8 +21,8 @@ Gem::Specification.new do |s|
   s.executables   = "selenium-cucumber"
   s.require_paths = ['lib']
   s.post_install_message = "Thanks for installing selenium-cucumber gem."
-                   
-  s.add_dependency('cucumber')
-  s.add_dependency('selenium-webdriver')
-  s.add_dependency('chunky_png')
+
+  #s.add_dependency('cucumber')
+  #s.add_dependency('selenium-webdriver')
+  #s.add_dependency('chunky_png')
 end

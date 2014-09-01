@@ -8,7 +8,7 @@ end
 #method to navigate back & forword
 def navigate(direction)
   if direction=="back"
-	   $driver.navigate.back
+	  $driver.navigate.back
   else
     $driver.navigate.forward
   end
@@ -38,9 +38,9 @@ end
 
 #Method to zoom in/out web page until web element displyas
 def zoom_in_out_till_element_display(access_type, in_out, access_name)
-  
+
   while true
-    
+
       if WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}.displayed?
         break
       else
@@ -51,13 +51,13 @@ def zoom_in_out_till_element_display(access_type, in_out, access_name)
 end
 
 #Method to resize browser
-def resize_browser(width,heigth)
-  $driver.manage.window.resize_to(width,heigth)
+def resize_browser(width, heigth)
+  $driver.manage.window.resize_to(width, heigth)
 end
 
 #Method to maximize browser
 def maximize_browser
-  $driver.manage().window().maximize()
+  $driver.manage.window.maximize
 end
 
 #Method to hover on element
@@ -77,7 +77,7 @@ def scroll_page(to)
   if to=="end"
     $driver.execute_script("window.scrollTo(0,Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight));")
   elsif to=="top"
-    $driver.execute_script("window.scrollTo(Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight),0);")    
+    $driver.execute_script("window.scrollTo(Math.max(document.documentElement.scrollHeight,document.body.scrollHeight,document.documentElement.clientHeight),0);")
   else
     raise "Exception : Invalid Direction (only scroll \"top\" or \"end\")"
   end
