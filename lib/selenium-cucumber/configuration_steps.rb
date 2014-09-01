@@ -1,7 +1,6 @@
 require_relative 'methods/configuration_methods'
 
-# Step to print configuration
-
+# step to print configuration
 Then(/^I print configuration$/) do
-    print_congifugartion  
+  print_congifugartion
 end
