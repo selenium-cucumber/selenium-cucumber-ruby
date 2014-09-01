@@ -4,7 +4,7 @@ puts ARGV[0]
 
 OS = Selenium::WebDriver::Platform.os
 
-if (ARGV.length == 0)
+if ARGV.length == 0
 
   puts "\n\n\t######  Running all features on firefox browser  ######\n\n"
   system('cucumber')
@@ -28,7 +28,7 @@ elsif ARGV.shift == 'html'
 
   puts "\n\n\t######  Running all features on chrome browser  ###### \n\n"
   puts "Output result stored in \"result_chrome.html\""
-  system("cucumber BROWSER=chrome -f html -o result_chrome.html")
+  system('cucumber BROWSER=chrome -f html -o result_chrome.html')
 
   if OS.to_s == 'windows'
     puts "\n\n\t######  Running all features on internet explorer browser  ###### \n\n"
