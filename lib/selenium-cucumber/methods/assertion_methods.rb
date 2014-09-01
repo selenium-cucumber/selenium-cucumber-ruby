@@ -20,7 +20,7 @@ def check_element_text(access_type, actual_value, access_name, test_case)
   element_text = get_element_text(access_type, access_name)
 
   if test_case
-    if element_text != actual_value 
+    if element_text != actual_value
 		raise TestCaseFailed, 'Text Not Matched'
 	end
   else
@@ -198,28 +198,64 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
 		expected_img_url["https"]='http'
 	end
 
-#	puts "actual_img_url : #{actual_img_url}"
-#	puts "expected_img_url : #{expected_img_url}"
+	puts "actual_img_url : #{actual_img_url}"
+	puts "expected_img_url : #{expected_img_url}"
 
-	open('./features/actual_images/image.png', 'wb') do |file|
+	if expected_img_url.include? '.png'
+  	 puts 'png image'
+     image_type = 'png'
+  	else
+     image_type = 'jpg'
+  	end
+
+# Storing actual image locally
+	open("./features/actual_images/actual_image."+image_type, 'wb') do |file|
   		file << open(actual_img_url).read
 	end
-	
-	
+	actual_img_url = "./features/actual_images/actual_image."+image_type
+
+# Storing Expected image locally
+    if excp_img_access_type != 'image_name'
+      open('./features/expected_images/expected_image.png', 'wb') do |file|
+  	    file << open(expected_img_url).read
+	  end
+	  expected_img_url = './features/expected_images/expected_image.png'
+	end
+
+# Verify image extension and call respective compare function
+  if image_type == 'png'
+  	 puts 'png image'
+     compare_png_images(expected_img_url,actual_img_url)
+  else
+     compare_jpeg_images(expected_img_url,actual_img_url)
+  end
+end
+
+#Comparing Jpeg images
+def compare_jpeg_images(expected_img_url,actual_img_url)
+  if open(expected_img_url).read == open(actual_img_url).read
+    puts "Similar Images"
+  else
+    puts "Difference in images"
+  end
+end
+
+# Comparing png images
+def compare_png_images(expected_img_url,actual_img_url)
 	images = [
-	  ChunkyPNG::Image.from_file('./features/actual_images/image.png'),
-	  ChunkyPNG::Image.from_file(open(expected_img_url))
+	  ChunkyPNG::Image.from_file(actual_img_url),
+	  ChunkyPNG::Image.from_file(expected_img_url)
 	 ]
 
 	 diff = []
-	
+
 	 images.first.height.times do |y|
 	  images.first.row(y).each_with_index do |pixel, x|
 	    diff << [x,y] unless pixel == images.last[x,y]
 	  end
 	 end
 
-	
+
 	if diff.length != 0
 		puts "\npixels (total):     #{images.first.pixels.length}"
 		puts "pixels changed:     #{diff.length}"
