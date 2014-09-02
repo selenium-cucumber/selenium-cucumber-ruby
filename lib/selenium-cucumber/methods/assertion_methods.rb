@@ -197,11 +197,11 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
 		expected_img_url["https"]='http'
 	end
 
-	puts "actual_img_url : #{actual_img_url}"
-	puts "expected_img_url : #{expected_img_url}"
+	#puts "actual_img_url : #{actual_img_url}"
+	#puts "expected_img_url : #{expected_img_url}"
 
 	if expected_img_url.include? '.png'
-  	 puts 'png image'
+  	# puts 'png image'
      image_type = 'png'
   	else
      image_type = 'jpg'
@@ -223,7 +223,7 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
 
 # Verify image extension and call respective compare function
   if image_type == 'png'
-  	 puts 'png image'
+  	# puts 'png image'
      return compare_png_images(expected_img_url,actual_img_url)
   end
 
