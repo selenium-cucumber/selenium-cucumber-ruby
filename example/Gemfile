@@ -1,0 +1,5 @@
+source 'http://rubygems.org'
+
+gem 'selenium-cucumber'
+# To run locally
+# gem 'selenium-cucumber', path: 'your local repo path'
