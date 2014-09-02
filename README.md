@@ -50,7 +50,7 @@ Predefined steps
 -----------------
 By using predefined steps you can automate your test cases more quickly, more efficiently and without much coding.
 
-The predefined steps are located [here](doc/canned_steps.md) 
+The predefined steps are located [here](doc/canned_steps.md)
 
 
 selenium-cucumber API's
@@ -58,6 +58,12 @@ selenium-cucumber API's
 By using selenium-cucumber API's you can write code for your custom steps more efficiently.
 
 The selenium-cucumber API's steps are located [here](doc/selenium-cucumber-API.md)
+
+
+Contributing
+-------------------
+Please see [CONTRIBUTING.md](CONTRIBUTING.md).
+
 
 License
 -------
