@@ -181,8 +181,8 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
 	if excp_img_access_type == 'url'
 		expected_img_url = excp_img_access_name
 	elsif excp_img_access_type == 'image_name'
-        expected_img_url = File.absolute_path("./features/expected_images/"+excp_img_access_name)
-    else
+    expected_img_url = File.absolute_path("./features/expected_images/"+excp_img_access_name)
+  else
 		expected_img_url = get_element_attribute(excp_img_access_type, excp_img_access_name, "src")
 	end
 
@@ -197,15 +197,14 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
 		expected_img_url["https"]='http'
 	end
 
-	puts "actual_img_url : #{actual_img_url}"
-	puts "expected_img_url : #{expected_img_url}"
+#	puts "actual_img_url : #{actual_img_url}"
+#	puts "expected_img_url : #{expected_img_url}"
 
 	if expected_img_url.include? '.png'
-  	 puts 'png image'
-     image_type = 'png'
-  	else
-     image_type = 'jpg'
-  	end
+    image_type = 'png'
+  else
+    image_type = 'jpg'
+  end
 
 # Storing actual image locally
 	open("./features/actual_images/actual_image."+image_type, 'wb') do |file|
@@ -222,9 +221,9 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
 	end
 
 # Verify image extension and call respective compare function
+
   if image_type == 'png'
-  	 puts 'png image'
-     return compare_png_images(expected_img_url,actual_img_url)
+  	return compare_png_images(expected_img_url,actual_img_url)
   end
 
   compare_jpeg_images(expected_img_url,actual_img_url)
@@ -234,11 +233,9 @@ end
 #Comparing Jpeg images
 def compare_jpeg_images(expected_img_url,actual_img_url)
   if open(expected_img_url).read == open(actual_img_url).read
-    puts "Similar Images"
     return true
   end
 
-  puts "Difference in images"
   false
  end
 
