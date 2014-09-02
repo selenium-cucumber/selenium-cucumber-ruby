@@ -21,12 +21,12 @@ def check_element_text(access_type, actual_value, access_name, test_case)
 
   if test_case
     if element_text != actual_value
-  	  raise TestCaseFailed, 'Text Not Matched'
-	  end
+      raise TestCaseFailed, 'Text Not Matched'
+    end
   else
-  	if element_text == actual_value
-    	raise TestCaseFailed, 'Text Matched'
-  	end
+    if element_text == actual_value
+      raise TestCaseFailed, 'Text Matched'
+    end
   end
 end
 
@@ -172,58 +172,59 @@ end
 # Method to compare two images
 def compare_image(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
 
-	if actual_img_access_type == 'url'
-		actual_img_url = actual_img_access_name
-	else
-		actual_img_url = get_element_attribute(actual_img_access_type, actual_img_access_name, "src")
-	end
-
-	if excp_img_access_type == 'url'
-		expected_img_url = excp_img_access_name
-	elsif excp_img_access_type == 'image_name'
-    expected_img_url = File.absolute_path("./features/expected_images/"+excp_img_access_name)
+  if actual_img_access_type == 'url'
+    actual_img_url = actual_img_access_name
   else
-		expected_img_url = get_element_attribute(excp_img_access_type, excp_img_access_name, "src")
-	end
-
-#	puts "actual_img_url : #{actual_img_url}"
-#	puts "expected_img_url : #{expected_img_url}"
-
-	if actual_img_url.include? 'https'
-		actual_img_url["https"]='http'
-	end
-
-	if expected_img_url.include? 'https'
-		expected_img_url["https"]='http'
-	end
-
-#	puts "actual_img_url : #{actual_img_url}"
-#	puts "expected_img_url : #{expected_img_url}"
-
-	if expected_img_url.include? '.png'
-    image_type = 'png'
-  else
-    image_type = 'jpg'
+    actual_img_url = get_element_attribute(actual_img_access_type, actual_img_access_name, "src")
   end
 
+  if excp_img_access_type == 'url'
+    expected_img_url = excp_img_access_name
+  elsif excp_img_access_type == 'image_name'
+        expected_img_url = File.absolute_path("./features/expected_images/"+excp_img_access_name)
+    else
+    expected_img_url = get_element_attribute(excp_img_access_type, excp_img_access_name, "src")
+  end
+
+# puts "actual_img_url : #{actual_img_url}"
+# puts "expected_img_url : #{expected_img_url}"
+
+  if actual_img_url.include? 'https'
+    actual_img_url["https"]='http'
+  end
+
+  if expected_img_url.include? 'https'
+    expected_img_url["https"]='http'
+  end
+
+  #puts "actual_img_url : #{actual_img_url}"
+  #puts "expected_img_url : #{expected_img_url}"
+
+  if expected_img_url.include? '.png'
+    # puts 'png image'
+     image_type = 'png'
+    else
+     image_type = 'jpg'
+    end
+
 # Storing actual image locally
-	open("./features/actual_images/actual_image."+image_type, 'wb') do |file|
-  		file << open(actual_img_url).read
-	end
-	actual_img_url = "./features/actual_images/actual_image."+image_type
+  open("./features/actual_images/actual_image."+image_type, 'wb') do |file|
+      file << open(actual_img_url).read
+  end
+  actual_img_url = "./features/actual_images/actual_image."+image_type
 
 # Storing Expected image locally
     if excp_img_access_type != 'image_name'
       open("./features/expected_images/expected_image."+image_type, 'wb') do |file|
-  	    file << open(expected_img_url).read
-	  end
-	  expected_img_url = "./features/expected_images/expected_image."+image_type
-	end
+        file << open(expected_img_url).read
+    end
+    expected_img_url = "./features/expected_images/expected_image."+image_type
+  end
 
 # Verify image extension and call respective compare function
-
   if image_type == 'png'
-  	return compare_png_images(expected_img_url,actual_img_url)
+    # puts 'png image'
+     return compare_png_images(expected_img_url,actual_img_url)
   end
 
   compare_jpeg_images(expected_img_url,actual_img_url)
@@ -233,27 +234,29 @@ end
 #Comparing Jpeg images
 def compare_jpeg_images(expected_img_url,actual_img_url)
   if open(expected_img_url).read == open(actual_img_url).read
+    puts "Similar Images"
     return true
   end
 
+  puts "Difference in images"
   false
  end
 
 # Comparing png images
 def compare_png_images(expected_img_url,actual_img_url)
 
-	images = [
-	  ChunkyPNG::Image.from_file(actual_img_url),
-	  ChunkyPNG::Image.from_file(expected_img_url)
-	 ]
+  images = [
+    ChunkyPNG::Image.from_file(actual_img_url),
+    ChunkyPNG::Image.from_file(expected_img_url)
+   ]
 
-	 diff = []
+   diff = []
 
-	 images.first.height.times do |y|
-	  images.first.row(y).each_with_index do |pixel, x|
-	    diff << [x,y] unless pixel == images.last[x,y]
-	  end
-	 end
+   images.first.height.times do |y|
+    images.first.row(y).each_with_index do |pixel, x|
+      diff << [x,y] unless pixel == images.last[x,y]
+    end
+   end
 
 
   if diff.length != 0
