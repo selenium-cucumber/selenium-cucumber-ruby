@@ -1,5 +1,5 @@
 require 'rubygems'
-require "selenium-webdriver"
+require 'selenium-webdriver'
 require 'chunky_png'
 require 'open-uri'
 require 'rbconfig'

@@ -22,7 +22,7 @@ end
 # select option by index from dropdown/multiselect
 Then(/^I select (\d+) option by index from\s*((?:multiselect)?)\sdropdown having (.+) "(.*?)"$/) do |option, present, type, access_name|
   validate_locator type
-  select_option_from_dropdown(type, "index", (option.to_i) -1, access_name)
+  select_option_from_dropdown(type, 'index', (option.to_i) -1, access_name)
 end
 
 # step to select option from mutliselect dropdown list
