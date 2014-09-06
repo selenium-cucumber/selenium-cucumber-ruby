@@ -109,20 +109,32 @@ Feature: Assertion Steps
  		Then I should see alert text as "Press a button!"
 		Then I accept alert
 
-	Scenario: verify image by id and id
-		Then actual image having id "img1" and expected image having id "img1" should be similar
+	Scenario: verify image by id and id - jpg image
+ 		Then actual image having id "img1" and expected image having id "img1" should be similar
 
-	Scenario: verify image by xpath and xpath
-		Then actual image having xpath ".//*[@id='img1']" and expected image having xpath ".//*[@id='img1']" should be similar
+	Scenario: verify image by id and image_name - jpg image
+ 		Then actual image having id "img1" and expected image having image_name "original_image.jpg" should be similar
 
-	Scenario: verify image by id and image_name
-		Then actual image having id "img1" and expected image having image_name "flower.png" should be similar
+	Scenario: verify image by url and image_name - jpg image
+		Then actual image having url "http://s27.postimg.org/xlqzpviyr/original_image.jpg" and expected image having image_name "original_image.jpg" should be similar
 
-	Scenario: verify image by url and image_name
-		Then actual image having url "http://shared.ooyala.com.s3.amazonaws.com/dropshadow-flower-pink.png" and expected image having image_name "flower.png" should be similar
+	Scenario: verify image by id and image_name - jpg image - negative test
+ 		Then actual image having id "img1_incorrect" and expected image having image_name "original_image.jpg" should be similar
 
-	Scenario: verify image by id and image_name - negative test 1
-		Then actual image having id "img1" and expected image having image_name "flower1.png" should be similar
+	Scenario: verify image by id and id - png image
+		Then actual image having id "img2" and expected image having id "img2" should be similar
+
+	Scenario: verify image by xpath and xpath - png image
+		Then actual image having xpath ".//*[@id='img2']" and expected image having xpath ".//*[@id='img2']" should be similar
+
+	Scenario: verify image by id and image_name - png image
+		Then actual image having id "img2" and expected image having image_name "logo-PNG.png" should be similar
+
+	Scenario: verify image by url and image_name - png image
+		Then actual image having url "http://s26.postimg.org/itpfqlcop/logo1.png" and expected image having image_name "logo-PNG.png" should be similar
+
+	Scenario: verify image by id and image_name - png image - negative test
+		Then actual image having id "img2_incorrect" and expected image having image_name "logo-PNG.png" should be similar
 
 
 

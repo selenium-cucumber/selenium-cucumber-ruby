@@ -7,6 +7,7 @@ selenium-cucumber is a behavior driven development (BDD) approach to write autom
 It enables you to write and execute automated acceptance tests of web apps.
 It is cross-platform, open source and free.
 Automate your test cases with minimal coding.
+[More Deatails](http://seleniumcucumber.wordpress.com/)
 
 Documentation
 -------------
@@ -34,6 +35,8 @@ To get started with selenium-cucumber you need to run `selenium-cucumber gen` co
         |
         |__step_definitions
         |     |__custom_steps.rb
+        |
+        |__actual_images
         |
         |__expected_images
         |
