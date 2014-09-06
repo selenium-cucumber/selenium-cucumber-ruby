@@ -31,35 +31,30 @@ def check_element_text(access_type, actual_value, access_name, test_case)
 end
 
 # Method to return element status - enabled?
-def is_element_enabled(access_type,access_name)
-  return WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}.enabled?
+def is_element_enabled(access_type, access_name)
+  WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }.enabled?
 end
 
 # Element enabled checking
 def check_element_enable(access_type, access_name, test_case)
-
-  result=is_element_enabled(access_type,access_name)
+  result = is_element_enabled(access_type, access_name)
 
   if test_case
-    if !result
-      raise TestCaseFailed, 'Element Not Enabled'
-    end
+    raise TestCaseFailed, 'Element Not Enabled' unless result
   else
-    if result
-      raise TestCaseFailed, 'Element Enabled'
-    end
+    raise TestCaseFailed, 'Element Enabled' unless !result
   end
 end
 
 # method to get attribute value
 def get_element_attribute(access_type, access_name, attribute_name)
-  return WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}.attribute("#{attribute_name}")
+  WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }.attribute("#{attribute_name}")
 end
 
 # method to check attribute value
 def check_element_attribute(access_type, attribute_name, attribute_value, access_name, test_case)
 
-  attr_val=get_element_attribute(access_type, access_name, attribute_name)
+  attr_val = get_element_attribute(access_type, access_name, attribute_name)
 
   if test_case
     if attr_val != attribute_value
@@ -74,7 +69,7 @@ end
 
 # method to get element status - displayed?
 def is_element_displayed(access_type, access_name)
-  WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}.displayed?
+  WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }.displayed?
 end
 
 # method to check element presence
@@ -97,30 +92,30 @@ def check_element_presence(access_type, access_name, test_case)
 end
 
 # method to assert checkbox check/uncheck
-def is_checkbox_checked(access_type, access_name, should_be_checked=true)
-  checkbox = WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}
+def is_checkbox_checked(access_type, access_name, should_be_checked = true)
+  checkbox = WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }
 
   if !checkbox.selected? && should_be_checked
     raise TestCaseFailed, 'Checkbox is not checked'
-    elsif checkbox.selected? && !should_be_checked
-      raise TestCaseFailed, 'Checkbox is checked'
+  elsif checkbox.selected? && !should_be_checked
+    raise TestCaseFailed, 'Checkbox is checked'
   end
 end
 
-#method to assert radio button selected/unselected
-def is_radio_button_selected(access_type, access_name, should_be_selected=true)
-  radio_button = WAIT.until{$driver.find_element(:"#{access_type}" => "#{access_name}")}
+# method to assert radio button selected/unselected
+def is_radio_button_selected(access_type, access_name, should_be_selected = true)
+  radio_button = WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }
 
   if !radio_button.selected? && should_be_selected
-  raise TestCaseFailed, 'Radio Button not selected'
+    raise TestCaseFailed, 'Radio Button not selected'
   elsif radio_button.selected? && !should_be_selected
     raise TestCaseFailed, 'Radio Button is selected'
   end
 end
 
 # method to assert option from radio button group is selected/unselected
-def is_option_from_radio_button_group_selected(access_type, by, option, access_name, should_be_selected=true)
-  radio_button_group = WAIT.until{$driver.find_elements(:"#{access_type}" => "#{access_name}")}
+def is_option_from_radio_button_group_selected(access_type, by, option, access_name, should_be_selected = true)
+  radio_button_group = WAIT.until{ $driver.find_elements(:"#{access_type}" => "#{access_name}") }
 
   getter = ->(rb, by) { by == 'value' ? rb.attribute('value') : rb.text }
 
@@ -133,26 +128,26 @@ def is_option_from_radio_button_group_selected(access_type, by, option, access_n
   end
 end
 
-#method to get javascript pop-up alert text
+# method to get javascript pop-up alert text
 def get_alert_text
   $driver.switch_to.alert.text
 end
 
 # method to check javascript pop-up alert text
-def check_alert_text text
+def check_alert_text(text)
   if get_alert_text != text
     raise TestCaseFailed,  'Text on alert pop up not matched'
   end
 end
 
 def is_option_from_dropdown_selected(access_type, by, option, access_name, should_be_selected=true)
-  dropdown = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+  dropdown = WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }
   select_list = Selenium::WebDriver::Support::Select.new(dropdown)
 
-  if by=="text"
+  if by == 'text'
     actual_value = select_list.first_selected_option.text
   else
-    actual_value = select_list.first_selected_option.attribute("value")
+    actual_value = select_list.first_selected_option.attribute('value')
   end
 
   if !actual_value == option && should_be_selected
@@ -171,105 +166,93 @@ end
 
 # Method to compare two images
 def compare_image(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
-
   if actual_img_access_type == 'url'
     actual_img_url = actual_img_access_name
   else
-    actual_img_url = get_element_attribute(actual_img_access_type, actual_img_access_name, "src")
+    actual_img_url = get_element_attribute(actual_img_access_type, actual_img_access_name, 'src')
   end
 
   if excp_img_access_type == 'url'
     expected_img_url = excp_img_access_name
   elsif excp_img_access_type == 'image_name'
-        expected_img_url = File.absolute_path("./features/expected_images/"+excp_img_access_name)
-    else
-    expected_img_url = get_element_attribute(excp_img_access_type, excp_img_access_name, "src")
+    expected_img_url = './features/expected_images/' + excp_img_access_name
+  else
+    expected_img_url = get_element_attribute(excp_img_access_type, excp_img_access_name, 'src')
   end
 
-# puts "actual_img_url : #{actual_img_url}"
-# puts "expected_img_url : #{expected_img_url}"
-
   if actual_img_url.include? 'https'
-    actual_img_url["https"]='http'
+    actual_img_url['https'] = 'http'
   end
 
   if expected_img_url.include? 'https'
-    expected_img_url["https"]='http'
+    expected_img_url['https'] = 'http'
   end
-
-  #puts "actual_img_url : #{actual_img_url}"
-  #puts "expected_img_url : #{expected_img_url}"
 
   if expected_img_url.include? '.png'
-    # puts 'png image'
-     image_type = 'png'
-    else
-     image_type = 'jpg'
-    end
+    image_type = 'png'
+  else
+    image_type = 'jpg'
+  end
 
 # Storing actual image locally
-  open("./features/actual_images/actual_image."+image_type, 'wb') do |file|
-      file << open(actual_img_url).read
+  open('./features/actual_images/actual_image.' + image_type, 'wb') do |file|
+    file << open(actual_img_url).read
   end
-  actual_img_url = "./features/actual_images/actual_image."+image_type
+  
+  actual_img_url = './features/actual_images/actual_image.' + image_type
 
 # Storing Expected image locally
-    if excp_img_access_type != 'image_name'
-      open("./features/expected_images/expected_image."+image_type, 'wb') do |file|
-        file << open(expected_img_url).read
+  if excp_img_access_type != 'image_name'
+    open('./features/expected_images/expected_image.' + image_type, 'wb') do |file|
+      file << open(expected_img_url).read
     end
-    expected_img_url = "./features/expected_images/expected_image."+image_type
+    expected_img_url = './features/expected_images/expected_image.' + image_type
   end
 
 # Verify image extension and call respective compare function
   if image_type == 'png'
-    # puts 'png image'
-     return compare_png_images(expected_img_url,actual_img_url)
+    return compare_png_images(expected_img_url, actual_img_url)
   end
 
-  compare_jpeg_images(expected_img_url,actual_img_url)
-
+  compare_jpeg_images(expected_img_url, actual_img_url)
 end
 
-#Comparing Jpeg images
-def compare_jpeg_images(expected_img_url,actual_img_url)
+# Comparing jpg images
+def compare_jpeg_images(expected_img_url, actual_img_url)
   if open(expected_img_url).read == open(actual_img_url).read
-    puts "Similar Images"
     return true
+  else
+    puts 'Difference in images'
+    return false
   end
-
-  puts "Difference in images"
-  false
- end
+end
 
 # Comparing png images
-def compare_png_images(expected_img_url,actual_img_url)
-
+def compare_png_images(expected_img_url, actual_img_url)
   images = [
-    ChunkyPNG::Image.from_file(actual_img_url),
-    ChunkyPNG::Image.from_file(expected_img_url)
-   ]
+    ChunkyPNG::Image.from_file(expected_img_url),
+    ChunkyPNG::Image.from_file(actual_img_url)
+  ]
 
-   diff = []
+  diff = []
 
-   images.first.height.times do |y|
+  images.first.height.times do |y|
     images.first.row(y).each_with_index do |pixel, x|
-      diff << [x,y] unless pixel == images.last[x,y]
+      diff << [x, y] unless pixel == images.last[x, y]
     end
-   end
-
+  end
 
   if diff.length != 0
     puts "\npixels (total):     #{images.first.pixels.length}"
     puts "pixels changed:     #{diff.length}"
     puts "pixels changed (%): #{(diff.length.to_f / images.first.pixels.length) * 100}%"
 
-    x, y = diff.map{ |xy| xy[0] }, diff.map{ |xy| xy[1] }
-    images.last.rect(x.min, y.min, x.max, y.max, ChunkyPNG::Color.rgb(0,255,0))
-    curTime = Time.now.strftime('%Y%m%d%H%M%S%L')
-    images.last.save("./features/image_difference/difference_#{curTime}.png")
+    x, y = diff.map { |xy| xy[0] }, diff.map { |xy| xy[1] }
+    images.last.rect(x.min, y.min, x.max, y.max, ChunkyPNG::Color.rgb(0, 255, 0))
+    cur_time = Time.now.strftime('%Y%m%d%H%M%S%L')
+    images.last.save("./features/image_difference/difference_#{cur_time}.png")
 
-    puts "\nDifference between images saved as : difference_#{curTime}.png\n"
+    puts "\nDifference between images saved as : difference_#{cur_time}.png\n"
     return false
   end
   true
