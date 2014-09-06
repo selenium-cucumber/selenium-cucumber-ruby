@@ -44,6 +44,10 @@
       function doubleClick() {
         document.getElementById("demo2").innerHTML = "Hello World";
       }
+	  
+	  function hovered() {
+        alert("Mouse hovered")
+      }
     </script>
     <form id="frm" action="" method="post">
       <fieldset>
@@ -187,6 +191,13 @@
 
     <br>
 
+	<fieldset>
+      <legend>Mous hover</legend>
+		<button id="pop_alert" onmouseover="hovered()">Hover It</button>
+    </fieldset>
+
+    <br>
+	
     <fieldset>
       <legend>Javascript alert</legend>
       <p name="javascript_alert_msg">Click the button to display a confirm box.</p>

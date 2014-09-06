@@ -9,3 +9,7 @@ Feature: Screenshot Step
  	Scenario: take screenshot
  	
  		Then I take screenshot
+
+ 	Scenario: close browser
+   		
+   		Then I close browser

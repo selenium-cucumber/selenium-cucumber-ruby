@@ -16,7 +16,7 @@ end
 
 # method to quite webdriver instance
 def close_driver
-  $driver.close
+  $driver.quit
 end
 
 # method to return key by os wise

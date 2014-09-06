@@ -10,6 +10,10 @@ Before do |scenario|
   # executed.
 end
 
+After do
+  # Do something after each scenario.
+end
+
 After do |scenario|
   # Do something after each scenario.
   # The +scenario+ argument is optional, but

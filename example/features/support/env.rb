@@ -31,7 +31,6 @@ end
 begin
     $driver = Selenium::WebDriver.for(browser_type)
     $driver.manage().window().maximize()
-
   rescue Exception => e
     puts e.message
 end

@@ -36,10 +36,10 @@ Feature: Navigation Steps
 
 	Scenario: Hover over elelment
 		
-		Then I hover over element having xpath "html/body/fieldset[8]/p/a[1]"
+		Then I hover over element having id "pop_alert"
+		Then I accept alert
 		
 	Scenario: Interacting with browser
 		
 		Then I resize browser window size to width 400 and height 400
 		Then I maximize browser window
-		#Then I close browser
