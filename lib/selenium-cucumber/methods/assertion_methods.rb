@@ -84,7 +84,7 @@ def check_element_presence(access_type, access_name, test_case)
         raise 'Present'
       end
     rescue Exception => e
-      if e.message == 'present'
+      if e.message == 'Present'
         raise TestCaseFailed, 'Element Present'
       end
     end

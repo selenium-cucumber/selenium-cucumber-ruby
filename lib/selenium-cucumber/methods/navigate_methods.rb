@@ -83,12 +83,27 @@ end
 $old_win = nil
 
 # Method to switch to new window
+=begin
 def switch_to_new_window
   $old_win = $driver.window_handle
   $driver.switch_to.window($driver.window_handles[1])
 end
+=end
 
 # Method to switch to old window
 def switch_to_old_window
   $driver.switch_to.window($old_win)
+end
+
+def switch_to_new_window
+  $old_win = $driver.window_handle
+  win_handles = $driver.window_handles
+
+  puts win_handles.length
+
+  win_handles.each do |handle|
+    $driver.switch_to.window(handle)
+    puts handle
+    puts $driver.title
+  end
 end

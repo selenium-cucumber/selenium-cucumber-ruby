@@ -53,11 +53,11 @@ Then(/^option "(.*?)" by (.+) from radio button group having (.+) "(.*?)" should
 end
 
 # steps to check link presence
-Then(/^link having text "(.*?)" should\s*((?:not)?)\s+be present$/) do |present, access_name|
+Then(/^link having text "(.*?)" should\s*((?:not)?)\s+be present$/) do |access_name, present|
   check_element_presence('link', access_name, present.empty?)
 end
 
-Then(/^link having partial text "(.*?)" should\s*((?:not)?)\s+be present$/) do |present, access_name|
+Then(/^link having partial text "(.*?)" should\s*((?:not)?)\s+be present$/) do |access_name, present|
   check_element_presence('partial_link_text', access_name, present.empty?)
 end
 
