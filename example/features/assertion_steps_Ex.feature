@@ -32,6 +32,18 @@ Feature: Assertion Steps
 
 		Then element having name "javascript_alert_msg" should not have text as "Click the button to display a confirm box."
 
+	Scenario: Partial text present (Positive case)
+ 	  Then element having id "frm" should have partial text as "last"
+
+ 	Scenario: Partial text present (negative case)
+ 	  Then element having id "frm" should have partial text as "selenium"  
+ 	
+        Scenario: Partial text not present (Positive case)
+ 	  Then element having id "frm" should not have partial text as "selenium"
+
+    Scenario: Partial text not present (negative case)
+ 	  Then element having id "frm" should not have partial text as "last"	
+
  	Scenario: verify element accesibility
 
  		Then element having id "submit" should be enabled
@@ -135,7 +147,3 @@ Feature: Assertion Steps
 
 	Scenario: verify image by id and image_name - png image - negative test
 		Then actual image having id "img2_incorrect" and expected image having image_name "logo-PNG.png" should be similar
-
-
-
-

@@ -44,6 +44,10 @@
       function doubleClick() {
         document.getElementById("demo2").innerHTML = "Hello World";
       }
+	  
+	  function hovered() {
+        alert("Mouse hovered")
+      }
     </script>
     <form id="frm" action="" method="post">
       <fieldset>
@@ -180,13 +184,22 @@
       <legend>Links</legend>
       <p>
         <a href="https://rubygems.org/gems/selenium-cucumber">selenium-cucumber gem</a> <br>
-        <a href="http://seleniumcucumber.wordpress.com/" onclick="window.open('http://seleniumcucumber.wordpress.com/', 'newwindow', 'width=500, height=500'); return false;">selenium-cucumber website</a> <br>
+        
+        <a href="http://seleniumcucumber.info/" onclick="window.open('http://seleniumcucumber.info/', 'newwindow', 'width=500, height=500'); return false;">selenium-cucumber website</a> <br>
+        
         <a href="https://github.com/sameer49/selenium-cucumber/blob/master/doc/canned_steps.md">Predefined-steps</a>
       </p>
     </fieldset>
 
     <br>
 
+	<fieldset>
+      <legend>Mous hover</legend>
+		<button id="pop_alert" onmouseover="hovered()">Hover It</button>
+    </fieldset>
+
+    <br>
+	
     <fieldset>
       <legend>Javascript alert</legend>
       <p name="javascript_alert_msg">Click the button to display a confirm box.</p>

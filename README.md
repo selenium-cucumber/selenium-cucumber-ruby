@@ -1,6 +1,7 @@
 Welcome to selenium-cucumber
 =================
 
+[![Gem Version](https://badge.fury.io/rb/selenium-cucumber.svg)](http://badge.fury.io/rb/selenium-cucumber)
 selenium-cucumber : Automation Tesing Using Ruby
 
 selenium-cucumber is a behavior driven development (BDD) approach to write automation test script to test web applications.

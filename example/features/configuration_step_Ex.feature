@@ -5,5 +5,4 @@ Feature: Configuration Printing Step
  	Scenario: Print Configuration
  	
         Given I print configuration
- 		Given I open test page
-   
+ 		And I open test page
