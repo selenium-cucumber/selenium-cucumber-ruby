@@ -82,12 +82,24 @@ To assert element text use any of the following steps :
 	Then element having class "([^\"]*)" should have text as "(.*?)"
 	Then element having xpath "([^\"]*)" should have text as "(.*?)"
 	Then element having css "([^\"]*)" should have text as "(.*?)"
+
+	Then element having id "([^\"]*)" should have partial text as "(.*?)"
+	Then element having name "([^\"]*)" should have partial text as "(.*?)"
+	Then element having class "([^\"]*)" should have partial text as "(.*?)"
+	Then element having xpath "([^\"]*)" should have partial text as "(.*?)"
+	Then element having css "([^\"]*)" should have partial text as "(.*?)"
 	
 	Then element having id "([^\"]*)" should not have text as "(.*?)"
 	Then element having name "([^\"]*)" should not have text as "(.*?)"
 	Then element having class "([^\"]*)" should not have text as "(.*?)"
 	Then element having xpath "([^\"]*)" should not have text as "(.*?)"
 	Then element having css "([^\"]*)" should not have text as "(.*?)"
+
+	Then element having id "([^\"]*)" should not have partial text as "(.*?)"
+	Then element having name "([^\"]*)" should not have partial text as "(.*?)"
+	Then element having class "([^\"]*)" should not have partial text as "(.*?)"
+	Then element having xpath "([^\"]*)" should not have partial text as "(.*?)"
+	Then element having css "([^\"]*)" should not have partial text as "(.*?)"
 	
 #### Steps For Asserting Element Attribute
 

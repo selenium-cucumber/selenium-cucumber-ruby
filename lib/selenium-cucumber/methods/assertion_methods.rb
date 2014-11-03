@@ -30,6 +30,21 @@ def check_element_text(access_type, actual_value, access_name, test_case)
   end
 end
 
+# Method to check partial element text
+def check_element_partial_text(access_type, actual_value, access_name, test_case)
+  element_text = get_element_text(access_type, access_name)
+
+  if test_case
+    if not element_text.include? "#{actual_value}"
+      raise TestCaseFailed, 'Text Not Matched'
+    end
+  else
+    if element_text.include? "#{actual_value}"
+      raise TestCaseFailed, 'Text Matched'
+    end
+  end
+end
+
 # Method to return element status - enabled?
 def is_element_enabled(access_type, access_name)
   WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }.enabled?

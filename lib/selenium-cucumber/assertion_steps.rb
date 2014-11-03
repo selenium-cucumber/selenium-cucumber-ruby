@@ -11,6 +11,12 @@ Then(/^element having (.+) "([^\"]*)" should\s*((?:not)?)\s+have text as "(.*?)"
   check_element_text(type, value, access_name, present.empty?)
 end
 
+# step to check element partial text
+Then(/^element having (.+) "([^\"]*)" should\s*((?:not)?)\s+have partial text as "(.*?)"$/) do |type, access_name, present, value |
+  validate_locator type
+  check_element_partial_text(type, value, access_name, present.empty?)
+end
+
 # step to check attribute value
 Then(/^element having (.+) "([^\"]*)" should\s*((?:not)?)\s+have attribute "(.*?)" with value "(.*?)"$/) do |type, access_name, present, attrb, value|
   validate_locator type
