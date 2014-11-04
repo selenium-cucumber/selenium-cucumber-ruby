@@ -5,9 +5,13 @@ Feature: click steps
  	Scenario: Open test page
  		Given I open test page
 
-	Scenario: verify link present or not
+	Scenario: click on link
 
-		Then I click on link having text "selenium-cucumber website"
+		Then I click on link having text "video tutorials"
+
+	Scenario: click on link
+
+		Then I click on link having text "blog"
  		
 	Scenario: switch to new window
  		Then I switch to new window

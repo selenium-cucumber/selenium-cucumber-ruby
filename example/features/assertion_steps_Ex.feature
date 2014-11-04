@@ -32,16 +32,16 @@ Feature: Assertion Steps
 
 		Then element having name "javascript_alert_msg" should not have text as "Click the button to display a confirm box."
 
-	Scenario: Partial text present (Positive case)
+	Scenario: Partial text present
  	  Then element having id "frm" should have partial text as "last"
 
- 	Scenario: Partial text present (negative case)
+ 	Scenario: Partial text present - negative test
  	  Then element having id "frm" should have partial text as "selenium"  
  	
-        Scenario: Partial text not present (Positive case)
+        Scenario: Partial text not present
  	  Then element having id "frm" should not have partial text as "selenium"
 
-    Scenario: Partial text not present (negative case)
+    Scenario: Partial text not present - negative test 
  	  Then element having id "frm" should not have partial text as "last"	
 
  	Scenario: verify element accesibility
