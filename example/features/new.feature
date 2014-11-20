@@ -6,8 +6,10 @@ Feature: click steps
  		Given I open test page
 
 	Scenario: verify link present or not
+ 		Then link having text "selenium-cucumber gem" should be present
+		Then link having text "selenium-cucumber gem" should not be present
 
-		Then I click on link having text "selenium-cucumber website"
- 		
-	Scenario: switch to new window
- 		Then I switch to new window
+    Scenario: verify link present or not
+ 		Then link having text "xyz" should not be present
+		Then link having text "xyz" should be present
+

@@ -520,3 +520,15 @@ Configuration Steps
 To print testing configuration use following step :
 
 	Then I print configuration
+
+#Mobile Steps
+
+##Tap Steps
+-----------
+To tap on app element use following steps :
+
+	Then I tap on element having id "(.*?)"
+	Then I tap on element having name "(.*?)"
+	Then I tap on element having class "(.*?)"
+	Then I tap on element having xpath "(.*?)"
+	Then I tap on element having css "(.*?)"	
