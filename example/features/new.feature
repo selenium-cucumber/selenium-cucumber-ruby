@@ -5,11 +5,14 @@ Feature: click steps
  	Scenario: Open test page
  		Given I open test page
 
-	Scenario: verify link present or not
- 		Then link having text "selenium-cucumber gem" should be present
-		Then link having text "selenium-cucumber gem" should not be present
+	Scenario: click on link
 
-    Scenario: verify link present or not
- 		Then link having text "xyz" should not be present
-		Then link having text "xyz" should be present
+		Then I click on link having text "video tutorials"
+
+	Scenario: click on link
+
+		Then I click on link having text "blog"
+ 		
+	Scenario: switch to new window
+ 		Then I switch to new window
 
