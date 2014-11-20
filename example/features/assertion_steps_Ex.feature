@@ -6,7 +6,7 @@ Feature: Assertion Steps
  		Given I open test page
 
  	Scenario: verify page title
-		Then I should see page title as "Test Page for selenium-cucumber"
+		Then I should see page title as "Test Page for selenium–cucumber"
 
 
 	Scenario: verify element text
