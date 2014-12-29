@@ -6,8 +6,37 @@ def get_page_title
   $driver.title
 end
 
-def check_title(title)
-  raise TestCaseFailed, 'Page Title Not Matched' unless get_page_title == title
+def check_title(title, test_case)
+  #raise TestCaseFailed, 'Page Title Not Matched' unless get_page_title == title
+  page_title = get_page_title
+
+  if test_case
+    if page_title != "#{title}"
+      raise TestCaseFailed, 'Text Not Matched'
+    end
+  else
+    if page_title == "#{title}"
+      raise TestCaseFailed, 'Text Matched'
+    end
+  end
+
+end
+
+def check_partial_title(partial_text_title, test_case)
+  #raise TestCaseFailed, 'Partial text not present in Page Title' unless get_page_title == title
+
+  page_title = get_page_title
+
+  if test_case
+    if not page_title.include? "#{partial_text_title}"
+      raise TestCaseFailed, 'Partial Text Not Present'
+    end
+  else
+    if page_title.include? "#{partial_text_title}"
+      raise TestCaseFailed, 'Text Matched'
+    end
+  end
+
 end
 
 # Method to get element text

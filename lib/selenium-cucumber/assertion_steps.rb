@@ -1,8 +1,12 @@
 require_relative 'methods/assertion_methods'
 
 # page title checking
-Then(/^I should see page title as "(.*?)"$/) do |title|
-  check_title(title)
+Then(/^I should\s*((?:not)?)\s+see page title as "(.*?)"$/) do |present, title|
+  check_title(title, present.empty?)
+end
+
+Then(/^I should\s*((?:not)?)\s+see page title having partial text as "(.*?)"$/) do |present, partial_text_title|
+  check_partial_title(partial_text_title, present.empty?)
 end
 
 # step to check element text

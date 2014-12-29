@@ -72,7 +72,11 @@ Assertion Steps
 To assert that page title can be found use following step :
 
 	Then I should see page title as "(.*?)"
+	Then I should not see page title as "(.*?)"
 
+	Then I should see page title having partial text as "(.*?)"
+    Then I should not see page title having partial text as "(.*?)"
+    
 #### Steps For Asserting Element Text
 
 To assert element text use any of the following steps :
@@ -520,3 +524,15 @@ Configuration Steps
 To print testing configuration use following step :
 
 	Then I print configuration
+
+#Mobile Steps
+
+##Tap Steps
+-----------
+To tap on app element use following steps :
+
+	Then I tap on element having id "(.*?)"
+	Then I tap on element having name "(.*?)"
+	Then I tap on element having class "(.*?)"
+	Then I tap on element having xpath "(.*?)"
+	Then I tap on element having css "(.*?)"	
