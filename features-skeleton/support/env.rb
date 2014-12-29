@@ -1,38 +1,50 @@
 require 'rubygems'
-require 'selenium-webdriver'
+require 'selenium-cucumber'
 
-def print_error
-  puts "\nInappropraite browser \"#{ENV['BROWSER']}\""
-  puts "\nUsage : cucumber BROWSER=browser_name"
-  puts "\nbrowser_name can be one of following :"
-  puts "1.ie\n2.chrome\n3.ff\n4.safari\n5.opera" 
-  puts "\nNow using default browser \"Firefox\""
-end
+# Store command line arguments
+$browser_type = ENV['BROWSER'] || 'ff'
+$platform = ENV['PLATFORM']
+$os_version = ENV['OS-VERSION']
+$device_name = ENV['DEVICE-NAME']
+$uuid = ENV['UUID']
+$app_path = ENV['APP-PATH']
 
-case ENV['BROWSER']
-  when 'ie'
-    browser_type = :ie
-  when 'ff'
-    browser_type = :ff
-  when 'chrome'
-    browser_type = :chrome
-  when 'opera'
-    browser_type = :opera
-  when 'safari'
-    browser_type = :safari
-  else
-    if ENV['BROWSER']
-      print_error
+# If platform is android or ios create driver instance for mobile browser
+if $platform == 'android' or $platform == 'iOS'
+  
+  if $browser_type == 'native'
+    $browser_type = "Browser"
+  end
+  
+  if $platform == 'android'
+    $device_name, $os_version = get_device_info
+  end
+  
+  desired_caps = {
+    caps:       {
+      platformName:  $platform,
+      browserName: $browser_type,
+      versionNumber: $os_version,
+      deviceName: $device_name,
+      uuid: $uuid,
+      app: $app_path
+      },
+    }
+
+    begin
+      $driver = Appium::Driver.new(desired_caps).start_driver
+      rescue Exception => e
+      puts e.message
+      print_error_mobile
     end
-    browser_type = :ff
-end
-
-
-begin
-    $driver = Selenium::WebDriver.for(browser_type)
+# else create driver instance for desktop browser
+else
+  begin
+    $driver = Selenium::WebDriver.for(:"#{$browser_type}")
     $driver.manage().window().maximize()
-
   rescue Exception => e
     puts e.message
+    print_error_desktop
+    Process.exit(0)
+  end
 end
-

@@ -72,7 +72,11 @@ Assertion Steps
 To assert that page title can be found use following step :
 
 	Then I should see page title as "(.*?)"
+	Then I should not see page title as "(.*?)"
 
+	Then I should see page title having partial text as "(.*?)"
+    Then I should not see page title having partial text as "(.*?)"
+    
 #### Steps For Asserting Element Text
 
 To assert element text use any of the following steps :
