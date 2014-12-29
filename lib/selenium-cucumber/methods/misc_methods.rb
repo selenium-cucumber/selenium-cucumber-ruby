@@ -24,7 +24,7 @@ def validate_option_by option_by
   raise "Invalid option by - #{option_by}" unless valid_option_by? option_by
 end
 
-#print error if user pass invalid parameters or any exception due to selenium-webdriver
+# print error if user pass invalid parameters or any exception due to selenium-webdriver
 def print_error_desktop
   puts "\nInappropraite desktop browser : \"#{ENV['BROWSER']}\""
   puts "\nUsage : cucumber BROWSER=browser_name"
@@ -33,11 +33,11 @@ def print_error_desktop
   Process.exit(0)
 end
 
-#print error if user pass invalid parameters or any exception due to appium
+# print error if user pass invalid parameters or any exception due to appium
 def print_error_mobile
   
   puts "\nTo run test on mobile native app"
-  puts "\nUsage : cucumber PLATFORM=platform BROWSER=browser_name VERSION=os_version BROWSER=browser_name DEVICE=device_name"
+  puts "\nUsage : cucumber PLATFORM=platform APP_PATH=path/to/app"
   puts "\nPlatform Supported :\n"
   puts "\n1.android\n2.iOS" 
   
@@ -59,9 +59,22 @@ def get_device_info
   return $device, $os_version
 end
 
-#[ro.build.version.release]: [4.4.4]
-#[ro.product.brand]
-#[ro.product.model]
-#[ro.build.characteristics]: [tablet,nosdcard]
-#[ro.build.version.sdk]: [17]
-#[ro.product.name]: [nakasi]
+# [ro.build.version.release]: [4.4.4]
+# [ro.product.brand]
+# [ro.product.model]
+# [ro.build.characteristics]: [tablet,nosdcard]
+# [ro.build.version.sdk]: [17]
+# [ro.product.name]: [nakasi]
+
+# Method to check browser type
+def check_browser_type(platform, browser_type)
+  if platform == 'desktop'
+    if !%w(ff ie chrome safari opera).include? browser_type
+      print_error_desktop
+    end
+  else
+    if !%w(native chrome safari).include? browser_type
+      print_error_mobile
+    end
+  end
+end
