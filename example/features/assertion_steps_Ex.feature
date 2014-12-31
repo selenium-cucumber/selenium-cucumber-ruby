@@ -7,7 +7,23 @@ Feature: Assertion Steps
 
  	Scenario: verify page title
 		Then I should see page title as "Test Page for selenium–cucumber"
+		Then I should not see page title as "wrong title"
 
+	Scenario: verify partial page title
+		Then I should see page title having partial text as "selenium–cucumber"
+		Then I should not see page title having partial text as "Wrong title"
+
+	Scenario: verify page title - negative test
+		Then I should see page title as "wrong title"
+
+	Scenario: verify page title - negative test	
+		Then I should not see page title as "Test Page for selenium–cucumber"
+
+	Scenario: verify partial page title - negative test
+		Then I should see page title having partial text as "Wrong title"
+
+	Scenario: verify partial page title - negative test
+		Then I should not see page title having partial text as "selenium–cucumber"
 
 	Scenario: verify element text
 

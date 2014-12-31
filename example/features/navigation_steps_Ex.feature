@@ -10,7 +10,7 @@ Feature: Navigation Steps
  		Then I should see page title as "selenium-cucumber | RubyGems.org | your community gem host"
 
  		Then I navigate back
-		Then I should see page title as "Test Page for selenium-cucumber"	
+		Then I should see page title as "Test Page for selenium–cucumber"	
 
  		Then I navigate forward
  		Then I should see page title as "selenium-cucumber | RubyGems.org | your community gem host"
