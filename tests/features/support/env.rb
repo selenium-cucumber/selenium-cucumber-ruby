@@ -6,7 +6,7 @@ $browser_type = ENV['BROWSER'] || 'ff'
 $platform = ENV['PLATFORM']
 $os_version = ENV['OS_VERSION']
 $device_name = ENV['DEVICE_NAME']
-$uuid = ENV['UUID']
+$udid = ENV['UDID']
 $app_path = ENV['APP_PATH']
 
 # If platform is android or ios create driver instance for mobile browser
@@ -26,7 +26,7 @@ if $platform == 'android' or $platform == 'iOS'
       browserName: $browser_type,
       versionNumber: $os_version,
       deviceName: $device_name,
-      uuid: $uuid,
+      udid: $udid,
       app: $app_path
       },
     }

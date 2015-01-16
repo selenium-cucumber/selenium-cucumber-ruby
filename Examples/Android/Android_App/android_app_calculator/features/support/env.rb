@@ -6,7 +6,7 @@ $browser_type = ENV['BROWSER'] || 'ff'
 $platform = ENV['PLATFORM']
 $os_version = ENV['OS_VERSION']
 $device_name = ENV['DEVICE_NAME']
-$uuid = ENV['UUID']
+$udid = ENV['UDID']
 $app_path = ENV['APP_PATH']
 
 # If platform is android or ios create driver instance for mobile browser
@@ -26,22 +26,22 @@ if $platform == 'android' or $platform == 'iOS'
       browserName: $browser_type,
       versionNumber: $os_version,
       deviceName: $device_name,
-      uuid: $uuid,
-      app: ".//" + $app_path
+      udid: $udid,
+      app: $app_path
       },
     }
 
     begin
       $driver = Appium::Driver.new(desired_caps).start_driver
-      rescue Exception => e
+    rescue Exception => e
       puts e.message
+      Process.exit(0)  
     end
 # else create driver instance for desktop browser
 else
   begin
-    check_browser_type "desktop", $browser_type
     $driver = Selenium::WebDriver.for(:"#{$browser_type}")
-    $driver.manage.window.maximize
+    $driver.manage().window().maximize()
   rescue Exception => e
     puts e.message
     Process.exit(0)
