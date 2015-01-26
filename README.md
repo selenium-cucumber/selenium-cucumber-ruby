@@ -5,8 +5,8 @@ Welcome to selenium-cucumber
 
 selenium-cucumber : Automation Tesing Using Ruby
 
-selenium-cucumber is a behavior driven development (BDD) approach to write automation test script to test web applications.
-It enables you to write and execute automated acceptance tests of web apps.
+selenium-cucumber is a behavior driven development (BDD) approach to write automation test script to test Web and Android Apps.
+It enables you to write and execute automated acceptance/unit tests.
 It is cross-platform, open source and free.
 Automate your test cases with minimal coding.
 [More Details](http://seleniumcucumber.info/)
@@ -48,7 +48,7 @@ To get started with selenium-cucumber you need to run `selenium-cucumber gen` co
         |
         |__my_first.feature
 
-Take a look at `my_first.feature` and change it to fit your web application.
+Take a look at `my_first.feature` and change it to fit your web or android application.
 
 
 Predefined steps

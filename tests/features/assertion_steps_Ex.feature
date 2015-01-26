@@ -13,15 +13,19 @@ Feature: Assertion Steps
 		Then I should see page title having partial text as "selenium–cucumber"
 		Then I should not see page title having partial text as "Wrong title"
 
+	@allow-rescue
 	Scenario: verify page title - negative test
 		Then I should see page title as "wrong title"
 
+	@allow-rescue
 	Scenario: verify page title - negative test	
 		Then I should not see page title as "Test Page for selenium–cucumber"
 
+	@allow-rescue
 	Scenario: verify partial page title - negative test
 		Then I should see page title having partial text as "Wrong title"
 
+	@allow-rescue
 	Scenario: verify partial page title - negative test
 		Then I should not see page title having partial text as "selenium–cucumber"
 

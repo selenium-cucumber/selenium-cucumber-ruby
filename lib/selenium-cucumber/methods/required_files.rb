@@ -7,3 +7,4 @@ require 'appium_lib'
 include RbConfig
 
 require_relative 'misc_methods'
+require_relative 'error_handling_methods'

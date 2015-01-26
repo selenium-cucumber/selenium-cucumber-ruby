@@ -1,50 +1,57 @@
 require 'net/https'
 require_relative 'required_files'
 
-# Page title checking
+# This file contains assertion methods which are called from assertion_steps.rb
+
+# Method to return page title
 def get_page_title
   $driver.title
 end
 
+# Method to verify title
+# param 1 : String : expected title
+# param 2 : Boolean : test case [true or flase]
 def check_title(title, test_case)
-  #raise TestCaseFailed, 'Page Title Not Matched' unless get_page_title == title
   page_title = get_page_title
-
   if test_case
     if page_title != "#{title}"
-      raise TestCaseFailed, 'Text Not Matched'
+      raise TestCaseFailed, 'Page Title Not Matched'
     end
   else
     if page_title == "#{title}"
-      raise TestCaseFailed, 'Text Matched'
+      raise TestCaseFailed, 'Page Title Matched'
     end
   end
-
 end
 
+# Method to verify partial title
+# param 1 : String : partial title string
+# param 2 : Boolean : test case [true or flase]
 def check_partial_title(partial_text_title, test_case)
-  #raise TestCaseFailed, 'Partial text not present in Page Title' unless get_page_title == title
-
   page_title = get_page_title
-
   if test_case
     if not page_title.include? "#{partial_text_title}"
-      raise TestCaseFailed, 'Partial Text Not Present'
+      raise TestCaseFailed, 'Partial Page Title Not Present'
     end
   else
     if page_title.include? "#{partial_text_title}"
-      raise TestCaseFailed, 'Text Matched'
+      raise TestCaseFailed, 'Page Title Matched'
     end
   end
-
 end
 
 # Method to get element text
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : Locator value
 def get_element_text(access_type, access_name)
   WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }.text
 end
 
 # Method to check element text
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : Expected element text
+# param 3 : String : Locator value
+# param 4 : Boolean : test case [true or flase]
 def check_element_text(access_type, actual_value, access_name, test_case)
   element_text = get_element_text(access_type, access_name)
 
@@ -60,6 +67,10 @@ def check_element_text(access_type, actual_value, access_name, test_case)
 end
 
 # Method to check partial element text
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : Expected element partial text
+# param 3 : String : Locator value
+# param 4 : Boolean : test case [true or flase]
 def check_element_partial_text(access_type, actual_value, access_name, test_case)
   element_text = get_element_text(access_type, access_name)
 
@@ -75,11 +86,16 @@ def check_element_partial_text(access_type, actual_value, access_name, test_case
 end
 
 # Method to return element status - enabled?
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : Locator value
 def is_element_enabled(access_type, access_name)
   WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }.enabled?
 end
 
 # Element enabled checking
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : Expected element text
+# param 4 : Boolean : test case [true or flase]
 def check_element_enable(access_type, access_name, test_case)
   result = is_element_enabled(access_type, access_name)
 
@@ -91,11 +107,19 @@ def check_element_enable(access_type, access_name, test_case)
 end
 
 # method to get attribute value
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : Expected element text
+# param 3 : String : atrribute name
 def get_element_attribute(access_type, access_name, attribute_name)
   WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }.attribute("#{attribute_name}")
 end
 
 # method to check attribute value
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : atrribute name
+# param 3 : String : atrribute value
+# param 4 : String : Locator value
+# param 5 : Boolean : test case [true or flase]
 def check_element_attribute(access_type, attribute_name, attribute_value, access_name, test_case)
 
   attr_val = get_element_attribute(access_type, access_name, attribute_name)
@@ -112,11 +136,16 @@ def check_element_attribute(access_type, attribute_name, attribute_value, access
 end
 
 # method to get element status - displayed?
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : Locator value
 def is_element_displayed(access_type, access_name)
   WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }.displayed?
 end
 
 # method to check element presence
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : Locator value
+# param 3 : Boolean : test case [true or flase]
 def check_element_presence(access_type, access_name, test_case)
   if test_case
     if !is_element_displayed(access_type, access_name)
@@ -125,10 +154,10 @@ def check_element_presence(access_type, access_name, test_case)
   else
     begin
       if is_element_displayed(access_type, access_name)
-        raise 'Present'
+        raise 'Present' # since it is negative test and we found element
       end
     rescue Exception => e
-      if e.message == 'Present'
+      if e.message == 'Present' # only raise if it present
         raise TestCaseFailed, 'Element Present'
       end
     end
@@ -136,6 +165,9 @@ def check_element_presence(access_type, access_name, test_case)
 end
 
 # method to assert checkbox check/uncheck
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : Locator value
+# param 3 : Boolean : test case [true or flase]
 def is_checkbox_checked(access_type, access_name, should_be_checked = true)
   checkbox = WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }
 
@@ -147,6 +179,9 @@ def is_checkbox_checked(access_type, access_name, should_be_checked = true)
 end
 
 # method to assert radio button selected/unselected
+# param 1 : String : Locator type (id, name, class, xpath, css)
+# param 2 : String : Locator value
+# param 3 : Boolean : test case [true or flase]
 def is_radio_button_selected(access_type, access_name, should_be_selected = true)
   radio_button = WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }
 
@@ -209,6 +244,10 @@ def does_images_similar?(actual_img_access_type, actual_img_access_name, excp_im
 end
 
 # Method to compare two images
+# param 1 : String : Locator type (id, name, class, xpath, css, url)
+# param 2 : String : Locator value
+# param 3 : String : Locator type (id, name, class, xpath, css, url, image_name)
+# param 4 : String : Locator value
 def compare_image(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
   if actual_img_access_type == 'url'
     actual_img_url = actual_img_access_name
@@ -224,10 +263,12 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
     expected_img_url = get_element_attribute(excp_img_access_type, excp_img_access_name, 'src')
   end
 
+  # replace 'https' with 'http' from actual image url
   if actual_img_url.include? 'https'
     actual_img_url['https'] = 'http'
   end
 
+  # replace 'https' with 'http' from expected image url
   if expected_img_url.include? 'https'
     expected_img_url['https'] = 'http'
   end
@@ -238,14 +279,14 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
     image_type = 'jpg'
   end
 
-# Storing actual image locally
+  # Storing actual image locally
   open('./features/actual_images/actual_image.' + image_type, 'wb') do |file|
     file << open(actual_img_url).read
   end
   
   actual_img_url = './features/actual_images/actual_image.' + image_type
 
-# Storing Expected image locally
+  # Storing Expected image locally
   if excp_img_access_type != 'image_name'
     open('./features/expected_images/expected_image.' + image_type, 'wb') do |file|
       file << open(expected_img_url).read
@@ -253,7 +294,7 @@ def compare_image(actual_img_access_type, actual_img_access_name, excp_img_acces
     expected_img_url = './features/expected_images/expected_image.' + image_type
   end
 
-# Verify image extension and call respective compare function
+  # Verify image extension and call respective compare function
   if image_type == 'png'
     return compare_png_images(expected_img_url, actual_img_url)
   end
