@@ -39,6 +39,10 @@ Then(/^I switch to previous window$/) do
   switch_to_old_window
 end
 
+Then(/^I close new window$/) do
+  close_new_window
+end
+
 # steps to scroll to element
 Then(/^I scroll to element having (.+) "(.*?)"$/) do |type, access_name|
   validate_locator type
