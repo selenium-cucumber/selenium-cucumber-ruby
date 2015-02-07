@@ -22,6 +22,8 @@ To open/close URL and to navigate between pages use following steps :
 	Then I switch to new window
 	Then I close new window
 	Then I switch to previous window
+	Then I switch to frame "(.*?)"
+	Then I switch to main window
 	
 To interact with browser use following steps :    
 
