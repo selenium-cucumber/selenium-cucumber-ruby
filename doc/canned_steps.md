@@ -19,9 +19,15 @@ To open/close URL and to navigate between pages use following steps :
 	Then I navigate forward
 	Then I navigate back
 	Then I refresh page
+
+To switch between windows use following steps :
+
 	Then I switch to new window
 	Then I close new window
 	Then I switch to previous window
+
+To switch between frames use following steps :	
+
 	Then I switch to frame "(.*?)"
 	Then I switch to main window
 	
