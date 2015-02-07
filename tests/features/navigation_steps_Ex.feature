@@ -32,6 +32,21 @@ Feature: Navigation Steps
         Then I switch to previous window
         Then I should see page title as "Test Page for selenium–cucumber"
 
+	Scenario: switch to first frame
+		Then I switch to frame "frame_one"
+		Then I enter "first frame" into input field having id "frame1_fname"
+
+	Scenario: switch to main window
+		Then I switch to main window
+		Then I enter "test" into input field having id "f_name"
+
+	Scenario: switch to second frame
+		Then I switch to frame "frame_two"
+		Then I enter "test@gmail.com" into input field having id "frame2_email"
+
+	Scenario: again switch to main window
+		Then I switch to main window
+
 	Scenario: Zoom in/out web page
 		
  		Then I zoom in page
