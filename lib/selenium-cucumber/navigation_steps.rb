@@ -39,6 +39,14 @@ Then(/^I switch to previous window$/) do
   switch_to_old_window
 end
 
+Then(/^I switch to main window$/) do
+  switch_to_main_window
+end
+
+Then(/^I switch to frame "(.*?)"$/) do |frame|
+  switch_frame frame
+end
+
 Then(/^I close new window$/) do
   close_new_window
 end
