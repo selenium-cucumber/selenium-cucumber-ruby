@@ -89,7 +89,6 @@ def switch_to_new_window
   $driver.switch_to.window($driver.window_handles[1])
 end
 
-
 # Method to switch to old window
 def switch_to_old_window
   $driver.switch_to.window($old_win)
@@ -98,6 +97,16 @@ end
 # Method to close new window
 def close_new_window
   $driver.close
+end
+
+# method to switch frame
+def switch_frame frame
+  $driver.switch_to.frame(frame)
+end
+
+# method to switch to main window
+def switch_to_main_window
+  $driver.switch_to.default_content
 end
 
 =begin
