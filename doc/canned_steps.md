@@ -29,7 +29,7 @@ To switch between windows use following steps :
 To switch between frames use following steps :	
 
 	Then I switch to frame "(.*?)"
-	Then I switch to main window
+	Then I switch to main content
 	
 To interact with browser use following steps :    
 

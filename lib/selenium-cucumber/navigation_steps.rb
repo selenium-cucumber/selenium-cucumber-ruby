@@ -39,7 +39,7 @@ Then(/^I switch to previous window$/) do
   switch_to_old_window
 end
 
-Then(/^I switch to main window$/) do
+Then(/^I switch to main content$/) do
   switch_to_main_window
 end
 

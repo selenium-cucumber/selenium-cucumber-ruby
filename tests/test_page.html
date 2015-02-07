@@ -46,7 +46,7 @@
       }
 	  
 	  function hovered() {
-        alert("Mouse hovered")
+        document.getElementById("mouse_hover_demo").innerHTML = "Mouse hovered";
       }
     </script>
     <form id="frm" action="" method="post">
@@ -199,7 +199,8 @@
 
 	<fieldset>
       <legend>Mous hover</legend>
-		<button id="pop_alert" onmouseover="hovered()">Hover It</button>
+		<button id="hover_it" onmouseover="hovered()">Hover It</button>
+     <p id="mouse_hover_demo">Mouse Not hovered</p>
     </fieldset>
 
     <br>
