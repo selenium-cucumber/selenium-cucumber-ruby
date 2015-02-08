@@ -78,12 +78,14 @@ Then(/^I zoom out page$/) do
   zoom_in_out('subtract')
 end
 
+# method to reset page view
+Then(/^I reset page view$/) do
+  zoom_in_out('numpad0')
+end
+
 # steps to zoom out till element displays
 Then(/^I zoom out page till I see element having (.+) "(.*?)"$/) do |type, access_name|
   validate_locator type
   zoom_in_out_till_element_display(type, 'subtract', access_name)
 end
 
-Then(/^I reset page view$/) do
-  zoom_in_out('numpad0')
-end

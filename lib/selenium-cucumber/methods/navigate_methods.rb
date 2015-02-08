@@ -19,7 +19,7 @@ def close_driver
   $driver.quit
 end
 
-# method to return key by os wise
+# method to return key (control/command) by os wise
 def get_key
   os = Selenium::WebDriver::Platform.os
   if os.to_s == 'windows'
@@ -31,18 +31,40 @@ def get_key
   end
 end
 
-# Method to zoom in/out page
-def zoom_in_out(in_out)
-  $driver.action.key_down(:"#{get_key}").send_keys(:"#{in_out}").key_up(:"#{get_key}").perform
+# Method to zoom in/out/reset page
+def zoom_in_out(operation)
+  if $driver.capabilities.browser_name == 'chrome'
+    actual_zoom = $driver.execute_script "return document.body.style.zoom"
+    puts "actual_zoom:#{actual_zoom}"
+    if actual_zoom == '' or actual_zoom == nil
+      actual_zoom = 100
+    else
+      actual_zoom = actual_zoom.delete '%'
+      actual_zoom = actual_zoom.to_i
+    end
+    
+    if operation == 'add'
+      actual_zoom += 15 unless actual_zoom >= 500
+    elsif operation == 'subtract'
+      actual_zoom -= 15 unless actual_zoom <= 25
+    else
+      actual_zoom = 100
+    end
+    puts "actual_zoom:#{actual_zoom}"
+    $driver.execute_script "document.body.style.zoom='#{actual_zoom}%'"
+  else
+    html = $driver.find_element(:tag_name => "body")
+    $driver.action.send_keys(html, :"#{get_key}", :"#{operation}" ).perform
+  end
 end
 
 # Method to zoom in/out web page until web element displyas
-def zoom_in_out_till_element_display(access_type, in_out, access_name)
+def zoom_in_out_till_element_display(access_type, operation, access_name)
   while true
     if WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }.displayed?
       break
     else
-      $driver.action.key_down(:"#{get_key}").send_keys(:"#{in_out}").key_up(:"#{get_key}").perform
+      zoom_in_out(operation)
     end
   end
 end
