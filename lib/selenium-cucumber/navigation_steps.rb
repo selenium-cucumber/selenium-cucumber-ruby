@@ -26,29 +26,43 @@ Then(/^I maximize browser window$/) do
   maximize_browser
 end
 
-# steps to refresh page
+# step to refresh page
 Then(/^I refresh page$/) do
   $driver.navigate.refresh
 end
 
+# step to switch to new window
 Then(/^I switch to new window$/) do
   switch_to_new_window
 end
 
+# step to switch to previous window
 Then(/^I switch to previous window$/) do
-  switch_to_old_window
+  switch_to_previous_window
 end
 
-Then(/^I switch to main content$/) do
+# step to switch to main window
+Then(/^I switch to main window$/) do
   switch_to_main_window
 end
 
-Then(/^I switch to frame "(.*?)"$/) do |frame|
-  switch_frame frame
+Then(/^I switch to window having title "(.*?)"$/) do |window_title|
+  switch_to_window_by_title window_title
 end
 
+# step to close new window
 Then(/^I close new window$/) do
   close_new_window
+end
+
+# step to switch to main content
+Then(/^I switch to main content$/) do
+  switch_to_main_content
+end
+
+# step to switch to frame
+Then(/^I switch to frame "(.*?)"$/) do |frame|
+  switch_frame frame
 end
 
 # steps to scroll to element

@@ -102,18 +102,35 @@ def scroll_page(to)
   end
 end
 
-$old_win = nil
-
-# Method to switch to new window
-
-def switch_to_new_window
-  $old_win = $driver.window_handle
-  $driver.switch_to.window($driver.window_handles[1])
+# Method to switch to old window
+def switch_to_previous_window
+  $driver.switch_to.window $previous_window
 end
 
-# Method to switch to old window
-def switch_to_old_window
-  $driver.switch_to.window($old_win)
+# Method to switch to new window
+def switch_to_new_window
+  $previous_window = $driver.window_handle
+  $driver.switch_to.window($driver.window_handles.last)
+end
+
+# Method to switch to main window
+def switch_to_main_window
+  $previous_window = $driver.window_handle
+  $driver.switch_to.window($driver.window_handles.first)
+end
+
+# Method to switch to window by title
+def switch_to_window_by_title window_title
+  $previous_window = $driver.window_handle
+  window_found = false
+  $driver.window_handles.each{ |handle|
+    $driver.switch_to.window handle
+    if $driver.title == window_title
+      window_found = true
+      break
+    end
+  }
+  raise "Window having title \"#{window_title}\" not found" if not window_found
 end
 
 # Method to close new window
@@ -127,7 +144,7 @@ def switch_frame frame
 end
 
 # method to switch to main window
-def switch_to_main_window
+def switch_to_main_content
   $driver.switch_to.default_content
 end
 
