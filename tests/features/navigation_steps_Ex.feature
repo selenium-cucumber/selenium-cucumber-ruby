@@ -4,7 +4,7 @@ Feature: Navigation Steps
  	Scenario: Open test page
  		Given I open test page
 
- 	Scenario: navigating back/forward and refresh page
+ 	Scenario: navigating back/forward page
  		
  		Then I click on link having text "selenium-cucumber gem"
  		Then I should see page title as "selenium-cucumber | RubyGems.org | your community gem host"
@@ -18,19 +18,28 @@ Feature: Navigation Steps
  		Then I navigate back
  		Then I should see page title as "Test Page for selenium–cucumber"	
 		
+	Scenario: refresh page
+
  		Then I refresh page
  		Then I should see page title as "Test Page for selenium–cucumber"	
 		
 	Scenario: switch to new window
         Then I click on link having text "selenium-cucumber website"
         Then I switch to new window
-        Then element having id "access" should be present
         Then I should see page title as "Selenium-Cucumber | Code Less… Test More…"
-        Then I close new window
-       
-    Scenario: switch to privious window
-        Then I switch to previous window
-        Then I should see page title as "Test Page for selenium–cucumber"
+    
+    Scenario: open source code site
+		Then I click on link having text "Source Code"
+		Then I switch to new window
+		
+	Scenario: switch to privous window
+		Then I switch to previous window
+		Then link having text "Blogs" should be present
+		#Then I close new window
+
+	Scenario: switch to window by title (Main window)
+		Then I switch to window having title "Test Page for selenium–cucumber"
+		Then link having text "blog" should be present
 
 	Scenario: switch to first frame
 		Then I switch to frame "frame_one"
