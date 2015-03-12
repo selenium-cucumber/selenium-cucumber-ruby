@@ -536,3 +536,36 @@ To tap on app element use following steps :
 	Then I tap on element having class "(.*?)"
 	Then I tap on element having xpath "(.*?)"
 	Then I tap on element having css "(.*?)"	
+
+Gesture Steps
+------------
+To perform gesture operations on device
+
+##Swipe steps
+------------
+To perform swipe using app elements use following steps :
+   
+    Then I swipe from element having id "(.*?)" to element having id "(.*?)"
+    Then I swipe from element having id "(.*?)" to element having name "(.*?)"
+    Then I swipe from element having id "(.*?)" to element having class "(.*?)"
+    Then I swipe from element having id "(.*?)" to element having xpath "(.*?)"
+
+    Then I swipe from element having name "(.*?)" to element having id "(.*?)"
+    Then I swipe from element having name "(.*?)" to element having name "(.*?)"
+    Then I swipe from element having name "(.*?)" to element having class "(.*?)"
+    Then I swipe from element having name "(.*?)" to element having xpath "(.*?)"
+
+    Then I swipe from element having class "(.*?)" to element having id "(.*?)"
+    Then I swipe from element having class "(.*?)" to element having name "(.*?)"
+    Then I swipe from element having class "(.*?)" to element having class "(.*?)"
+    Then I swipe from element having class "(.*?)" to element having xpath "(.*?)"
+
+    Then I swipe from element having xpath "(.*?)" to element having id "(.*?)"
+    Then I swipe from element having xpath "(.*?)" to element having name "(.*?)"
+    Then I swipe from element having xpath "(.*?)" to element having class "(.*?)"
+    Then I swipe from element having xpath "(.*?)" to element having xpath "(.*?)"
+
+To perform swipe using co-ordinates of app
+    
+    Then I swipe from co-ordinates "(.*?)","(.*?)" to co-ordinates "(.*?)","(.*?)"
+

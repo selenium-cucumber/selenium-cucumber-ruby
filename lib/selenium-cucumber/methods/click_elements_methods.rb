@@ -25,3 +25,5 @@ def long_press(type, access_name, duration)
   args = args_with_ele_ref(args)
   chain_method(:longPress, args)
 end
+
+
