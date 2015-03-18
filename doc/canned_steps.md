@@ -537,9 +537,9 @@ To print testing configuration use following step :
 
 	Then I print configuration
 
-Mobile Steps
+## Mobile Steps
 
-##Tap Steps
+### Tap Steps
 -----------
 To tap on app element use following steps :
 
@@ -549,11 +549,11 @@ To tap on app element use following steps :
 	Then I tap on element having xpath "(.*?)"
 	Then I tap on element having css "(.*?)"	
 
-Gesture Steps
+### Gesture Steps
 ------------
 To perform gesture operations on device
 
-##Swipe steps
+### Swipe steps
 ------------
 To perform swipe using app elements use following steps :
    
@@ -581,7 +581,7 @@ To perform swipe using co-ordinates
     
     Then I swipe from co-ordinates "(.*?)","(.*?)" to co-ordinates "(.*?)","(.*?)"
 
-##long tap steps
+### long tap steps
 ------------    
 To perform long tap with default duration of 2 seconds on app elements use following steps :
   
@@ -605,5 +605,5 @@ To perform long tap with customized duration of seconds using co-ordinates use f
   
   	Then I long tap on co\-ordinate "(.*?)","(.*?)" for "(.*?)" sec
 
-## Close app step
+### Close app step
   	Then I close app
