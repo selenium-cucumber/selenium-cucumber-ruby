@@ -46,7 +46,7 @@
       }
 	  
 	  function hovered() {
-        alert("Mouse hovered")
+        document.getElementById("mouse_hover_demo").innerHTML = "Mouse hovered";
       }
     </script>
     <form id="frm" action="" method="post">
@@ -199,7 +199,8 @@
 
 	<fieldset>
       <legend>Mous hover</legend>
-		<button id="pop_alert" onmouseover="hovered()">Hover It</button>
+		<button id="hover_it" onmouseover="hovered()">Hover It</button>
+     <p id="mouse_hover_demo">Mouse Not hovered</p>
     </fieldset>
 
     <br>
@@ -219,6 +220,13 @@
       <p id="dbClick" ondblclick="doubleClick()">Double-click this paragraph to trigger a function.</p>
         <p id="demo2" name="demo2_name"></p>
       </p>
+    </fieldset>
+
+    <fieldset>
+      <legend>iFrames</legend>
+      <iframe name="frame_one" src="iFrame1.html" width="200" height="200"></iframe>
+      <iframe name="frame_two" src="iFrame2.html" width="200" height="200"></iframe>
+
     </fieldset>
   </body>
 </html>
