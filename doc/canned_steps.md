@@ -565,7 +565,33 @@ To perform swipe using app elements use following steps :
     Then I swipe from element having xpath "(.*?)" to element having class "(.*?)"
     Then I swipe from element having xpath "(.*?)" to element having xpath "(.*?)"
 
-To perform swipe using co-ordinates of app
+To perform swipe using co-ordinates
     
     Then I swipe from co-ordinates "(.*?)","(.*?)" to co-ordinates "(.*?)","(.*?)"
 
+##long tap steps
+------------    
+To perform long tap with default duration of 2 seconds on app elements use following steps :
+  
+  Then I long tap on element having id "(.*?)"
+  Then I long tap on element having name "(.*?)"
+  Then I long tap on element having class "(.*?)"
+  Then I long tap on element having xpath "(.*?)"
+
+To perform long tap with customized duration of seconds on app elements use following steps :  
+  
+  Then I long tap on element having id "(.*?)" for "(.*?)" sec
+  Then I long tap on element having name "(.*?)" for "(.*?)" sec
+  Then I long tap on element having class "(.*?)" for "(.*?)" sec
+  Then I long tap on element having xpath "(.*?)" for "(.*?)" sec
+
+To perform long tap with default duration of 2 seconds using co-ordinates use following step :
+
+  Then I long tap on co\-ordinate "(.*?)","(.*?)
+
+To perform long tap with customized duration of seconds using co-ordinates use following step :
+  
+  Then I long tap on co\-ordinate "(.*?)","(.*?)" for "(.*?)" sec
+
+## Close app step
+  Then I close app

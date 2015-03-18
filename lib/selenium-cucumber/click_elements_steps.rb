@@ -31,9 +31,6 @@ When(/^I tap on element having (.+) "(.*?)"$/) do |type, access_name|
   click(type, access_name)
 end
 
-Then(/^I long press on element having (.+) "(.*?)"$/) do |type, access_name|
-  validate_locator type
-  long_press(type, access_name, duration)
-end
+
 
 
