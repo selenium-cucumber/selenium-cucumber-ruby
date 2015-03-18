@@ -21,6 +21,16 @@ Feature: Navigation Steps
  		Then I refresh page
  		Then I should see page title as "Test Page for selenium–cucumber"	
 		
+	Scenario: switch to new window
+        Then I click on link having text "selenium-cucumber website"
+        Then I switch to new window
+        Then element having id "access" should be present
+        Then I should see page title as "Selenium-Cucumber | Code Less… Test More…"
+        Then I close new window
+       
+    Scenario: switch to privious window
+        Then I switch to previous window
+        Then I should see page title as "Test Page for selenium–cucumber"
 
 	Scenario: Zoom in/out web page
 		

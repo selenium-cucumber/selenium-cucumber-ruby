@@ -15,11 +15,11 @@ def check_title(title, test_case)
   page_title = get_page_title
   if test_case
     if page_title != "#{title}"
-      raise TestCaseFailed, 'Page Title Not Matched'
+      raise TestCaseFailed, "Page Title Not Matched, Actual Page Title : #{page_title}"
     end
   else
     if page_title == "#{title}"
-      raise TestCaseFailed, 'Page Title Matched'
+      raise TestCaseFailed, "Page Title Matched, Actual Page Title:#{page_title}"
     end
   end
 end

@@ -20,6 +20,7 @@ To open/close URL and to navigate between pages use following steps :
 	Then I navigate back
 	Then I refresh page
 	Then I switch to new window
+	Then I close new window
 	Then I switch to previous window
 	
 To interact with browser use following steps :    

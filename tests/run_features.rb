@@ -4,6 +4,8 @@ puts ARGV[0]
 
 OS = Selenium::WebDriver::Platform.os
 
+  system("bundle update")
+
 if ARGV.length == 0
 
   puts "\n\n\t######  Running all features on firefox browser  ######\n\n"

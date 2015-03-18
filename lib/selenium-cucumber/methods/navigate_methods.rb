@@ -95,6 +95,11 @@ def switch_to_old_window
   $driver.switch_to.window($old_win)
 end
 
+# Method to close new window
+def close_new_window
+  $driver.close
+end
+
 =begin
 def switch_to_new_window
   win_handles = $driver.window_handles
