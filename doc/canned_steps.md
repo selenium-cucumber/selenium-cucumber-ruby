@@ -10,7 +10,7 @@ You can add your own steps or change the ones you see here.
 * [Progress Steps](https://github.com/sameer49/selenium-cucumber/blob/master/doc/canned_steps.md#progress-steps)
 * [Screenshot Steps](https://github.com/sameer49/selenium-cucumber/blob/master/doc/canned_steps.md#screenshot-steps)
 * [Configuration Steps](https://github.com/sameer49/selenium-cucumber/blob/master/doc/canned_steps.md#configuration-steps)
-
+* [Mobile steps](https://github.com/sameer49/selenium-cucumber/blob/master/doc/canned_steps.md#Mobile-steps)
 ## Navigation Steps
 
 To open/close URL and to navigate between pages use following steps :
@@ -526,7 +526,7 @@ To print testing configuration use following step :
 
 	Then I print configuration
 
-#Mobile Steps
+Mobile Steps
 
 ##Tap Steps
 -----------
@@ -574,25 +574,25 @@ To perform swipe using co-ordinates
 ------------    
 To perform long tap with default duration of 2 seconds on app elements use following steps :
   
-  Then I long tap on element having id "(.*?)"
-  Then I long tap on element having name "(.*?)"
-  Then I long tap on element having class "(.*?)"
-  Then I long tap on element having xpath "(.*?)"
+	Then I long tap on element having id "(.*?)"
+	Then I long tap on element having name "(.*?)"
+  	Then I long tap on element having class "(.*?)"
+  	Then I long tap on element having xpath "(.*?)"
 
 To perform long tap with customized duration of seconds on app elements use following steps :  
   
-  Then I long tap on element having id "(.*?)" for "(.*?)" sec
-  Then I long tap on element having name "(.*?)" for "(.*?)" sec
-  Then I long tap on element having class "(.*?)" for "(.*?)" sec
-  Then I long tap on element having xpath "(.*?)" for "(.*?)" sec
+  	Then I long tap on element having id "(.*?)" for "(.*?)" sec
+  	Then I long tap on element having name "(.*?)" for "(.*?)" sec
+  	Then I long tap on element having class "(.*?)" for "(.*?)" sec
+  	Then I long tap on element having xpath "(.*?)" for "(.*?)" sec
 
 To perform long tap with default duration of 2 seconds using co-ordinates use following step :
 
-  Then I long tap on co\-ordinate "(.*?)","(.*?)
+  	Then I long tap on co\-ordinate "(.*?)","(.*?)
 
 To perform long tap with customized duration of seconds using co-ordinates use following step :
   
-  Then I long tap on co\-ordinate "(.*?)","(.*?)" for "(.*?)" sec
+  	Then I long tap on co\-ordinate "(.*?)","(.*?)" for "(.*?)" sec
 
 ## Close app step
-  Then I close app
+  	Then I close app
