@@ -11,6 +11,7 @@ You can add your own steps or change the ones you see here.
 * [Screenshot Steps](https://github.com/sameer49/selenium-cucumber/blob/master/doc/canned_steps.md#screenshot-steps)
 * [Configuration Steps](https://github.com/sameer49/selenium-cucumber/blob/master/doc/canned_steps.md#configuration-steps)
 * [Mobile steps](https://github.com/sameer49/selenium-cucumber/blob/master/doc/canned_steps.md#Mobile-steps)
+
 ## Navigation Steps
 
 To open/close URL and to navigate between pages use following steps :
