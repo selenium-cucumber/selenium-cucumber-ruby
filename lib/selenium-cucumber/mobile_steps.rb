@@ -1,4 +1,5 @@
-require_relative 'methods/mobile_gesture_methods'
+require_relative 'methods/mobile_methods'
+require_relative 'methods/navigate_methods'
 
 Then(/^I swipe from element having (.+) "(.*?)" to element having (.+) "(.*?)"$/) do |type1,access_name1,type2,access_name2|
   validate_locator type1
@@ -9,12 +10,10 @@ Then(/^I swipe from element having (.+) "(.*?)" to element having (.+) "(.*?)"$/
   end_x = $end_x
   end_y = $end_y
   swipe(start_x, start_y, end_x, end_y)
-  puts "Swipe Successfull using app elements"
 end
 
 Then(/^I swipe from co\-ordinates "(.*?)","(.*?)" to co\-ordinates "(.*?)","(.*?)"$/) do |start_x, start_y, end_x, end_y|
   swipe(start_x, start_y, end_x, end_y)
-  puts "Swipe Successfull using co-ordinates"
 end
 
 Then(/^I long tap on element having (.+) "(.*?)"$/) do |type, access_name|
@@ -37,4 +36,12 @@ end
 
 Then(/^I close app$/) do
   close_app
+end
+
+Then(/^I tap on back button of device$/) do
+  navigate('back')
+end
+
+Then(/^I press back button of device$/) do
+  navigate('back')
 end
