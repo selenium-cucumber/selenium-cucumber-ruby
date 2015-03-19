@@ -539,6 +539,7 @@ To print testing configuration use following step :
 
 ## Mobile Steps
 
+
 ### Tap Steps
 -----------
 To tap on app element use following steps :
@@ -547,7 +548,12 @@ To tap on app element use following steps :
 	Then I tap on element having name "(.*?)"
 	Then I tap on element having class "(.*?)"
 	Then I tap on element having xpath "(.*?)"
-	Then I tap on element having css "(.*?)"	
+	Then I tap on element having css "(.*?)"
+
+To Tap on back button of device	use following step :
+
+    Then I tap on back button of device
+    Then I press back button of device
 
 ### Gesture Steps
 ------------
