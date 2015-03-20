@@ -587,6 +587,42 @@ To perform swipe using co-ordinates
     
     Then I swipe from co-ordinates "(.*?)","(.*?)" to co-ordinates "(.*?)","(.*?)"
 
+To perform swipe using direction
+    
+    Then I swipe right
+    Then I swipe left
+    Then I swipe up
+    Then I swipe down
+
+To perform swipe using app element with direction use following steps :
+    
+    Then I swipe element having id "(.*?)" to right
+    Then I swipe element having name "(.*?)" to right
+    Then I swipe element having class "(.*?)" to right
+    Then I swipe element having xpath "(.*?)" to right
+
+    Then I swipe element having id "(.*?)" to left
+    Then I swipe element having name "(.*?)" to left
+    Then I swipe element having class "(.*?)" to left
+    Then I swipe element having xpath "(.*?)" to left
+
+    Then I swipe element having id "(.*?)" to up
+    Then I swipe element having name "(.*?)" to up
+    Then I swipe element having class "(.*?)" to up
+    Then I swipe element having xpath "(.*?)" to up
+
+    Then I swipe element having id "(.*?)" to down
+    Then I swipe element having name "(.*?)" to down
+    Then I swipe element having class "(.*?)" to down
+    Then I swipe element having xpath "(.*?)" to down
+
+To perform swipe using co-ordinates with direction use following steps :
+    Then I swipe co-ordinates "(.*?)","(.*?)" to left
+    Then I swipe co-ordinates "(.*?)","(.*?)" to right
+    Then I swipe co-ordinates "(.*?)","(.*?)" to up
+    Then I swipe co-ordinates "(.*?)","(.*?)" to down
+
+
 ### long tap steps
 ------------    
 To perform long tap with default duration of 2 seconds on app elements use following steps :
