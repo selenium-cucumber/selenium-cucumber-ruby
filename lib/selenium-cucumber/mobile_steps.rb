@@ -1,20 +1,73 @@
 require_relative 'methods/mobile_methods'
 require_relative 'methods/navigate_methods'
 
+#---------- swipe with elements
 Then(/^I swipe from element having (.+) "(.*?)" to element having (.+) "(.*?)"$/) do |type1,access_name1,type2,access_name2|
   validate_locator type1
   validate_locator type2
-  get_coordinates(type1, access_name1, type2, access_name2)
-  start_x = $start_x
-  start_y = $start_y
-  end_x = $end_x
-  end_y = $end_y
-  swipe(start_x, start_y, end_x, end_y)
+  swipe_using_elements(type1,access_name1,type2,access_name2)
 end
 
+#---------- swipe with co-ordinates
 Then(/^I swipe from co\-ordinates "(.*?)","(.*?)" to co\-ordinates "(.*?)","(.*?)"$/) do |start_x, start_y, end_x, end_y|
   swipe(start_x, start_y, end_x, end_y)
 end
+
+#---------- Swipe with direction
+Then(/^I swipe left$/) do
+  swipe_direction("left")
+end
+
+Then(/^I swipe right$/) do
+  swipe_direction("right")
+end
+
+Then(/^I swipe up$/) do
+  swipe_direction("up")
+end
+
+Then(/^I swipe down$/) do
+  swipe_direction("down")
+end
+ 
+#----------- Swipe element with direction
+Then(/^I swipe element having (.+) "(.*?)" to right$/) do |type, access_name|
+  validate_locator type
+  swipe_element_with_direction(type, access_name, "right")
+end
+
+Then(/^I swipe element having (.+) "(.*?)" to left$/) do |type, access_name|
+  swipe_element_with_direction(type, access_name, "left")
+end
+
+Then(/^I swipe element having (.+) "(.*?)" to up$/) do |type, access_name|
+  swipe_element_with_direction(type, access_name, "up")
+end
+
+Then(/^I swipe element having (.+) "(.*?)" to down$/) do |type, access_name|
+  swipe_element_with_direction(type, access_name, "down")
+end
+
+#swipe co-ordinates with direction
+
+  Then(/^I swipe co\-ordinates "(.*?)","(.*?)" to left$/) do |start_x, start_y|
+     swipe_coordinates_with_direction(start_x, start_y, "left")
+  end
+
+
+  Then(/^I swipe co\-ordinates "(.*?)","(.*?)" to right$/) do |start_x, start_y|
+     swipe_coordinates_with_direction(start_x, start_y, "right")
+  end
+
+
+  Then(/^I swipe co\-ordinates "(.*?)","(.*?)" to up$/) do |start_x, start_y|
+     swipe_coordinates_with_direction(start_x, start_y, "up")
+  end
+
+
+  Then(/^I swipe co\-ordinates "(.*?)","(.*?)" to down$/) do |start_x, start_y|
+     swipe_coordinates_with_direction(start_x, start_y, "down")
+  end
 
 Then(/^I long tap on element having (.+) "(.*?)"$/) do |type, access_name|
   validate_locator type
