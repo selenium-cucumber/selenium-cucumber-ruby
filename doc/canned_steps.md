@@ -3,13 +3,15 @@
 selenium-cucumber comes with the following set of predefined steps.
 You can add your own steps or change the ones you see here.
 
-* [Navigation Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#navigation-steps)
-* [Assertion Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#assertion-steps)
-* [Input Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#input-steps)
-* [Click Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#click-steps)
-* [Progress Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#progress-steps)
-* [Screenshot Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#screenshot-steps)
-* [Configuration Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#configuration-steps)
+* [Navigation Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/dev/doc/canned_steps.md#navigation-steps)
+* [Assertion Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/dev/doc/canned_steps.md#assertion-steps)
+* [Input Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/dev/doc/canned_steps.md#input-steps)
+* [Click Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/dev/doc/canned_steps.md#click-steps)
+* [Progress Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/dev/doc/canned_steps.md#progress-steps)
+* [Screenshot Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/dev/doc/canned_steps.md#screenshot-steps)
+* [Configuration Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/dev/doc/canned_steps.md#configuration-steps)
+* [Mobile steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/dev/doc/canned_steps.md#Mobile-steps)
+
 
 ## Navigation Steps
 
@@ -19,9 +21,19 @@ To open/close URL and to navigate between pages use following steps :
 	Then I navigate forward
 	Then I navigate back
 	Then I refresh page
+
+To switch between windows use following steps :
+
 	Then I switch to new window
-	Then I close new window
 	Then I switch to previous window
+	Then I switch to window having title "(.*?)"
+	Then I close new window
+	Then I switch to main window
+
+To switch between frames use following steps :	
+
+	Then I switch to frame "(.*?)"
+	Then I switch to main content
 	
 To interact with browser use following steps :    
 
@@ -526,9 +538,10 @@ To print testing configuration use following step :
 
 	Then I print configuration
 
-#Mobile Steps
+## Mobile Steps
 
-##Tap Steps
+
+### Tap Steps
 -----------
 To tap on app element use following steps :
 
@@ -536,4 +549,106 @@ To tap on app element use following steps :
 	Then I tap on element having name "(.*?)"
 	Then I tap on element having class "(.*?)"
 	Then I tap on element having xpath "(.*?)"
-	Then I tap on element having css "(.*?)"	
+	Then I tap on element having css "(.*?)"
+
+To Tap on back button of device	use following step :
+
+    Then I tap on back button of device
+    Then I press back button of device
+
+### Gesture Steps
+------------
+To perform gesture operations on device
+
+### Swipe steps
+------------
+To perform swipe using app elements use following steps :
+   
+    Then I swipe from element having id "(.*?)" to element having id "(.*?)"
+    Then I swipe from element having id "(.*?)" to element having name "(.*?)"
+    Then I swipe from element having id "(.*?)" to element having class "(.*?)"
+    Then I swipe from element having id "(.*?)" to element having xpath "(.*?)"
+
+    Then I swipe from element having name "(.*?)" to element having id "(.*?)"
+    Then I swipe from element having name "(.*?)" to element having name "(.*?)"
+    Then I swipe from element having name "(.*?)" to element having class "(.*?)"
+    Then I swipe from element having name "(.*?)" to element having xpath "(.*?)"
+
+    Then I swipe from element having class "(.*?)" to element having id "(.*?)"
+    Then I swipe from element having class "(.*?)" to element having name "(.*?)"
+    Then I swipe from element having class "(.*?)" to element having class "(.*?)"
+    Then I swipe from element having class "(.*?)" to element having xpath "(.*?)"
+
+    Then I swipe from element having xpath "(.*?)" to element having id "(.*?)"
+    Then I swipe from element having xpath "(.*?)" to element having name "(.*?)"
+    Then I swipe from element having xpath "(.*?)" to element having class "(.*?)"
+    Then I swipe from element having xpath "(.*?)" to element having xpath "(.*?)"
+
+To perform swipe using co-ordinates
+    
+    Then I swipe from co-ordinates "(.*?)","(.*?)" to co-ordinates "(.*?)","(.*?)"
+
+To perform swipe using direction
+    
+    Then I swipe right
+    Then I swipe left
+    Then I swipe up
+    Then I swipe down
+
+To perform swipe using app element with direction use following steps :
+    
+    Then I swipe element having id "(.*?)" to right
+    Then I swipe element having name "(.*?)" to right
+    Then I swipe element having class "(.*?)" to right
+    Then I swipe element having xpath "(.*?)" to right
+
+    Then I swipe element having id "(.*?)" to left
+    Then I swipe element having name "(.*?)" to left
+    Then I swipe element having class "(.*?)" to left
+    Then I swipe element having xpath "(.*?)" to left
+
+    Then I swipe element having id "(.*?)" to up
+    Then I swipe element having name "(.*?)" to up
+    Then I swipe element having class "(.*?)" to up
+    Then I swipe element having xpath "(.*?)" to up
+
+    Then I swipe element having id "(.*?)" to down
+    Then I swipe element having name "(.*?)" to down
+    Then I swipe element having class "(.*?)" to down
+    Then I swipe element having xpath "(.*?)" to down
+
+To perform swipe using co-ordinates with direction use following steps :
+    
+    Then I swipe co-ordinates "(.*?)","(.*?)" to left
+    Then I swipe co-ordinates "(.*?)","(.*?)" to right
+    Then I swipe co-ordinates "(.*?)","(.*?)" to up
+    Then I swipe co-ordinates "(.*?)","(.*?)" to down
+
+
+### long tap steps
+------------    
+To perform long tap with default duration of 2 seconds on app elements use following steps :
+  
+	Then I long tap on element having id "(.*?)"
+	Then I long tap on element having name "(.*?)"
+  	Then I long tap on element having class "(.*?)"
+  	Then I long tap on element having xpath "(.*?)"
+
+To perform long tap with customized duration of seconds on app elements use following steps :  
+  
+  	Then I long tap on element having id "(.*?)" for "(.*?)" sec
+  	Then I long tap on element having name "(.*?)" for "(.*?)" sec
+  	Then I long tap on element having class "(.*?)" for "(.*?)" sec
+  	Then I long tap on element having xpath "(.*?)" for "(.*?)" sec
+
+To perform long tap with default duration of 2 seconds using co-ordinates use following step :
+
+  	Then I long tap on co\-ordinate "(.*?)","(.*?)
+
+To perform long tap with customized duration of seconds using co-ordinates use following step :
+  
+  	Then I long tap on co\-ordinate "(.*?)","(.*?)" for "(.*?)" sec
+
+### Close app step
+
+  	Then I close app
