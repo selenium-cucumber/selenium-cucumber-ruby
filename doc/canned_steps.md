@@ -11,6 +11,8 @@ You can add your own steps or change the ones you see here.
 * [Progress Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#progress-steps)
 * [Screenshot Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#screenshot-steps)
 * [Configuration Steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#configuration-steps)
+* [Mobile steps](https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/master/doc/canned_steps.md#Mobile-steps)
+
 
 
 ## Navigation Steps
@@ -618,6 +620,7 @@ To perform swipe using app element with direction use following steps :
     Then I swipe element having xpath "(.*?)" to down
 
 To perform swipe using co-ordinates with direction use following steps :
+    
     Then I swipe co-ordinates "(.*?)","(.*?)" to left
     Then I swipe co-ordinates "(.*?)","(.*?)" to right
     Then I swipe co-ordinates "(.*?)","(.*?)" to up
@@ -649,4 +652,5 @@ To perform long tap with customized duration of seconds using co-ordinates use f
   	Then I long tap on co\-ordinate "(.*?)","(.*?)" for "(.*?)" sec
 
 ### Close app step
+
   	Then I close app
