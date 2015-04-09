@@ -4,12 +4,10 @@ require 'appium_lib'
 # Add your custom steps here
 # $driver is instance of webdriver use this instance to write your custom code
 
-
-
 Given(/^I open test page$/) do
 	link = 'file:///'
-  	link+= File.absolute_path("test_page.html")
-  	navigate_to(link) 
+  link+= File.absolute_path("test_page.html")
+  navigate_to(link) 
 end
 
 # Then(/^I press "(.*?)" key from keyboard$/) do |key|
@@ -34,4 +32,3 @@ end
 #   #Appium::TouchAction.new.tap(element: "#{element}", count: "#{duration}").perform
 #   Appium::TouchAction.new.long_press(element:element, x:10, y:10, duration:duration).perform()
 # end
-
