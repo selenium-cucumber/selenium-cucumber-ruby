@@ -15,7 +15,7 @@ end
 
 # method to print desktop configuration
 def print_desktop_configuration
-  puts 'Platform : ' + Selenium::WebDriver::Platform.os.to_s.upcase
+  puts 'Platform : ' + $driver.capabilities.platform.to_s.upcase
   puts 'Browser : ' + $driver.capabilities.browser_name.to_s.upcase + " " + $driver.capabilities.version.to_s
   puts ''
 end

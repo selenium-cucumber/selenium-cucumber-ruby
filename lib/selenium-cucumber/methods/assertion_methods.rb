@@ -15,11 +15,11 @@ def check_title(title, test_case)
   page_title = get_page_title
   if test_case
     if page_title != "#{title}"
-      raise TestCaseFailed, "Page Title Not Matched, Actual Page Title : #{page_title}"
+      raise TestCaseFailed, "Page Title Not Matched, Actual Page Title : #{page_title}, Expected Page Title : #{title}"
     end
   else
     if page_title == "#{title}"
-      raise TestCaseFailed, "Page Title Matched, Actual Page Title:#{page_title}"
+      raise TestCaseFailed, "Page Title Matched, Actual Page Title: #{page_title}"
     end
   end
 end
@@ -52,16 +52,16 @@ end
 # param 2 : String : Expected element text
 # param 3 : String : Locator value
 # param 4 : Boolean : test case [true or flase]
-def check_element_text(access_type, actual_value, access_name, test_case)
+def check_element_text(access_type, expected_value, access_name, test_case)
   element_text = get_element_text(access_type, access_name)
 
   if test_case
-    if element_text != actual_value
-      raise TestCaseFailed, 'Text Not Matched'
+    if element_text != expected_value
+      raise TestCaseFailed, "Text Not Matched, Actual Text : #{element_text}, Expected Text : #{expected_value}"
     end
   else
-    if element_text == actual_value
-      raise TestCaseFailed, 'Text Matched'
+    if element_text == expected_value
+      raise TestCaseFailed, "Text Matched, Actual Text : #{element_text}"
     end
   end
 end
@@ -71,16 +71,16 @@ end
 # param 2 : String : Expected element partial text
 # param 3 : String : Locator value
 # param 4 : Boolean : test case [true or flase]
-def check_element_partial_text(access_type, actual_value, access_name, test_case)
+def check_element_partial_text(access_type, expected_value, access_name, test_case)
   element_text = get_element_text(access_type, access_name)
 
   if test_case
-    if not element_text.include? "#{actual_value}"
-      raise TestCaseFailed, 'Text Not Matched'
+    if not element_text.include? "#{expected_value}"
+      raise TestCaseFailed, "Element text : #{element_text}, does not contains partial text as : #{expected_value}"
     end
   else
-    if element_text.include? "#{actual_value}"
-      raise TestCaseFailed, 'Text Matched'
+    if element_text.include? "#{expected_value}"
+      raise TestCaseFailed, "Element text : #{element_text}, contains partial text as : #{expected_value}"
     end
   end
 end
@@ -126,11 +126,11 @@ def check_element_attribute(access_type, attribute_name, attribute_value, access
 
   if test_case
     if attr_val != attribute_value
-      raise TestCaseFailed, 'Attribute Value Not Matched'
+      raise TestCaseFailed, "Attribute Value Not Matched, Actual Value : #{attr_val}, Expected Value : #{attribute_value}"
     end
   else
     if attr_val == attribute_value
-      raise TestCaseFailed, 'Attribute Value Matched'
+      raise TestCaseFailed, "Attribute Value Matched, Actual Value : #{attr_val}"
     end
   end
 end
@@ -215,7 +215,7 @@ end
 # method to check javascript pop-up alert text
 def check_alert_text(text)
   if get_alert_text != text
-    raise TestCaseFailed,  'Text on alert pop up not matched'
+    raise TestCaseFailed,  "Text on alert pop up not matched, Actual Text : #{get_alert_text}, Expected Text : #{text}"
   end
 end
 
