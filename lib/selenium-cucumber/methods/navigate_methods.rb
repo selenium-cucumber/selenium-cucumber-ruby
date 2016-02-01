@@ -21,10 +21,10 @@ end
 
 # method to return key (control/command) by os wise
 def get_key
-  os = Selenium::WebDriver::Platform.os
-  if os.to_s == 'windows'
+  os = $driver.capabilities.platform.to_s.upcase
+  if os.to_s == 'WINDOWS' || os.to_s == 'LINUX'
     return 'control'
-  elsif os.to_s == 'macosx'
+  elsif os.to_s == 'DARWIN'
     return 'command'
   else
     raise 'Invalid OS'

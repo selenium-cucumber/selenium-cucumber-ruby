@@ -2,7 +2,7 @@ require 'selenium-webdriver'
 
 puts ARGV[0]
 
-OS = Selenium::WebDriver::Platform.os
+OS = $driver.capabilities.platform.to_s.upcase
 
   system("bundle update")
 
