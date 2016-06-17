@@ -1,0 +1,1 @@
+schtasks /run /s <hostname/ IP address of remote machine> /tn "<name of the scheduled task on remote machine>"
