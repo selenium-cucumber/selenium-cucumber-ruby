@@ -13,14 +13,11 @@ end
 # param 2 : Boolean : test case [true or flase]
 def check_title(title, test_case)
   page_title = get_page_title
+
   if test_case
-    if page_title != "#{title}"
-      raise TestCaseFailed, "Page Title Not Matched, Actual Page Title : #{page_title}, Expected Page Title : #{title}"
-    end
+    expect(page_title).to eq title
   else
-    if page_title == "#{title}"
-      raise TestCaseFailed, "Page Title Matched, Actual Page Title: #{page_title}"
-    end
+    expect(page_title).to_not eq title
   end
 end
 
@@ -29,14 +26,11 @@ end
 # param 2 : Boolean : test case [true or flase]
 def check_partial_title(partial_text_title, test_case)
   page_title = get_page_title
+
   if test_case
-    if not page_title.include? "#{partial_text_title}"
-      raise TestCaseFailed, 'Partial Page Title Not Present'
-    end
+    expect(page_title).to include(partial_text_title)
   else
-    if page_title.include? "#{partial_text_title}"
-      raise TestCaseFailed, 'Page Title Matched'
-    end
+    expect(page_title).to_not include(partial_text_title)
   end
 end
 
@@ -44,7 +38,7 @@ end
 # param 1 : String : Locator type (id, name, class, xpath, css)
 # param 2 : String : Locator value
 def get_element_text(access_type, access_name)
-  WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }.text
+  $driver.find_element(:"#{access_type}" => "#{access_name}").text
 end
 
 # Method to check element text
@@ -54,15 +48,10 @@ end
 # param 4 : Boolean : test case [true or flase]
 def check_element_text(access_type, expected_value, access_name, test_case)
   element_text = get_element_text(access_type, access_name)
-
   if test_case
-    if element_text != expected_value
-      raise TestCaseFailed, "Text Not Matched, Actual Text : #{element_text}, Expected Text : #{expected_value}"
-    end
+    expect(element_text).to eq expected_value
   else
-    if element_text == expected_value
-      raise TestCaseFailed, "Text Matched, Actual Text : #{element_text}"
-    end
+    expect(element_text).to_not eq expected_value
   end
 end
 
@@ -75,13 +64,9 @@ def check_element_partial_text(access_type, expected_value, access_name, test_ca
   element_text = get_element_text(access_type, access_name)
 
   if test_case
-    if not element_text.include? "#{expected_value}"
-      raise TestCaseFailed, "Element text : #{element_text}, does not contains partial text as : #{expected_value}"
-    end
+    expect(element_text).to include(expected_value)
   else
-    if element_text.include? "#{expected_value}"
-      raise TestCaseFailed, "Element text : #{element_text}, contains partial text as : #{expected_value}"
-    end
+    expect(element_text).to_not include(expected_value)
   end
 end
 
@@ -89,7 +74,7 @@ end
 # param 1 : String : Locator type (id, name, class, xpath, css)
 # param 2 : String : Locator value
 def is_element_enabled(access_type, access_name)
-  WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }.enabled?
+  $driver.find_element(:"#{access_type}" => "#{access_name}").enabled?
 end
 
 # Element enabled checking
@@ -98,11 +83,10 @@ end
 # param 4 : Boolean : test case [true or flase]
 def check_element_enable(access_type, access_name, test_case)
   result = is_element_enabled(access_type, access_name)
-
   if test_case
-    raise TestCaseFailed, 'Element Not Enabled' unless result
+    expect(result).to be true
   else
-    raise TestCaseFailed, 'Element Enabled' unless !result
+    expect(result).to be false
   end
 end
 
@@ -111,7 +95,7 @@ end
 # param 2 : String : Expected element text
 # param 3 : String : atrribute name
 def get_element_attribute(access_type, access_name, attribute_name)
-  WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }.attribute("#{attribute_name}")
+  $driver.find_element(:"#{access_type}" => "#{access_name}").attribute("#{attribute_name}")
 end
 
 # method to check attribute value
@@ -125,13 +109,9 @@ def check_element_attribute(access_type, attribute_name, attribute_value, access
   attr_val = get_element_attribute(access_type, access_name, attribute_name)
 
   if test_case
-    if attr_val != attribute_value
-      raise TestCaseFailed, "Attribute Value Not Matched, Actual Value : #{attr_val}, Expected Value : #{attribute_value}"
-    end
+    expect(attr_val).to eq(attribute_value)
   else
-    if attr_val == attribute_value
-      raise TestCaseFailed, "Attribute Value Matched, Actual Value : #{attr_val}"
-    end
+    expect(attr_val).to_not eq(attribute_value)
   end
 end
 
@@ -139,7 +119,12 @@ end
 # param 1 : String : Locator type (id, name, class, xpath, css)
 # param 2 : String : Locator value
 def is_element_displayed(access_type, access_name)
-  WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }.displayed?
+  begin
+    $driver.find_element(:"#{access_type}" => "#{access_name}").displayed?
+  rescue Selenium::WebDriver::Error::NoSuchElementError
+    # elements not found return false
+    false
+  end
 end
 
 # method to check element presence
@@ -147,21 +132,7 @@ end
 # param 2 : String : Locator value
 # param 3 : Boolean : test case [true or flase]
 def check_element_presence(access_type, access_name, test_case)
-  if test_case
-    if !is_element_displayed(access_type, access_name)
-      raise TestCaseFailed, 'Element Not Present'
-    end
-  else
-    begin
-      if is_element_displayed(access_type, access_name)
-        raise 'Present' # since it is negative test and we found element
-      end
-    rescue Exception => e
-      if e.message == 'Present' # only raise if it present
-        raise TestCaseFailed, 'Element Present'
-      end
-    end
-  end
+  expect(is_element_displayed(access_type, access_name)).to be test_case
 end
 
 # method to assert checkbox check/uncheck
@@ -169,13 +140,9 @@ end
 # param 2 : String : Locator value
 # param 3 : Boolean : test case [true or flase]
 def is_checkbox_checked(access_type, access_name, should_be_checked = true)
-  checkbox = WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }
+  checkbox = $driver.find_element(:"#{access_type}" => "#{access_name}")
 
-  if !checkbox.selected? && should_be_checked
-    raise TestCaseFailed, 'Checkbox is not checked'
-  elsif checkbox.selected? && !should_be_checked
-    raise TestCaseFailed, 'Checkbox is checked'
-  end
+  expect(checkbox.selected?).to be should_be_checked
 end
 
 # method to assert radio button selected/unselected
@@ -183,28 +150,19 @@ end
 # param 2 : String : Locator value
 # param 3 : Boolean : test case [true or flase]
 def is_radio_button_selected(access_type, access_name, should_be_selected = true)
-  radio_button = WAIT.until{ $driver.find_element(:"#{access_type}" => "#{access_name}") }
-
-  if !radio_button.selected? && should_be_selected
-    raise TestCaseFailed, 'Radio Button not selected'
-  elsif radio_button.selected? && !should_be_selected
-    raise TestCaseFailed, 'Radio Button is selected'
-  end
+  radio_button = $driver.find_element(:"#{access_type}" => "#{access_name}")
+  expect(radio_button.selected?).to be should_be_selected
 end
 
 # method to assert option from radio button group is selected/unselected
 def is_option_from_radio_button_group_selected(access_type, by, option, access_name, should_be_selected = true)
-  radio_button_group = WAIT.until{ $driver.find_elements(:"#{access_type}" => "#{access_name}") }
+  radio_button_group = $driver.find_elements(:"#{access_type}" => "#{access_name}")
 
   getter = ->(rb, by) { by == 'value' ? rb.attribute('value') : rb.text }
 
   ele = radio_button_group.find { |rb| getter.call(rb, by) == option }
 
-  if !ele.selected? && should_be_selected
-    raise TestCaseFailed, 'Radio button is not selected'
-  elsif ele.selected? && !should_be_selected
-    raise TestCaseFailed, 'Radio button is selected'
-  end
+  expect(ele.selected?).to be should_be_selected
 end
 
 # method to get javascript pop-up alert text
@@ -214,13 +172,11 @@ end
 
 # method to check javascript pop-up alert text
 def check_alert_text(text)
-  if get_alert_text != text
-    raise TestCaseFailed,  "Text on alert pop up not matched, Actual Text : #{get_alert_text}, Expected Text : #{text}"
-  end
+  expect(get_alert_text).to eq text
 end
 
 def is_option_from_dropdown_selected(access_type, by, option, access_name, should_be_selected=true)
-  dropdown = WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }
+  dropdown = $driver.find_element(:"#{access_type}" => "#{access_name}")
   select_list = Selenium::WebDriver::Support::Select.new(dropdown)
 
   if by == 'text'
@@ -228,12 +184,7 @@ def is_option_from_dropdown_selected(access_type, by, option, access_name, shoul
   else
     actual_value = select_list.first_selected_option.attribute('value')
   end
-
-  if !actual_value == option && should_be_selected
-    raise TestCaseFailed, 'Option Not Selected From Dropwdown'
-  elsif actual_value == option && !should_be_selected
-    raise TestCaseFailed, 'Option Selected From Dropwdown'
-  end
+  expect(actual_value).to eq option 
 end
 
 # Method to find difference between images

@@ -32,3 +32,16 @@ AfterStep('@Ex_tag1, @Ex_tag2') do
   # This will only run after steps within scenarios tagged
   # with @cucumis AND @sativus.
 end
+
+Around('@Ex_tag1') do
+  # Will around around a scenario wrapping it in a block
+end
+
+AfterConfiguration do |c|
+  # Will run after cucumber has been configured
+end
+
+# Quit the selenium driver from the example tests.
+at_exit do
+  $driver.quit
+end
