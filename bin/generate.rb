@@ -1,4 +1,3 @@
-
 def selenium_cucumber_scaffold
   if File.exists?(@features_dir)
     puts "A features directory already exists. Stopping..."

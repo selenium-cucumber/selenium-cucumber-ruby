@@ -1,6 +1,6 @@
-$:.push File.expand_path('../lib', __FILE__)
+lib = File.expand_path('../lib', __FILE__)
+$LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
 require 'selenium-cucumber/version'
-
 Gem::Specification.new do |s|
   s.name        = 'selenium-cucumber'
   s.version     = Selenium::Cucumber::VERSION
@@ -17,10 +17,10 @@ Gem::Specification.new do |s|
   s.files      += Dir['doc/*']
   s.files      += Dir['features-skeleton/**/*']
   s.files      += Dir['example/**/*']
-  s.executables   = 'selenium-cucumber'
+  s.executables   = s.files.grep(%r{^bin/}) { |f| File.basename(f) }
+  s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
   s.post_install_message = 'Thank you for installing selenium-cucumber gem.'
-
   s.required_ruby_version = '>= 1.9.3'
   s.add_runtime_dependency 'cucumber', '>= 1.3.18'
   s.add_runtime_dependency 'selenium-webdriver', '>= 2.41.0'
