@@ -25,16 +25,16 @@ end
 
 Before('@Ex_tag1, @Ex_tag2') do
   # This will only run before scenarios tagged
-  # with @cucumis OR @sativus.
+  # with @Ex_tag1 OR @Ex_tag2.
 end
 
-AfterStep('@Ex_tag1, @Ex_tag2') do
+AfterStep('@Ex_tag1, @Ex_tag2') do |scenario|
   # This will only run after steps within scenarios tagged
-  # with @cucumis AND @sativus.
+  # with @Ex_tag1 AND @Ex_tag2.
 end
 
-Around('@Ex_tag1') do
-  # Will around around a scenario wrapping it in a block
+Around('@Ex_tag1') do |scenario, block|
+  # Will round around a scenario
 end
 
 AfterConfiguration do |c|

@@ -27,6 +27,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'chunky_png', '>= 1.3.5'
   s.add_runtime_dependency 'appium_lib', '>= 8.0.2'
   s.add_runtime_dependency 'rspec', '>= 3.4.0'
-  # s.add_development_dependency 'pry'
-  s.add_runtime_dependency 'pry'
+  s.add_development_dependency 'pry'
+  # uncomment if you'd like runtime, development should be fine
+  # s.add_runtime_dependency 'pry'
 end
