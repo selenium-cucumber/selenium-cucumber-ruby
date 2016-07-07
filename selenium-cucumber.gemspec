@@ -21,9 +21,14 @@ Gem::Specification.new do |s|
   s.test_files    = s.files.grep(%r{^(test|spec|features)/})
   s.require_paths = ['lib']
   s.post_install_message = 'Thank you for installing selenium-cucumber gem.'
-  s.required_ruby_version = '>= 1.9.3'
-  s.add_runtime_dependency 'cucumber', '>= 1.3.18'
-  s.add_runtime_dependency 'selenium-webdriver', '>= 2.41.0'
-  s.add_runtime_dependency 'chunky_png', '>= 1.3.0'
-  s.add_runtime_dependency 'appium_lib', '>= 4.0.0'
+
+  s.required_ruby_version = '>= 2.0.0'
+  s.add_runtime_dependency 'cucumber', '>= 2.3.0'
+  s.add_runtime_dependency 'selenium-webdriver', '>= 2.53.0'
+  s.add_runtime_dependency 'chunky_png', '>= 1.3.5'
+  s.add_runtime_dependency 'appium_lib', '>= 8.0.2'
+  s.add_runtime_dependency 'rspec', '>= 3.4.0'
+  s.add_development_dependency 'pry'
+  # uncomment if you'd like runtime, development should be fine
+  # s.add_runtime_dependency 'pry'
 end
