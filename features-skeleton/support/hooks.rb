@@ -37,7 +37,7 @@ Around('@Ex_tag1') do |scenario, block|
   # Will round around a scenario
 end
 
-AfterConfiguration do |c|
+AfterConfiguration do |config|
   # Will run after cucumber has been configured
 end
 
