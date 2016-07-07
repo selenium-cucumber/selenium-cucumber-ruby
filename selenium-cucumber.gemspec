@@ -11,7 +11,7 @@ Gem::Specification.new do |s|
   s.description = 'Behavior driven development (BDD) approach to write automation test script to test Web and Android applications.'
   s.authors     = 'Sameer Sawant'
   s.homepage    = 'http://seleniumcucumber.info/'
-  s.email       = 'sameersawant1992@gmail.com'
+  s.email       = 'sameersawant222@gmail.com'
   s.files       = Dir['lib/**/*']
   s.files      += Dir['bin/*']
   s.files      += Dir['doc/*']
