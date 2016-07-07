@@ -43,5 +43,5 @@ end
 
 # Quit the selenium driver from the example tests.
 at_exit do
-  $driver.quit
+  $driver.quit if $driver
 end
