@@ -24,5 +24,6 @@ Feature: Click On Elements
 		
 	Scenario: click on links having partial text
 
+		Then I wait for 10 sec
 		Then I click on link having partial text "Home"
 		Then I should see page title as "Selenium-Cucumber | Code Less… Test More…"
