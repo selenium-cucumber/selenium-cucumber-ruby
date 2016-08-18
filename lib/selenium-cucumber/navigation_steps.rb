@@ -50,6 +50,10 @@ Then(/^I switch to window having title "(.*?)"$/) do |window_title|
   switch_to_window_by_title window_title
 end
 
+Then(/^I switch to window having url "(.*?)"$/) do |window_url|
+  switch_to_window_by_url window_url
+end
+
 # step to close new window
 Then(/^I close new window$/) do
   close_new_window
