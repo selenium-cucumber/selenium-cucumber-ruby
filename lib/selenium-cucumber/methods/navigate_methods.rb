@@ -81,13 +81,13 @@ end
 
 # Method to hover on element
 def hover_over_element(access_type, access_name)
-  element = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+  element = $driver.find_element(:"#{access_type}" => "#{access_name}")
   $driver.action.move_to(element).perform
 end
 
 # Method to scroll page to perticular element
 def scroll_to_element(access_type, access_name)
-  ele_scroll = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+  ele_scroll = $driver.find_element(:"#{access_type}" => "#{access_name}")
   ele_scroll.location_once_scrolled_into_view
 end
 

@@ -10,10 +10,6 @@ Before do |scenario|
   # executed.
 end
 
-After do
-  # Do something after each scenario.
-end
-
 After do |scenario|
   # Do something after each scenario.
   # The +scenario+ argument is optional, but
@@ -29,10 +25,23 @@ end
 
 Before('@Ex_tag1, @Ex_tag2') do
   # This will only run before scenarios tagged
-  # with @cucumis OR @sativus.
+  # with @Ex_tag1 OR @Ex_tag2.
 end
 
-AfterStep('@Ex_tag1, @Ex_tag2') do
+AfterStep('@Ex_tag1, @Ex_tag2') do |scenario|
   # This will only run after steps within scenarios tagged
-  # with @cucumis AND @sativus.
+  # with @Ex_tag1 AND @Ex_tag2.
+end
+
+Around('@Ex_tag1') do |scenario, block|
+  # Will round around a scenario
+end
+
+AfterConfiguration do |config|
+  # Will run after cucumber has been configured
+end
+
+# Quit the selenium driver from the example tests.
+at_exit do
+
 end

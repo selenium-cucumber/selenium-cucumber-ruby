@@ -1,7 +1,7 @@
 require_relative 'methods/progress_methods'
 
 # wait for specific period of time
-Then(/^I wait for (\d+) sec$/) do |time|
+Then(/^I wait for (\d+) sec(?:onds?)?$/) do |time|
   wait(time)
 end
 

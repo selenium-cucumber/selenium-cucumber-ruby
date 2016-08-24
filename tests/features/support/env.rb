@@ -45,6 +45,7 @@ else # else create driver instance for desktop browser
   begin
     $driver = Selenium::WebDriver.for(:"#{$browser_type}")
     $driver.manage().window().maximize()
+    $driver.manage.timeouts.implicit_wait = 30
   rescue Exception => e
     puts e.message
     Process.exit(0)
