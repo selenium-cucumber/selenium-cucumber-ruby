@@ -1,6 +1,5 @@
 require 'rubygems'
 require 'selenium-cucumber'
-require 'pry'
 
 # Store command line arguments
 $browser_type = ENV['BROWSER'] || 'ff'
