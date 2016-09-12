@@ -133,6 +133,20 @@ def switch_to_window_by_title window_title
   raise "Window having title \"#{window_title}\" not found" if not window_found
 end
 
+def switch_to_window_by_url window_url
+  $previous_window = $driver.window_handle
+  window_found = false
+  $driver.window_handles.each { |handle|
+    $driver.switch_to.window handle
+    # match absolute or relative
+    if $driver.current_url.include?(window_url)
+      window_found = true
+      break
+    end
+  }
+  raise "Window having url \"#{window_url}\" not found" if not window_found
+end
+
 # Method to close new window
 def close_new_window
   $driver.close
