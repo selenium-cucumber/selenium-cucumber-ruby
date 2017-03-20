@@ -6,6 +6,7 @@ Feature: Gmail_login
 	Scenario Outline: In-valid Login
 		Then I clear input field having id "Email"
 		And I enter <username> into input field having id "Email"
+		Then I click on element having id "next"
 		Then I clear input field having id "Passwd"
 		And I enter <password> into input field having id "Passwd"
 		When I click on element having id "signIn"

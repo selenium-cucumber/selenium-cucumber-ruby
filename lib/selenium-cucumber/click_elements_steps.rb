@@ -1,9 +1,12 @@
 require_relative 'methods/click_elements_methods'
 
-# click on web element
-When(/^I click on element having (.+) "(.*?)"$/) do |type, access_name|
+When(/^I click on element having (id|name|class|xpath|css) "(.*?)"(?: and text "(.*?)")?$/) do |type, access_name, text|
   validate_locator type
-  click(type, access_name)
+  if text
+    click_by_text(type, access_name, text)
+  else
+    click(type, access_name)
+  end
 end
 
 Then(/^I forcefully click on element having (.+) "(.*?)"$/) do |type, access_name|

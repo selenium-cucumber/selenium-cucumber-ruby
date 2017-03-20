@@ -1,5 +1,4 @@
-#!/usr/bin/env ruby 
-
+#!/usr/bin/env ruby
 require_relative 'helper.rb'
 require_relative 'generate.rb'
 require 'selenium-cucumber/version'

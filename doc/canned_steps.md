@@ -29,6 +29,7 @@ To switch between windows use following steps :
 	Then I switch to new window
 	Then I switch to previous window
 	Then I switch to window having title "(.*?)"
+	Then I switch to window having url "(.*?)"
 	Then I close new window
 	Then I switch to main window
 
@@ -475,6 +476,14 @@ To click on web element use following steps :
 	Then I click on element having class "(.*?)"
 	Then I click on element having xpath "(.*?)"
 	Then I click on element having css "(.*?)"
+
+To click on web element with a particular text use the following steps :
+
+	Then I click on element having id "(.*?)" and text "(.*?)"
+	Then I click on element having name "(.*?)" and text "(.*?)"
+	Then I click on element having class "(.*?)" and text "(.*?)"
+	Then I click on element having xpath "(.*?)" and text "(.*?)"
+	Then I click on element having css "(.*?)" and text "(.*?)"
 
 To forcefully click on web element use following steps (if above steps do not work) :
 

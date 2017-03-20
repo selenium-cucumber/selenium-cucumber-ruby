@@ -81,13 +81,13 @@ end
 
 # Method to hover on element
 def hover_over_element(access_type, access_name)
-  element = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+  element = $driver.find_element(:"#{access_type}" => "#{access_name}")
   $driver.action.move_to(element).perform
 end
 
 # Method to scroll page to perticular element
 def scroll_to_element(access_type, access_name)
-  ele_scroll = WAIT.until {$driver.find_element(:"#{access_type}" => "#{access_name}")}
+  ele_scroll = $driver.find_element(:"#{access_type}" => "#{access_name}")
   ele_scroll.location_once_scrolled_into_view
 end
 
@@ -131,6 +131,20 @@ def switch_to_window_by_title window_title
     end
   }
   raise "Window having title \"#{window_title}\" not found" if not window_found
+end
+
+def switch_to_window_by_url window_url
+  $previous_window = $driver.window_handle
+  window_found = false
+  $driver.window_handles.each { |handle|
+    $driver.switch_to.window handle
+    # match absolute or relative
+    if $driver.current_url.include?(window_url)
+      window_found = true
+      break
+    end
+  }
+  raise "Window having url \"#{window_url}\" not found" if not window_found
 end
 
 # Method to close new window
