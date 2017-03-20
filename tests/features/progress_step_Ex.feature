@@ -12,5 +12,5 @@ Feature: Progress Steps
 
 	Scenario: wait for elements to enabled
  		Then element having id "disabledBt" should be disabled
- 		Then I wait 20 seconds for element having id "disabledBt" to enable
+ 		Then I wait 30 seconds for element having id "disabledBt" to enable
  		Then element having id "disabledBt" should be enabled
