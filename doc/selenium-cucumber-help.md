@@ -10,7 +10,7 @@ Usage: selenium-cucumber <command-name> [parameters] [options]
     help : prints more detailed help information.
 
     gen  : creates a skeleton features dir. This is usually used once when
-           setting up selnium-cucumber to ensure that the features folder contains
+           setting up selenium-cucumber to ensure that the features folder contains
            the right step definitions and environment to run with cucumber.
 
     version : prints the gem version
