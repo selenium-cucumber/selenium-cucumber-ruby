@@ -22,7 +22,7 @@ Gem::Specification.new do |s|
   s.require_paths = ['lib']
   s.post_install_message = 'Thank you for installing selenium-cucumber gem.'
 
-  s.required_ruby_version = '>= 2.0.0'
+  s.required_ruby_version = '>= 2.2.1'
   s.add_runtime_dependency 'cucumber', '>= 2.3.0'
   s.add_runtime_dependency 'selenium-webdriver', '>= 2.53.0'
   s.add_runtime_dependency 'chunky_png', '>= 1.3.5'
