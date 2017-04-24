@@ -1,0 +1,5 @@
+deviceName: "nexus6 Emulator"
+platformVersion: "6.0"
+platformName:  "Android"
+appPackage: "com.android2.calculator3"
+appActivity: "com.android2.calculator3.Calculator"
