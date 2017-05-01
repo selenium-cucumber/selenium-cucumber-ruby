@@ -37,11 +37,14 @@ Around('@Ex_tag1') do |scenario, block|
   # Will round around a scenario
 end
 
-AfterConfiguration do |c|
+AfterConfiguration do |config|
   # Will run after cucumber has been configured
 end
 
 # Quit the selenium driver from the example tests.
 at_exit do
-  
+  begin
+    close_driver
+  rescue Exception => e
+  end
 end
