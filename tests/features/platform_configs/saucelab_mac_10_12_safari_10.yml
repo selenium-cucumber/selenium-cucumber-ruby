@@ -1,0 +1,4 @@
+name: "macOS Safari 10"
+platform: 'macOS 10.12'
+browserName: "Safari"
+version: "10.0"

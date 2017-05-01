@@ -1,0 +1,5 @@
+browserName: "iPhone"
+platform: "MAC"
+device: "iPhone 6S Plus"
+name: "test from sc"
+browserstack.debug: "true"

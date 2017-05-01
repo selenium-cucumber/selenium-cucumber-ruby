@@ -1,0 +1,7 @@
+name: "android 4.4"
+appiumVersion: "1.5.3"
+deviceName: "Samsung Galaxy S4 Emulator"
+deviceOrientation: "portrait"
+platformVersion: "4.4"
+platformName:  "Android"
+app: "sauce-storage:AndroidCalculator.apk"

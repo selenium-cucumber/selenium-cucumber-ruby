@@ -1,0 +1,7 @@
+name: "ios Ruby test"
+appiumVersion: "1.6.3"
+deviceName: "iPhone Simulator"
+deviceOrientation: "portrait"
+platformVersion: "10.0"
+platformName:  "iOS"
+browserName: "safari"
