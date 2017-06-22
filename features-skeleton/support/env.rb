@@ -12,7 +12,7 @@ $app_path = ENV['APP_PATH']
 $config_file = ENV['PLATFORM_CONFIG']
 
 if $config_file
-  $driver = get_cloud_platform_driver($config_file, __dir__)
+  $driver = get_platform_driver($config_file, __dir__)
 else
   # If platform is android or ios create driver instance for mobile browser
   if $platform == 'android' or $platform == 'iOS'
