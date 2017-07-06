@@ -43,5 +43,9 @@ end
 
 # Quit the selenium driver from the example tests.
 at_exit do
-
+  begin
+    $driver.quit
+  rescue Exception => e
+  end
 end
+
