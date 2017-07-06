@@ -654,11 +654,11 @@ To perform long tap with customized duration of seconds on app elements use foll
 
 To perform long tap with default duration of 2 seconds using co-ordinates use following step :
 
-  	Then I long tap on co\-ordinate "(.*?)","(.*?)
+  	Then I long tap on co-ordinate "(.*?)","(.*?)
 
 To perform long tap with customized duration of seconds using co-ordinates use following step :
   
-  	Then I long tap on co\-ordinate "(.*?)","(.*?)" for "(.*?)" sec
+  	Then I long tap on co-ordinate "(.*?)","(.*?)" for "(.*?)" sec
 
 ### Close app step
 
