@@ -38,6 +38,15 @@ To get started with selenium-cucumber you need to run `selenium-cucumber gen` co
         |__step_definitions
         |     |__custom_steps.rb
         |
+        |__platform_configs
+        |     |__local_android_app_nexus5.yml
+        |     |__saucelab_ios_app_iphone6.yml
+        |     |__browserstack_windows_10ie.yml
+        |
+        |__app_under_test
+        |     |__calculator.apk
+        |     |__calculator.app
+        |
         |__actual_images
         |
         |__expected_images
