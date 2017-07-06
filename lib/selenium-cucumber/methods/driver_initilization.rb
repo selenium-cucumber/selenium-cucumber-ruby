@@ -13,11 +13,15 @@ def get_platform_driver config_file, project_path
       return get_saucelab_driver(device_config, account_config, device, project_path)
     when "browserstack"
       return get_browserstack_driver(device_config, account_config, device, project_path)
+    when "testingbot"
+      return get_testingbot_driver(device_config, account_config, device, project_path)
+    when "remote"
+      return get_remote_driver(device_config, account_config, device, project_path)
     when "local"
       return get_local_mobile_driver(device_config, account_config, device, project_path)             
     else
       puts "Got an exception : \n #{e} \n"
-      puts "Platfrom config file either should start with 'local', 'saucelab' or 'browserstack'"
+      puts "Platform config file either should start with 'local', 'saucelab' or 'browserstack'"
       puts "Ex. : local_android_7_chrome.yml"
       puts "Ex. : saucelab_android_7_chrome.yml"
       puts "Ex. : browserstack_windows_7_chrome.yml \n\n"
@@ -26,7 +30,7 @@ def get_platform_driver config_file, project_path
 end
 
 def get_local_mobile_driver device_config, account_config, device, project_path
-  if device == "android" or device == 'ios'
+  if device.downcase == "android" or device.downcase == 'ios'
     if device_config['app']
       app_path = File.absolute_path(project_path+"/../app_under_test/"+device_config['app'])
       device_config['app'] = app_path
@@ -47,12 +51,24 @@ def get_local_mobile_driver device_config, account_config, device, project_path
   end   
 end
 
+def get_testingbot_driver device_config, account_config, device, project_path
+  remote_url =  account_config['testingbot']['protocol']+ "://" +
+                account_config['testingbot']['key'] + ":" + 
+                account_config['testingbot']['secret'] +
+                account_config['testingbot']['url'];
+  return create_driver_instance(remote_url,device_config)
+end
+
 def get_browserstack_driver device_config, account_config, device, project_path
   remote_url =  account_config['browserstack']['protocol']+ "://" +
                 account_config['browserstack']['username'] + ":" + 
                 account_config['browserstack']['access_key'] +
                 account_config['browserstack']['url'];
   return create_driver_instance(remote_url,device_config)
+end
+
+def get_remote_driver device_config, account_config, device, project_path
+  print "Yet to implement remote driver"
 end
 
 def get_saucelab_driver device_config, account_config, device, project_path
@@ -67,6 +83,10 @@ def get_saucelab_driver device_config, account_config, device, project_path
       if device_config['app'].include? "sauce-storage"
         app_name = device_config['app'].split(":")[1]
         app_path = File.absolute_path(project_path+"/../app_under_test/"+app_name)
+        if not File.file?(app_path)
+          puts "App doesn't exist : #{app_name}"
+          Process.exit(0)
+        end
         upload_app_to_sauce_storage username, access_key, app_name, app_path
       end 
     end
@@ -90,7 +110,14 @@ end
 
 def create_driver_instance remote_url,device_config
   begin
-    return Selenium::WebDriver.for :remote, :url => remote_url, :desired_capabilities => device_config
+    client = Selenium::WebDriver::Remote::Http::Default.new
+    client.read_timeout = 480
+    return Selenium::WebDriver.for(
+      :remote, 
+      :url => remote_url,
+      :http_client => client, 
+      :desired_capabilities => device_config
+    )
   rescue Exception => e
     puts "Got an exception : \n #{e} \n\n"
     Process.exit(0)
