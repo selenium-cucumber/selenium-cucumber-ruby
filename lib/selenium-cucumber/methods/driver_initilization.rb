@@ -84,10 +84,9 @@ def get_saucelab_driver device_config, account_config, device, project_path
         app_name = device_config['app'].split(":")[1]
         app_path = File.absolute_path(project_path+"/../app_under_test/"+app_name)
         if not File.file?(app_path)
-          puts "App doesn't exist : #{app_name}"
+          puts "No app with name '#{app_name}' found in feature/app_under_test directory."
           Process.exit(0)
         end
-        upload_app_to_sauce_storage username, access_key, app_name, app_path
       end 
     end
     desired_caps = {
@@ -118,31 +117,6 @@ def create_driver_instance remote_url,device_config
       :http_client => client, 
       :desired_capabilities => device_config
     )
-  rescue Exception => e
-    puts "Got an exception : \n #{e} \n\n"
-    Process.exit(0)
-  end
-end
-
-def upload_app_to_sauce_storage username, access_key, app_name, app_path
-  begin
-    uri = URI.parse("https://saucelabs.com/rest/v1/storage/#{username}/#{app_name}?overwrite=true")
-    request = Net::HTTP::Post.new(uri)
-    request.basic_auth(username, access_key)
-    request.content_type = "application/octet-stream"
-    request.body = ""
-    request.body << File.read(app_path)
-
-    req_options = {
-      use_ssl: uri.scheme == "https",
-    }
-
-    response = Net::HTTP.start(uri.hostname, uri.port, req_options) do |http|
-      http.request(request)
-    end
-    if response.code != '200'
-      raise "\n Failed to upload your app to sauce storage.\n #{response.message}"
-    end
   rescue Exception => e
     puts "Got an exception : \n #{e} \n\n"
     Process.exit(0)
