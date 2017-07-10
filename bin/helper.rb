@@ -8,24 +8,6 @@ def msg(title, &block)
   puts "-"*10 + "-------" + "-"*10 + "\n"
 end
 
-def print_usage
-  puts <<EOF
-  
-  Usage: selenium-cucumber <command-name> [parameters] [options]
-  
-  <command-name> can be one of
-    help
-      prints more detailed help information.
-    gen
-      generate a features folder structure.
-    version
-      prints the gem version
-
-  <options> can be 
-     -v, --verbose   Turns on verbose logging
-EOF
-end
-
 def print_help
   puts <<EOF
   
@@ -35,7 +17,7 @@ def print_help
     help
     gen
     version
-
+    
     Commands:
       help : prints more detailed help information.
 
