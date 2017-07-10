@@ -5,9 +5,7 @@ require 'appium_lib'
 # $driver is instance of webdriver use this instance to write your custom code
 
 Given(/^I open test page$/) do
-	link = 'file:///'
-  link+= File.absolute_path("test_page.html")
-  navigate_to(link) 
+	step %[I navigate to "https://selenium-cucumber.github.io/"]
 end
 
 # Then(/^I press "(.*?)" key from keyboard$/) do |key|
