@@ -1,6 +1,7 @@
 #!/usr/bin/env ruby
 require_relative 'helper.rb'
 require_relative 'generate.rb'
+require_relative 'upload_app.rb'
 require 'selenium-cucumber/version'
 
 @features_dir = File.join(FileUtils.pwd, "features")
@@ -11,10 +12,10 @@ require 'selenium-cucumber/version'
 @support_dir = File.join(@features_dir, "screenshots")
 @source_dir = File.join(File.dirname(__FILE__), '..', 'features-skeleton')
 
-if (ARGV.length == 0)
-  print_usage
+if ARGV.length == 0
+  print_help
 else
-	cmd = ARGV.shift
+	cmd = ARGV[0]
 
 	if cmd == "help"
   		print_help
@@ -23,7 +24,7 @@ else
 	elsif cmd == "version"
 		puts Selenium::Cucumber::VERSION
   	else
-  		print_usage
+  		print_help
 	end
 end
 
