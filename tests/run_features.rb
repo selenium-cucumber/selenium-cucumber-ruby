@@ -2,9 +2,9 @@ require 'selenium-webdriver'
 
 puts ARGV[0]
 
-OS = $driver.capabilities.platform.to_s.upcase
+OS = RUBY_PLATFORM
 
-  system("bundle update")
+  system("bundle install")
 
 if ARGV.length == 0
 
