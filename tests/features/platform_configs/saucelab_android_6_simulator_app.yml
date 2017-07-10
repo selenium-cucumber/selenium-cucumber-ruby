@@ -1,0 +1,7 @@
+name: "Package Viewer App"
+appiumVersion: "1.6.4"
+deviceName: "Android Emulator"
+deviceOrientation: "portrait"
+platformVersion: "6.0"
+platformName: "Android"
+app: sauce-storage:AndroidCalculator.apk

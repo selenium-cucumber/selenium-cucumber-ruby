@@ -1,0 +1,6 @@
+name: "Calculator App Test"
+platform: "Android"
+version: "6.0"
+deviceName: "Nexus S"
+platformName:  "Android"
+app: "https://github.com/selenium-cucumber/selenium-cucumber-ruby/blob/dev/tests/features/app_under_test/AndroidCalculator.apk?raw=true"
