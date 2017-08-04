@@ -1,6 +1,6 @@
 # CHANGELIST
 
-*4.0.0*
+# *4.0.0*
 - fixed issues from 3.1.5
 - Updated framework structure
 - Added support for cloud test platforms like saucelab and browserstack
