@@ -25,7 +25,7 @@ in Gemfile(done to run tests through local repo).
 
 Push to your fork and [submit a pull request][pr].
 
-[pr]: https://github.com/sameer49/selenium-cucumber-ruby/compare
+[pr]: https://github.com/selenium-cucumber/selenium-cucumber-ruby/compare
 
 At this point you're waiting on us. We like to at least comment on pull requests
 or may suggest some changes or discuss improvements or alternatives.
