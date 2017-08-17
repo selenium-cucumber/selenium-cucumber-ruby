@@ -24,7 +24,7 @@ The cucumber features goes in the `features` library and should have the ".featu
 
 You can start out by looking at `features/my_first.feature`. You can extend this feature or make your own features using some of the [predefined steps](doc/canned_steps.md) that comes with selenium-cucumber.
 
-Generate a Cucumber skeleton
+Generate a Selenium-Cucumber skeleton
 ----------------------------
 
 To get started with selenium-cucumber you need to run `selenium-cucumber gen` command. This will create a cucumber skeleton in the current folder like this:
@@ -34,6 +34,7 @@ To get started with selenium-cucumber you need to run `selenium-cucumber gen` co
         |__support
         |     |__env.rb
         |     |__hooks.rb
+        |     |__account_credentials.yml
         |
         |__step_definitions
         |     |__custom_steps.rb
@@ -57,7 +58,7 @@ To get started with selenium-cucumber you need to run `selenium-cucumber gen` co
         |
         |__my_first.feature
 
-Take a look at `my_first.feature` and change it to fit your web or android application.
+Take a look at `my_first.feature` and change it to fit your web or mobile application.
 
 
 Predefined steps
