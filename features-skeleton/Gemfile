@@ -1,0 +1,6 @@
+# Gemfile for SICK Analytics Platform
+source "https://rubygems.org"
+
+gem 'selenium-cucumber', '~> 2.1', '>= 2.1.4'
+
+ruby '2.0.0'

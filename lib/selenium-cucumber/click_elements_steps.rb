@@ -29,6 +29,14 @@ Then(/^I click on link having partial text "(.*?)"$/) do |access_name|
   click('partial_link_text', access_name)
 end
 
+Then(/^I forcefully click on link having text "(.*?)"$/) do |access_name|
+  click_forcefully('link', access_name)
+end
+
+Then(/^I forcefully click on link having partial text "(.*?)"$/) do |access_name|
+  click_forcefully('partial_link_text', access_name)
+end
+
 When(/^I tap on element having (.+) "(.*?)"$/) do |type, access_name|
   validate_locator type
   click(type, access_name)
