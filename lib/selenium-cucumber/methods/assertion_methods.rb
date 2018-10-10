@@ -49,9 +49,9 @@ end
 def check_element_text(access_type, expected_value, access_name, test_case)
   element_text = get_element_text(access_type, access_name)
   if test_case
-    expect(element_text).to eq expected_value
+    expect(element_text).to eq lookup(expected_value)
   else
-    expect(element_text).to_not eq expected_value
+    expect(element_text).to_not eq lookup(expected_value)
   end
 end
 
