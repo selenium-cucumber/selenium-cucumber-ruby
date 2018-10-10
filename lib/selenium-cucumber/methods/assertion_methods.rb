@@ -38,7 +38,7 @@ end
 # param 1 : String : Locator type (id, name, class, xpath, css)
 # param 2 : String : Locator value
 def get_element_text(access_type, access_name)
-  $driver.find_element(:"#{access_type}" => "#{access_name}").text
+  $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}").text
 end
 
 # Method to check element text
@@ -74,7 +74,7 @@ end
 # param 1 : String : Locator type (id, name, class, xpath, css)
 # param 2 : String : Locator value
 def is_element_enabled(access_type, access_name)
-  $driver.find_element(:"#{access_type}" => "#{access_name}").enabled?
+  $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}").enabled?
 end
 
 # Element enabled checking
@@ -95,7 +95,7 @@ end
 # param 2 : String : Expected element text
 # param 3 : String : atrribute name
 def get_element_attribute(access_type, access_name, attribute_name)
-  $driver.find_element(:"#{access_type}" => "#{access_name}").attribute("#{attribute_name}")
+  $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}").attribute("#{attribute_name}")
 end
 
 # method to check attribute value
@@ -120,7 +120,7 @@ end
 # param 2 : String : Locator value
 def is_element_displayed(access_type, access_name)
   begin
-    $driver.find_element(:"#{access_type}" => "#{access_name}").displayed?
+    $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}").displayed?
   rescue Selenium::WebDriver::Error::NoSuchElementError
     # elements not found return false
     false
@@ -140,7 +140,7 @@ end
 # param 2 : String : Locator value
 # param 3 : Boolean : test case [true or flase]
 def is_checkbox_checked(access_type, access_name, should_be_checked = true)
-  checkbox = $driver.find_element(:"#{access_type}" => "#{access_name}")
+  checkbox = $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}")
 
   expect(checkbox.selected?).to be should_be_checked
 end
@@ -150,13 +150,13 @@ end
 # param 2 : String : Locator value
 # param 3 : Boolean : test case [true or flase]
 def is_radio_button_selected(access_type, access_name, should_be_selected = true)
-  radio_button = $driver.find_element(:"#{access_type}" => "#{access_name}")
+  radio_button = $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}")
   expect(radio_button.selected?).to be should_be_selected
 end
 
 # method to assert option from radio button group is selected/unselected
 def is_option_from_radio_button_group_selected(access_type, by, option, access_name, should_be_selected = true)
-  radio_button_group = $driver.find_elements(:"#{access_type}" => "#{access_name}")
+  radio_button_group = $driver.find_elements(:"#{access_type}" => "#{lookup(access_name)}")
 
   getter = ->(rb, by) { by == 'value' ? rb.attribute('value') : rb.text }
 
@@ -176,7 +176,7 @@ def check_alert_text(text)
 end
 
 def is_option_from_dropdown_selected(access_type, by, option, access_name, should_be_selected=true)
-  dropdown = $driver.find_element(:"#{access_type}" => "#{access_name}")
+  dropdown = $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}")
   select_list = Selenium::WebDriver::Support::Select.new(dropdown)
 
   if by == 'text'

@@ -32,3 +32,7 @@ def get_device_info
   IO.popen('adb shell getprop ro.build.version.release') { |f| $os_version = f.gets.chomp.upcase}
   return $device, $os_version
 end
+
+def lookup(key)
+  $lookup_table[key] || key
+end

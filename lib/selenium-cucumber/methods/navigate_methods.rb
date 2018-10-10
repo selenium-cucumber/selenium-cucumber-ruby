@@ -61,7 +61,7 @@ end
 # Method to zoom in/out web page until web element displyas
 def zoom_in_out_till_element_display(access_type, operation, access_name)
   while true
-    if WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }.displayed?
+    if WAIT.until { $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}") }.displayed?
       break
     else
       zoom_in_out(operation)
@@ -81,13 +81,13 @@ end
 
 # Method to hover on element
 def hover_over_element(access_type, access_name)
-  element = $driver.find_element(:"#{access_type}" => "#{access_name}")
+  element = $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}")
   $driver.action.move_to(element).perform
 end
 
 # Method to scroll page to perticular element
 def scroll_to_element(access_type, access_name)
-  ele_scroll = $driver.find_element(:"#{access_type}" => "#{access_name}")
+  ele_scroll = $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}")
   ele_scroll.location_once_scrolled_into_view
 end
 

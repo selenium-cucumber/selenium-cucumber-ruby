@@ -1,7 +1,7 @@
 require_relative 'required_files'
 
 def click(access_type, access_name)
-  $driver.find_element(:"#{access_type}" => "#{access_name}").click
+  $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}").click
 end
 
 def click_by_text(access_type, access_name, text)
@@ -11,7 +11,7 @@ def click_by_text(access_type, access_name, text)
   raise "Text '#{text}' was not found in the page source" unless text_found
   # enter loop if the text is found
   if text_found
-    elements = $driver.find_elements(:"#{access_type}" => "#{access_name}")
+    elements = $driver.find_elements(:"#{access_type}" => "#{lookup(access_name)}")
     elements.each do |element|
       if element.text == text
         element_found = true
@@ -24,7 +24,7 @@ def click_by_text(access_type, access_name, text)
 end
 
 def click_forcefully(access_type, access_name)
-  $driver.execute_script('arguments[0].click();', $driver.find_element(:"#{access_type}" => "#{access_name}"))
+  $driver.execute_script('arguments[0].click();', $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}"))
 end
 
 def double_click(access_type, access_value)
@@ -33,7 +33,7 @@ def double_click(access_type, access_value)
 end
 
 def submit(access_type, access_name)
-  $driver.find_element(:"#{access_type}" => "#{access_name}").submit
+  $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}").submit
 end
 
 
