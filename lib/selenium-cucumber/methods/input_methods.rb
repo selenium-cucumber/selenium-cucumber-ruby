@@ -2,7 +2,7 @@ require_relative 'required_files'
 
 # method to enter text into textfield
 def enter_text(access_type, text, access_name)
-  $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}").send_keys text
+  $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}").send_keys lookup(text)
 end
 
 # method to clear text from textfield
