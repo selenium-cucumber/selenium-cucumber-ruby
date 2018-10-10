@@ -2,7 +2,7 @@ require_relative 'required_files'
 
 # method to open link
 def navigate_to(link)
-  $driver.get link
+  $driver.get lookup(link)
 end
 
 # method to navigate back & forword
