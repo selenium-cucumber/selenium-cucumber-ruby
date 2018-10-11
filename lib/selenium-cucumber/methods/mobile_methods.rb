@@ -53,11 +53,11 @@ def swipe_direction(direction)
 end
 
 def swipe_element_with_direction(access_type, access_name, direction)
-    ele_from = WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }.location
+    ele_from = WAIT.until { $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}") }.location
     x_start = ele_from.x
     y_start = ele_from.y
 
-    ele_size = WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }
+    ele_size = WAIT.until { $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}") }
     ele_height = ele_size.size.height.to_i
     ele_width =  ele_size.size.width.to_i
     #puts ele_size.width
@@ -148,7 +148,7 @@ end
 
 def swipe_coordinates_with_direction(start_x, start_y, direction)
    
-    # ele_from = WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }.size
+    # ele_from = WAIT.until { $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}") }.size
     # height = size.height.to_i - 5
     # puts "height : #{height}" # 1776
     # width = size.width.to_i - 5
@@ -190,7 +190,7 @@ end
 
 def long_press_on_element_default_duration(access_type, access_name)
   begin
-    ele_from = WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }.location
+    ele_from = WAIT.until { $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}") }.location
     x = ele_from.x
     y = ele_from.y
 
@@ -207,7 +207,7 @@ end
 
 def long_press_on_element_with_duration(access_type, access_name, duration)
   begin
-    ele_from = WAIT.until { $driver.find_element(:"#{access_type}" => "#{access_name}") }.location
+    ele_from = WAIT.until { $driver.find_element(:"#{access_type}" => "#{lookup(access_name)}") }.location
     x = ele_from.x
     y = ele_from.y
   
