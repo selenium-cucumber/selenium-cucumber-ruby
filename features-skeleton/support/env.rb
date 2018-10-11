@@ -8,7 +8,7 @@ $os_version = ENV['OS_VERSION']
 $device_name = ENV['DEVICE_NAME']
 $udid = ENV['UDID']
 $app_path = ENV['APP_PATH']
-$lookup_table = YAML.load(File.join(File.dirname(__FILE__), “../variables.yaml”))
+$lookup_table = YAML.load(File.join(File.dirname(__FILE__), '../variables.yaml'))
 
 # check for valid parameters
 validate_parameters $platform, $browser_type, $app_path
