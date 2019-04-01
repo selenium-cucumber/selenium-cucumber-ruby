@@ -76,6 +76,10 @@ Then(/^I should see alert text as "(.*?)"$/) do |actual_value|
   check_alert_text(actual_value)
 end
 
+Then(/^I link having text "(.*?)" should\s*((?:not)?)\s+be present$/) do |access_name, present|
+  check_element_presence('link', access_name, present.empty?)
+end
+
 # step to assert dropdown list
 Then(/^option "(.*?)" by (.+) from dropdown having (.+) "(.*?)" should be (selected|unselected)$/) do |option, by, type, access_name, state|
   validate_locator type
@@ -87,3 +91,5 @@ end
 Then(/^actual image having (.+) "(.*?)" and expected image having (.+) "(.*?)" should be similar$/) do |actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name|
   does_images_similar?(actual_img_access_type, actual_img_access_name, excp_img_access_type, excp_img_access_name)
 end
+
+
