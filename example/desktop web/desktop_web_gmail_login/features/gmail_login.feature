@@ -8,3 +8,4 @@ Feature: Gmail_login
 		When I click on element having id "signIn"
 		And I wait for 10 sec
 		Then I close browser
+       And user succesfully login in bukalapak
