@@ -8,7 +8,7 @@ WAIT = Selenium::WebDriver::Wait.new(:timeout => 30)
 
 # method to validate locator
 def valid_locator_type? type
-  %w(id class css name xpath).include? type
+  %w(id class css name xpath accessibility_id).include? type
 end
 
 def validate_locator type
